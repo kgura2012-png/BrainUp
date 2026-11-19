@@ -23,9 +23,19 @@
   "build": {
     "command": "npm run build:cloudflare"
   },
-  "triggers": {"crons": ["* * * * *"]},
+  "triggers": {
+    "crons": [
+      "* * * * *"
+    ]
+  },
   "observability": {
     "enabled": true,
     "head_sampling_rate": 0.1
+  },
+  "keep_vars": true,
+  "vars": {
+    "APP_ORIGIN": "https://brainup.kgura2012.workers.dev",
+    "TELEGRAM_NEWS_CHANNEL": "@BrainUp_Official",
+    "TELEGRAM_NEWS_URL": "https://t.me/BrainUp_Official"
   }
 }
