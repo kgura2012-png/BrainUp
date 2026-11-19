@@ -1,9 +1,9 @@
 import {readFile, writeFile, mkdtemp, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {fileURLToPath} from 'node:url';
 import {createHash, randomUUID} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import path from 'node:path';
+import {withCloudflareConfig, wranglerCli} from './cloudflare-config.mjs';
 import {brainupSegmentManifest, splitBrainupState} from '../server/state-storage.mjs';
 
 const [file, sqlOnly, destination] = process.argv.slice(2);
@@ -70,48 +70,44 @@ if (sqlOnly) {
   console.log('Подготовлен закрытый SQL-файл. Запись в Cloudflare не выполнялась.');
   process.exit(0);
 }
-const config = JSON.parse(await readFile(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
-const binding = config.d1_databases.find(db => db.binding === 'DB');
-if (!binding?.database_id || /^0{8}-0{4}-0{4}-0{4}-0{12}$/.test(binding.database_id)) {
-  throw Error('Укажите database_id целевой базы.');
-}
-const cli = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
-function wrangler(args) {
-  const response = spawnSync(process.execPath, [cli, ...args], {
-    stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', maxBuffer: 8 * 1024 * 1024
-  });
-  if (response.error) throw response.error;
-  if (response.status !== 0) throw Error('Wrangler не выполнил команду ' + args.slice(0, 2).join(' ') + '. Проверьте вход, настройки D1 и права доступа.');
-  return response.stdout;
-}
-function query(statement) {
-  return JSON.parse(wrangler(['d1', 'execute', 'DB', '--remote', '--json', '--command', statement]))[0]?.results;
-}
-wrangler(['d1', 'migrations', 'apply', 'DB', '--remote']);
-const counts = 'SELECT (SELECT COUNT(*) FROM site_state) AS state_count, (SELECT COUNT(*) FROM site_state_parts) AS part_count, (SELECT COUNT(*) FROM support_payments) AS payments_count, (SELECT COUNT(*) FROM support_receipts) AS receipts_count';
-const empty = query(counts)?.[0];
-if (!empty || Object.values(empty).some(n => n !== 0)) {
-  throw Error('Импорт разрешён только в пустую базу. Существующие данные сохранены.');
-}
-const tempDir = await mkdtemp(path.join(tmpdir(), 'brainup-d1-import-'));
-try {
-  const tempFile = path.join(tempDir, 'import.sql');
-  await writeFile(tempFile, payload, {mode: 0o600});
-  wrangler(['d1', 'execute', 'DB', '--remote', '--file', tempFile]);
-} finally {
-  await rm(tempDir, {recursive: true, force: true});
-}
-const actual = query(counts)?.[0];
-if (actual?.state_count !== 1 || actual.part_count !== parts.length
-    || actual.payments_count !== backup.tables.support_payments.length
-    || actual.receipts_count !== backup.tables.support_receipts.length) {
-  throw Error('Проверка числа записей после импорта не прошла.');
-}
-const imported = query('SELECT revision, data FROM site_state WHERE id = 1')?.[0];
-if (imported?.revision !== state.revision || imported.data !== manifest) throw Error('Ревизия после импорта не совпала.');
-const hash = data => createHash('sha256').update(data).digest('hex');
-for (const [ordinal, part] of parts.entries()) {
-  const saved = query(`SELECT data FROM site_state_parts WHERE state_key = '${key}' AND ordinal = ${ordinal}`)?.[0]?.data;
-  if (typeof saved !== 'string' || hash(saved) !== hash(part)) throw Error('Проверка содержимого состояния после импорта не прошла.');
-}
-console.log('Импорт проверен: данные аккаунтов совпали побайтно, платежи и чеки сверены по количеству.');
+await withCloudflareConfig(async (_config, configFile) => {
+  function wrangler(args) {
+    const response = spawnSync(process.execPath, [wranglerCli, ...args, '--config', configFile], {
+      stdio: ['ignore', 'pipe', 'pipe'], encoding: 'utf8', maxBuffer: 8 * 1024 * 1024
+    });
+    if (response.error) throw response.error;
+    if (response.status !== 0) throw Error('Wrangler не выполнил команду ' + args.slice(0, 2).join(' ') + '. Проверьте вход, настройки D1 и права доступа.');
+    return response.stdout;
+  }
+  function query(statement) {
+    return JSON.parse(wrangler(['d1', 'execute', 'DB', '--remote', '--json', '--command', statement]))[0]?.results;
+  }
+  wrangler(['d1', 'migrations', 'apply', 'DB', '--remote']);
+  const counts = 'SELECT (SELECT COUNT(*) FROM site_state) AS state_count, (SELECT COUNT(*) FROM site_state_parts) AS part_count, (SELECT COUNT(*) FROM support_payments) AS payments_count, (SELECT COUNT(*) FROM support_receipts) AS receipts_count';
+  const empty = query(counts)?.[0];
+  if (!empty || Object.values(empty).some(n => n !== 0)) {
+    throw Error('Импорт разрешён только в пустую базу. Существующие данные сохранены.');
+  }
+  const tempDir = await mkdtemp(path.join(tmpdir(), 'brainup-d1-import-'));
+  try {
+    const tempFile = path.join(tempDir, 'import.sql');
+    await writeFile(tempFile, payload, {mode: 0o600});
+    wrangler(['d1', 'execute', 'DB', '--remote', '--file', tempFile]);
+  } finally {
+    await rm(tempDir, {recursive: true, force: true});
+  }
+  const actual = query(counts)?.[0];
+  if (actual?.state_count !== 1 || actual.part_count !== parts.length
+      || actual.payments_count !== backup.tables.support_payments.length
+      || actual.receipts_count !== backup.tables.support_receipts.length) {
+    throw Error('Проверка числа записей после импорта не прошла.');
+  }
+  const imported = query('SELECT revision, data FROM site_state WHERE id = 1')?.[0];
+  if (imported?.revision !== state.revision || imported.data !== manifest) throw Error('Ревизия после импорта не совпала.');
+  const hash = data => createHash('sha256').update(data).digest('hex');
+  for (const [ordinal, part] of parts.entries()) {
+    const saved = query(`SELECT data FROM site_state_parts WHERE state_key = '${key}' AND ordinal = ${ordinal}`)?.[0]?.data;
+    if (typeof saved !== 'string' || hash(saved) !== hash(part)) throw Error('Проверка содержимого состояния после импорта не прошла.');
+  }
+  console.log('Импорт проверен: данные аккаунтов совпали побайтно, платежи и чеки сверены по количеству.');
+});

@@ -10,7 +10,7 @@
 
 ## Новая база и сборка
 
-1. `npm run cf:db:create` — создать `brainup-production` с binding `DB`. Проверьте настоящий UUID в `wrangler.jsonc` вместо нулевого шаблона. Если такая база уже существует, выберите её явно; повторно не создавайте.
+1. `npm run cf:db:create` — создать `brainup-restore` с binding `DB`, если такой базы ещё нет. Скрипт публикации определяет её UUID по имени в `wrangler.jsonc`.
 2. `npm run cf:db:migrate` — применить схему к D1.
 3. `npm run cf:check` — собрать и проверить публикацию без отправки Worker. HTML, изображения и музыка размещаются в `dist-cloudflare/public`, сервер — в `dist-cloudflare/server`. Приватные файлы и исходники не входят в публичную статику.
 

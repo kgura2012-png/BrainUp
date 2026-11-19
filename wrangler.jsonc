@@ -15,8 +15,7 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "brainup-production",
-      "database_id": "a906f74a-ce02-4b50-9b0d-ec7358825398",
+      "database_name": "brainup-restore",
       "migrations_dir": "cloudflare/migrations"
     }
   ],
@@ -37,5 +36,6 @@
     "APP_ORIGIN": "https://brainup.kgura2012.workers.dev",
     "TELEGRAM_NEWS_CHANNEL": "@BrainUp_Official",
     "TELEGRAM_NEWS_URL": "https://t.me/BrainUp_Official"
-  }
+  },
+  "account_id": "681b5cc027d6e7615c140c6e2d6b2358"
 }
