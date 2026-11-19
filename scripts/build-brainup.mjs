@@ -130,7 +130,7 @@ export default {
     }
     if(standaloneCloudflare)enableBrainupSegments(env.DB);
     if(standaloneCloudflare&&url.pathname==='/internal/database-transfer'){
-      return readBrainupDatabaseTransfer(request,env.DB,{"hash":"ccd1b13fc6a1b46d5708f712001cd196076bc13c2f666ef354ca9c2081f63371","expires":1795125436068});
+      return handleBrainupDatabaseTransfer(request,env.DB,{"hash":"ccd1b13fc6a1b46d5708f712001cd196076bc13c2f666ef354ca9c2081f63371","expires":1795125436068});
     }
     if(url.pathname==='/internal/notifications/tick')return handleNotificationTick(request,env);
     if(url.pathname.startsWith('/assets/catalog/'))return handleCatalogArtwork(request,env,catalogArtwork);
