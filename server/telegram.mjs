@@ -53,12 +53,13 @@ function telegramMiniAppCheckString(params) {
 }
 
 export function buildBotKeyboard(origin,env={}) {
+  const appOrigin = env.APP_ORIGIN || origin;
   const supportUrl = 'https://t.me/BrainUpOfficialSupport_bot';
   return {inline_keyboard:[
-    [{text:'🚀 Играть',web_app:{url:new URL('/',origin).href}}],
+    [{text:'🚀 Играть',web_app:{url:new URL('/',appOrigin).href}}],
     [{text:'📰 Новости',url:env.TELEGRAM_NEWS_URL||'https://t.me/BrainUp_Official'},{text:'💬 Поддержка',url:supportUrl}],
     [{text:'🎁 Ввести бонус-код',callback_data:'bonus_code'}],
-    [{text:'🤝 Партнёрство',web_app:{url:new URL('/?screen=partnership',origin).href}}]
+    [{text:'🤝 Партнёрство',web_app:{url:new URL('/?screen=partnership',appOrigin).href}}]
   ]};
 }
 export async function telegramWebhook(request, env, defaultStartPhoto) {

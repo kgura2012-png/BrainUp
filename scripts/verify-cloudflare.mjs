@@ -6,7 +6,12 @@ import {localDatabase} from '../server/sqlite-adapter.mjs';
 import {fresh, account} from '../server/model.mjs';
 import seed from '../server/seed.json' with {type:'json'};
 
-export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity) {
+export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity, buildBotKeyboard) {
+  const appOrigin = 'https://brainup.brainupofficial.workers.dev/';
+  const keyboard = buildBotKeyboard('https://brainup-mobile-nov26.regalpeach22.chatgpt.site/', {APP_ORIGIN:appOrigin});
+  assert.deepEqual(keyboard.inline_keyboard.flat().flatMap(button => button.web_app ? [button.web_app.url] : []),
+    [appOrigin, appOrigin + '?screen=partnership']);
+
   // Published Ed25519 example from Telegram-Mini-Apps/tma.js, evaluated at its original timestamp.
   const sample = new URLSearchParams({
     auth_date:'1733584787',
