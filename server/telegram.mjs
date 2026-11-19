@@ -2,19 +2,42 @@ import {readBrainupState} from './state-storage.mjs';
 import {supportTelegramUpdate} from './support.mjs';
 import {handle} from './service.mjs';
 import {browserLoginTelegramUpdate} from './browser-telegram.mjs';
-// Telegram Mini App identity is trusted only after server-side HMAC verification.
-export async function telegramIdentity(raw, token, now = Date.now()) {
-  if (!token || !raw || raw.length > 16384) throw Error('Telegram не настроен или данные входа отсутствуют');
+// Telegram publishes this key for third-party Mini App verification in production.
+const telegramMiniAppPublicKey = 'e7bf03a2fa4602af4580703d88dda5bb59f32ed8b02a56c187fe7d34caed242d';
+
+export async function telegramIdentity(raw, token, now = Date.now(), botId) {
+  if (!raw || raw.length > 16384) throw Error('Некорректные данные входа Telegram');
   const p = new URLSearchParams(raw), seen = new Set();
-  for (const [key] of p) { if (seen.has(key)) throw Error('Некорректные данные Telegram'); seen.add(key); }
-  const hash = p.get('hash'); p.delete('hash');
-  if (!/^[a-f0-9]{64}$/.test(hash || '')) throw Error('Некорректная подпись Telegram');
-  const enc = new TextEncoder();
-  const key = await crypto.subtle.importKey('raw', enc.encode('WebAppData'), {name:'HMAC', hash:'SHA-256'}, false, ['sign']);
-  const secret = await crypto.subtle.sign('HMAC', key, enc.encode(token));
-  const signing = await crypto.subtle.importKey('raw', secret, {name:'HMAC',hash:'SHA-256'}, false, ['verify']);
-  const check = [...p.entries()].sort(([a],[b])=>a<b?-1:a>b?1:0).map(([k,v])=>k+'='+v).join('\n');
-  const valid = await crypto.subtle.verify('HMAC', signing, Uint8Array.from(hash.match(/../g), x=>parseInt(x,16)), enc.encode(check));
+  for (const [key, value] of p) {
+    if (seen.has(key) || !/^[A-Za-z0-9_][A-Za-z0-9_-]*$/.test(key) || /[\r\n]/.test(value)) {
+      throw Error('Некорректные данные Telegram');
+    }
+    seen.add(key);
+  }
+  const hash = p.get('hash');
+  p.delete('hash');
+  const encoder = new TextEncoder();
+  let valid;
+  if (token) {
+    if (!/^[a-f0-9]{64}$/.test(hash || '')) throw Error('Некорректная подпись Telegram');
+    const key = await crypto.subtle.importKey('raw', encoder.encode('WebAppData'), {name:'HMAC', hash:'SHA-256'}, false, ['sign']);
+    const secret = await crypto.subtle.sign('HMAC', key, encoder.encode(token));
+    const signing = await crypto.subtle.importKey('raw', secret, {name:'HMAC', hash:'SHA-256'}, false, ['verify']);
+    valid = await crypto.subtle.verify('HMAC', signing, Uint8Array.from(hash.match(/../g), hex => parseInt(hex, 16)),
+      encoder.encode(telegramMiniAppCheckString(p)));
+  } else {
+    if (!/^[1-9][0-9]{0,15}$/.test(String(botId ?? ''))) throw Error('Вход через Telegram пока не настроен');
+    const signature = p.get('signature');
+    if (!signature) throw Error('Закройте Mini App и откройте его через бота в обновлённом Telegram');
+    if (!/^[A-Za-z0-9_-]{86}(?:==)?$/.test(signature)) throw Error('Некорректная подпись Telegram');
+    p.delete('signature');
+    const publicKey = Uint8Array.from(telegramMiniAppPublicKey.match(/../g), hex => parseInt(hex, 16));
+    const key = await crypto.subtle.importKey('raw', publicKey, 'Ed25519', false, ['verify']);
+    const bytes = Uint8Array.from(atob(signature.slice(0, 86).replace(/-/g, '+').replace(/_/g, '/') + '=='),
+      char => char.charCodeAt(0));
+    valid = await crypto.subtle.verify('Ed25519', key, bytes,
+      encoder.encode(botId + ':WebAppData\n' + telegramMiniAppCheckString(p)));
+  }
   if (!valid) throw Error('Неверная подпись Telegram');
   const date = Number(p.get('auth_date')), age = now/1000-date;
   if (!Number.isFinite(date) || age < -30 || age > 3600) throw Error('Откройте Mini App заново: вход устарел');
@@ -24,6 +47,11 @@ export async function telegramIdentity(raw, token, now = Date.now()) {
   const telegramProfile={id:user.id,username:String(user.username||''),first_name:String(user.first_name||''),last_name:String(user.last_name||''),photo_url:photo};
   return {telegramProfile,id:'tg:'+user.id, telegramUsername:String(user.username||'').toLowerCase(), name:[user.first_name,user.last_name].filter(Boolean).join(' ').slice(0,100)||user.username||'Player'};
 }
+function telegramMiniAppCheckString(params) {
+  return [...params.entries()].sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)
+    .map(([key, value]) => key + '=' + value).join('\n');
+}
+
 export function buildBotKeyboard(origin,env={}) {
   const supportUrl = 'https://t.me/BrainUpOfficialSupport_bot';
   return {inline_keyboard:[

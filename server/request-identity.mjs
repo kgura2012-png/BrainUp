@@ -5,7 +5,7 @@ import {browserTelegramIdentity} from './browser-telegram.mjs';
 // option for a Worker deployed directly to a public Cloudflare origin.
 export async function requestIdentity(request, env, trustSitesIdentity = false) {
   const init = request.headers.get('X-Telegram-Init-Data');
-  if (init) return telegramIdentity(init, env.TELEGRAM_BOT_TOKEN);
+  if (init) return telegramIdentity(init, env.TELEGRAM_BOT_TOKEN, Date.now(), env.TELEGRAM_BOT_ID);
   const browser = await browserTelegramIdentity(request, env);
   if (browser) return browser;
   if (!trustSitesIdentity) return null;

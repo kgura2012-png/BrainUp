@@ -23,13 +23,19 @@ await withCloudflareConfig(async (config, file) => {
     try {
       const response = await fetch(publicSite, {cache:'no-store', signal:AbortSignal.timeout(4_000)});
       if (response.ok && (await response.text()).includes('brainup-mobile')) {
-        console.log('Страница BrainUp доступна: ' + publicSite.href);
-        return;
+        const invalidSignature = new URLSearchParams({hash:'0'.repeat(64),signature:'A'.repeat(86)});
+        const auth = await fetch(new URL('/api/action', publicSite), {
+          headers:{'X-Telegram-Init-Data':invalidSignature.toString()}, signal:AbortSignal.timeout(4_000)
+        });
+        if (auth.status === 401 && (await auth.json()).error === 'Неверная подпись Telegram') {
+          console.log('Страница BrainUp доступна, сервер проверяет подпись Telegram: ' + publicSite.href);
+          return;
+        }
       }
     } catch {
       // Allow the deployment to propagate before trying again.
     }
     if (attempt < 5) await new Promise(resolve => setTimeout(resolve, 4_000));
   }
-  throw Error('Worker опубликован, но публичная страница BrainUp пока не открылась.');
+  throw Error('Worker опубликован, но проверка публичной страницы или серверного входа через Telegram не прошла.');
 });

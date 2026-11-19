@@ -191,7 +191,7 @@ if(anonymous.status!==401||(await anonymous.json()).telegramLogin!==true)throw E
 if((await mod.default.fetch(new Request('https://brainup.test/auth/telegram/start'),{})).status!==405)throw Error('Telegram website auth route missing');
 if(cloudflare){
   const {verifyCloudflareBuild}=await import('../scripts/verify-cloudflare.mjs');
-  await verifyCloudflareBuild(mod.default,out);
+  await verifyCloudflareBuild(mod.default,out,mod.telegramIdentity);
   console.log('Built and verified standalone Cloudflare Worker and static assets.');
   process.exit(0);
 }

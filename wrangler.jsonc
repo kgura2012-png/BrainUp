@@ -35,7 +35,8 @@
   "vars": {
     "APP_ORIGIN": "https://brainup.brainupofficial.workers.dev",
     "TELEGRAM_NEWS_CHANNEL": "@BrainUp_Official",
-    "TELEGRAM_NEWS_URL": "https://t.me/BrainUp_Official"
+    "TELEGRAM_NEWS_URL": "https://t.me/BrainUp_Official",
+    "TELEGRAM_BOT_ID": "9239395916"
   },
   "account_id": "681b5cc027d6e7615c140c6e2d6b2358"
 }

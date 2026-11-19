@@ -6,7 +6,26 @@ import {localDatabase} from '../server/sqlite-adapter.mjs';
 import {fresh, account} from '../server/model.mjs';
 import seed from '../server/seed.json' with {type:'json'};
 
-export async function verifyCloudflareBuild(worker, out) {
+export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity) {
+  // Published Ed25519 example from Telegram-Mini-Apps/tma.js, evaluated at its original timestamp.
+  const sample = new URLSearchParams({
+    auth_date:'1733584787',
+    chat_instance:'8134722200314281151',
+    chat_type:'private',
+    user:String.raw`{"id":279058397,"first_name":"Vladislav + - ? \/","last_name":"Kibenko","username":"vdkfrost","language_code":"ru","is_premium":true,"allows_write_to_pm":true,"photo_url":"https:\/\/t.me\/i\/userpic\/320\/4FPEE4tmP3ATHa57u6MqTDih13LTOiMoKoLDRG4PnSA.svg"}`,
+    signature:'zL-ucjNyREiHDE8aihFwpfR9aggP2xiAo3NSpfe-p7IbCisNlDKlo7Kb6G4D0Ao2mBrSgEk4maLSdv6MLIlADQ'
+  });
+  const testBotId = '7342037359', signedAt = Number(sample.get('auth_date')) * 1000;
+  assert.equal((await verifyTelegramIdentity(sample.toString(), undefined, signedAt, testBotId)).id,'tg:279058397');
+  await assert.rejects(verifyTelegramIdentity(sample.toString(), undefined, signedAt, '9239395916'), /Неверная подпись/);
+  const forgedUser = new URLSearchParams(sample);
+  forgedUser.set('user',JSON.stringify({id:1116312381,first_name:'Owner'}));
+  await assert.rejects(verifyTelegramIdentity(forgedUser.toString(), undefined, signedAt, testBotId), /Неверная подпись/);
+  const expired = await worker.fetch(new Request('https://brainup.test/api/action',{
+    headers:{'X-Telegram-Init-Data':sample.toString()}
+  }), {TELEGRAM_BOT_ID:testBotId});
+  assert.equal(expired.status,401);
+  assert.match((await expired.json()).error,/вход устарел/);
   const ASSETS = {async fetch(request) {
     const pathname = new URL(request.url).pathname;
     const files = {'/index.html':['index.html','text/html'], '/assets/telegram-welcome.jpg':['assets/telegram-welcome.jpg','image/jpeg']};
