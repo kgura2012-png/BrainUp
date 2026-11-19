@@ -1,12 +1,13 @@
 import {readFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 
 const config = JSON.parse(await readFile(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
 const database = config.d1_databases.find(db => db.binding === 'DB');
 if (!database?.database_id || /^0{8}-0{4}-0{4}-0{4}-0{12}$/.test(database.database_id)) {
   throw Error('Сначала создайте D1 и укажите настоящий database_id в wrangler.jsonc.');
 }
-const cli = new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url).pathname;
+const cli = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
 function run(args, capture = false) {
   const result = spawnSync(process.execPath, [cli, ...args], {
     stdio: capture ? ['ignore', 'pipe', 'pipe'] : 'inherit', encoding: 'utf8'
