@@ -1,0 +1,6 @@
+function finishBrainupLoading(){var splash=document.getElementById('brainup-loading');if(!splash)return;clearTimeout(window.brainupLoadingTimer);splash.remove()}
+var renderBeforeLoadingScreen=render;render=function(){var result=renderBeforeLoadingScreen.apply(this,arguments);if(NET.ready)finishBrainupLoading();return result};
+var loginBeforeLoadingScreen=showTelegramLogin;showTelegramLogin=function(){var result=loginBeforeLoadingScreen.apply(this,arguments);finishBrainupLoading();return result};
+if(NET.ready||document.querySelector('.telegram-login'))finishBrainupLoading();
+function openMiniappSupport(event){event.preventDefault();event.stopImmediatePropagation();var url='https://t.me/BrainUpOfficialSupport_bot',tg=window.Telegram&&window.Telegram.WebApp;if(tg&&typeof tg.openTelegramLink==='function'){try{tg.openTelegramLink(url);return}catch(error){}}window.open(url,'_blank','noopener,noreferrer')}
+var miniappSupportLink=document.getElementById('bu-sup');if(miniappSupportLink){miniappSupportLink.href='https://t.me/BrainUpOfficialSupport_bot';miniappSupportLink.title='@BrainUpOfficialSupport_bot';miniappSupportLink.setAttribute('aria-label','Поддержка BrainUp в Telegram');miniappSupportLink.addEventListener('click',openMiniappSupport)}

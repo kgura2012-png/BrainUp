@@ -1,0 +1,362 @@
+{
+  "claws": {
+    "file": "claws.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/38d0eec3f6a41aae6314cd03eb036866.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "CrabClaw"
+  },
+  "taco": {
+    "file": "taco.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/f5583a8014af52af3e3c52c1f6f64804.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Taco"
+  },
+  "sleepy": {
+    "file": "sleepy.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/47c7fc89cec31046cb3ffcfca68986ac.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Sleepy"
+  },
+  "10b": {
+    "file": "10b.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/496598f6c02ddec3268d9bbe021d1c35.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "10b"
+  },
+  "lightning": {
+    "file": "lightning.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/26840245d008f490c6337b608138fa01.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Dragon"
+  },
+  "strawberry": {
+    "file": "strawberry.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/670a7c31085c358f576e73db07ed3e11.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Strawberry"
+  },
+  "halo": {
+    "file": "halo.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/bda9a53f7caceb1b1c45cece70b4207d.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "HaloTraitIcon"
+  },
+  "john-pork": {
+    "file": "john-pork.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/d1249e19907a98441281e8b3c4b1fd43.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "John Pork Trait HD"
+  },
+  "meowl": {
+    "file": "meowl.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/ecd50e9f97e586399db6279be688fbde.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "ICON Meowl"
+  },
+  "rainbow-balloon": {
+    "file": "rainbow-balloon.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/4a97ab4730d90e837a1c228d0edafe8a.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "RainbowBalloon"
+  },
+  "skibidi": {
+    "file": "skibidi.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/3d769406292e51f00c982f9171299f97.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "SkibidiIcon"
+  },
+  "lucky": {
+    "file": "lucky.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/2a3cc09c238761fa76fbf4889b16c28f.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Lucky"
+  },
+  "rose": {
+    "file": "rose.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/068fdbc9d483c8668bc34e768b410896.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Rose"
+  },
+  "granny": {
+    "file": "granny.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/bc9a8e8e17d98e5de4b2606c48de9aeb.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Granny"
+  },
+  "jack-o-lantern-pet": {
+    "file": "jack-o-lantern-pet.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/193641650a45abc058b5d7600ecd8c0d.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Jack-o-Lantern Pet Trait"
+  },
+  "rip-gravestone": {
+    "file": "rip-gravestone.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/50c413dfcd8c6a37fbf8ede63404f8ad.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "GraveYard-RIP-Tombstone"
+  },
+  "26": {
+    "file": "26.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/a23113e506301c1a7ac5d4328e0f5e07.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "2026Trait"
+  },
+  "chocolate": {
+    "file": "chocolate.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/105bb939c846d2d01221b53a9ee3d767.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "ChocolateTrait"
+  },
+  "extinct": {
+    "file": "extinct.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/a8698843a9496f213dd69ad5ea2a1092.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Extincty"
+  },
+  "witch-hat": {
+    "file": "witch-hat.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/8cf8ee7741d29d032ceeb21dfe2bc88e.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Witchhat"
+  },
+  "reindeer-pet": {
+    "file": "reindeer-pet.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/f73dd38573c4376c7df3b9cb0d62e0b0.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Reindeer"
+  },
+  "santa-hat": {
+    "file": "santa-hat.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/984e11c1a63aa831ee7aa25999afe9d2.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "SantaHatIcon"
+  },
+  "blue-balloon": {
+    "file": "blue-balloon.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/66ba4c90c7265d6e70f11f994417d60b.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "BlueBalloon"
+  },
+  "blue-egg": {
+    "file": "blue-egg.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/ce02fbf8e8b26c7eb727eb0a819ca7eb.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "BlueEgg"
+  },
+  "bunny-ears": {
+    "file": "bunny-ears.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/459588d82915009d94da89d42ee8c68d.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "BunnyEars"
+  },
+  "green-balloon": {
+    "file": "green-balloon.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/770dc790a2d332ff81c600c407cd7826.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "GreenBalloon"
+  },
+  "green-egg": {
+    "file": "green-egg.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/f22ee9aeb4a84f1eeeb24c06915bb598.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "GreenEgg"
+  },
+  "orange-balloon": {
+    "file": "orange-balloon.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/8c899f0bb639ed2f464f9789a4fbd76e.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "OrangeBalloon"
+  },
+  "orange-egg": {
+    "file": "orange-egg.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/573c37ca9fb5717a34904ff5bb660b1a.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "OrangeEgg"
+  },
+  "pink-balloon": {
+    "file": "pink-balloon.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/b0463558fff2cbe70d7abfef51f0cb28.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "PinkBalloon"
+  },
+  "pink-egg": {
+    "file": "pink-egg.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/4f1f5da6b7be16d45c77ecc37e535565.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "PinkEgg"
+  },
+  "red-balloon": {
+    "file": "red-balloon.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/4c0958fda9ac32fa7a18637bc41b37c6.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "RedBalloon"
+  },
+  "fireworks": {
+    "file": "fireworks.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/eccce9dd6b90d6a301a51c01893d09b8.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Fireworks"
+  },
+  "zombie": {
+    "file": "zombie.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/969242c989e14d0b2f18949325dc14d0.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "EvilTungTungSahur"
+  },
+  "aura-shades": {
+    "file": "aura-shades.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/1fbcc0fa420cd3efaea9ad87246bbd54.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Aura Shades"
+  },
+  "ball": {
+    "file": "ball.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/1067500eb29746bf0fc57653b5bc2021.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Ball"
+  },
+  "burger": {
+    "file": "burger.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/3d308ac674775585ae08fc0e4cddefe5.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Burger Trait"
+  },
+  "sun": {
+    "file": "sun.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/d80169fd57157992b9e4de8c46bf6c5c.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Summer Hour"
+  },
+  "1-year": {
+    "file": "1-year.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/dfd5b17acc427b7ff7beec5a9ab16782.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "1YR Icon Fixed"
+  },
+  "snowy": {
+    "file": "snowy.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/bc475be0f2d68c982e21705943ab9578.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Snowy"
+  },
+  "tie": {
+    "file": "tie.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/1d2c69d8acca507098a779326729b1e5.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Tie"
+  },
+  "wet": {
+    "file": "wet.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/3407df3cd140f4dca1b8ed569cabdf0c.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Wet"
+  },
+  "brazil": {
+    "file": "brazil.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/9b6783d701b55570d9412751c8d14fc4.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Brazil"
+  },
+  "bubblegum": {
+    "file": "bubblegum.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/1ff95166199e7db06b88fe54c5dc7c6d.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Bubblegum"
+  },
+  "galactic": {
+    "file": "galactic.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/bafb4c1832b164e7981d52e70bc815df.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Comet2"
+  },
+  "glitched": {
+    "file": "glitched.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/13fcf335d49ec995f5ce7cedff827395.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Glitch"
+  },
+  "indonesian": {
+    "file": "indonesian.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/fb0d4f608c2fdaa29badd19b651f1f5c.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Indonesian"
+  },
+  "nyan": {
+    "file": "nyan.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/3a992d35dd0794cf094344614315a85b.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Nyan"
+  },
+  "sombrero": {
+    "file": "sombrero.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/a1840c23a24d8312783b5197a0e0db1a.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Mexico Hat"
+  },
+  "matteo-hat": {
+    "file": "matteo-hat.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/b88dcd907d0a0795ea4a82fbf102015b.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "MatteoHat"
+  },
+  "paint": {
+    "file": "paint.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/17f95d8a62c11043a6a73059000b7ea6.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Chicleteirabicicleteira"
+  },
+  "spider": {
+    "file": "spider.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/ddb359b3834648481a1a3288c67670d5.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Spider"
+  },
+  "job-application": {
+    "file": "job-application.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/ca8541b5f01499002b1e5c462fce81df.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "JobTrait"
+  },
+  "shark-fin": {
+    "file": "shark-fin.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/395ebc68f0abfa1a40a7b100b38cf2d1.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Shark Fin"
+  },
+  "concert": {
+    "file": "concert.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/f1b07b6719fbee09c065947cae8197a6.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Disco"
+  },
+  "bombardiro": {
+    "file": "bombardiro.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/0e5279403119be68780948dbecb92cfe.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Bombardiro"
+  },
+  "fire": {
+    "file": "fire.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/e6559fd5577364fa8cc301015cff2352.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Fire"
+  },
+  "mi-gatito": {
+    "file": "mi-gatito.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/16dd78bf75cc3be038334ff91d6bbd50.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "3"
+  },
+  "starfall": {
+    "file": "starfall.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/2cca21ccb519eff146a1b8d40a24391d.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Cometstruck"
+  },
+  "ufo": {
+    "file": "ufo.webp",
+    "source": "https://wikiassets.net/roblox-steal-a-brainrot-428cec/images/58010e504f36e07453b68df23fe0792d.webp",
+    "sourcePage": "https://stealabrainrot.wiki/wiki/traits/index.html",
+    "sourceLabel": "Alienevent"
+  }
+}

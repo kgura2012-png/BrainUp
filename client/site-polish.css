@@ -1,0 +1,509 @@
+html body.bu-winter.bu-winter.bu-winter,
+html body.bu-winter.bu-winter.bu-winter :is(.bu-app,#bu-head,#bu-live,.cw,#bu-soon,.bu-mbox,.bu-am,#bu-drawer,#brainup-age-gate) *,
+html body.bu-winter.bu-winter :is(button,input,textarea,select){font-family:"Montserrat","Nunito",Arial,sans-serif!important;font-synthesis:none!important;letter-spacing:0!important}
+html body.bu-winter.bu-winter{font-weight:700!important}
+html body.bu-winter.bu-winter :is(button,b,strong,h1,h2,h3,h4,.n){font-weight:700!important}
+
+/* One intact chest, a white flash, then the settled-prize reel. */
+html body.bu-winter .cw #cw-box.winter-case-window :is(.case-focus-ring,.cw-rays,.cw-glow,.cw-pad){display:none!important}
+html body.bu-winter .cw #cw-box.winter-case-window :is(.cw-reels,.cw-reel,.cw-strip,.cw-ri,.cw-ri img){filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html body.bu-winter .cw #cw-box.winter-case-window .winter-case-scene:not(.spinning):not(.case-opening) .cw-reels{visibility:visible!important;opacity:.7!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-ri{opacity:1!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-stage[data-opening-phase="flash"] .case-chest-anchor{animation:case-chest-reveal var(--case-opening-ms,360ms) ease-in both!important}
+.case-chest-flash{position:absolute!important;z-index:4;opacity:0;inset:0!important;width:100%!important;height:100%!important;transform:none!important;background:#fff!important;mask-image:var(--case-flash-image);-webkit-mask-image:var(--case-flash-image);mask-position:center;-webkit-mask-position:center;mask-size:contain;-webkit-mask-size:contain;mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat}
+.cw-stage[data-opening-phase="flash"] .case-chest-flash{animation:case-chest-flash var(--case-opening-ms,360ms) ease-out both}
+@keyframes case-chest-reveal{0%,45%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.08)}}
+
+html body.bu-winter .cw #cw-box.winter-case-window #cw-ctl.case-reference-controls{position:static!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:24px!important;width:min(320px,100%)!important;max-width:100%!important;margin:16px auto 28px!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;grid-column:1/-1!important;align-self:center!important}
+html body.bu-winter .cw #cw-box.winter-case-window #cw-ctl :is(.case-quantity-segment,.case-speed-segment){display:flex!important;gap:0!important;width:100%!important;padding:4px!important;border:1px solid #333!important;border-radius:999px!important;background:#0c0c0c!important;box-sizing:border-box!important}
+html body.bu-winter .cw #cw-box.winter-case-window #cw-ctl :is(.case-quantity-segment,.case-speed-segment)>button{display:flex!important;flex:1!important;align-items:center!important;justify-content:center!important;gap:6px!important;min-width:0!important;min-height:30px!important;margin:0!important;padding:5px 8px!important;border:0!important;border-radius:999px!important;background:transparent!important;color:#aaa!important;font-size:13px!important;line-height:1.3!important;text-transform:none!important;box-shadow:none!important}
+html body.bu-winter .cw #cw-box.winter-case-window #cw-ctl :is(.case-quantity-segment,.case-speed-segment)>button.on{background:#303030!important;color:#fff!important}
+#cw-ctl .case-speed-segment svg{width:15px;height:15px;flex:none}
+html body.bu-winter .cw #cw-box.winter-case-window #cw-ctl.case-reference-controls .cw-open{display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;width:100%!important;min-width:0!important;min-height:54px!important;padding:12px 16px!important;margin:10px 0 0!important;border:1px solid #454545!important;border-radius:999px!important;background:#171717!important;color:white!important;box-shadow:none!important;font-size:15px!important}
+html body.bu-winter .cw #cw-box.winter-case-window #cw-ctl.case-reference-controls .cw-open :is(span,b){display:flex!important;align-items:center!important;gap:5px!important;font-size:inherit!important;line-height:1.3!important}
+html body.bu-winter .cw #cw-box.winter-case-window #cw-ctl.case-reference-controls .cw-open.lack{background:#111!important;color:#777!important;opacity:.9!important;cursor:not-allowed!important}
+
+/* Keep mutation identity separate from character names and prices. */
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card{position:relative!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:6px!important;height:auto!important;min-height:184px!important;max-height:none!important;padding:10px 7px 8px!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card>img{order:1!important;flex-shrink:0!important;width:100%!important;height:92px!important;object-fit:contain!important;margin:4px 0 0!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card>.n{order:2!important;display:block!important;min-height:32px!important;margin:0!important;text-align:center!important;font-size:12px!important;line-height:1.25!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card>.p{position:static!important;inset:auto!important;order:3!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;margin:0!important;margin-top:auto!important;padding:0!important;font-size:12px!important;line-height:1.4!important;color:#e1e4dd!important}
+.brainrot-mutation-badge{position:absolute!important;z-index:4;top:5px!important;right:5px!important;display:grid!important;place-items:center!important;width:25px!important;height:25px!important;border-radius:7px!important;background:#15151bcf!important;pointer-events:none!important}
+html body.bu-winter .brainrot-mutation-badge>img{display:block!important;width:21px!important;height:21px!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;margin:0!important;object-fit:contain!important;filter:none!important}
+.polished-reel-card,.polished-case-card{position:relative!important}
+.polished-topup-card{position:relative!important}.polished-topup-card>.bx-p{order:3!important;margin-top:auto!important}.polished-topup-card>b{order:2!important}.polished-topup-card>img{order:1!important}
+html body.bu-winter .mutation-open{top:5px!important;bottom:auto!important;left:5px!important;right:auto!important;width:23px!important;height:23px!important;font-size:18px!important}
+html body.bu-winter .polished-topup-card .tp-plus{top:5px!important;bottom:auto!important;left:5px!important;right:auto!important}
+@media(max-width:560px){html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card>img{height:78px!important}.brainrot-mutation-badge{width:23px!important;height:23px!important}html body.bu-winter .brainrot-mutation-badge>img{width:19px!important;height:19px!important}}
+
+/* One mutation control per upgrade target; no frame or duplicate plus. */
+html body.bu-winter .bu-app :is(.bu-tools,.mutation-filter-bar,.mutation-open){display:none!important}
+html body.bu-winter .bu-app .mutation-target-card .mutation-selector{position:absolute!important;z-index:5!important;top:5px!important;right:5px!important;left:auto!important;bottom:auto!important;display:grid!important;place-items:center!important;width:27px!important;height:27px!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;appearance:none;cursor:pointer}
+html body.bu-winter .bu-app .mutation-target-card .mutation-selector>img{position:static!important;inset:auto!important;display:block!important;flex:none!important;width:24px!important;height:24px!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;transform:none!important;object-fit:contain!important;opacity:1!important;filter:none!important}
+html body.bu-winter .mutation-selector:focus-visible{outline:2px solid #ddd!important;outline-offset:2px}
+html body.bu-winter .mutation-selector:disabled{cursor:wait;opacity:.5}
+html body.bu-winter .brainrot-mutation-badge,
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window :is(.cw-pz,.cw-ri)>.brainrot-mutation-badge{position:absolute!important;inset:5px 5px auto auto!important;display:grid!important;place-items:center!important;width:25px!important;height:25px!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;flex:none!important;z-index:4;pointer-events:none}
+html body.bu-winter .brainrot-mutation-badge>img,
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window :is(.cw-pz,.cw-ri)>.brainrot-mutation-badge>img{position:static!important;inset:auto!important;display:block!important;flex:none!important;width:22px!important;height:22px!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;transform:none!important;object-fit:contain!important;opacity:1!important;filter:none!important}
+
+/* Names and prices occupy separate rows, including narrow cards. */
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card>.n{position:static!important;inset:auto!important;transform:none!important;flex:none!important;white-space:normal!important;max-height:none!important;height:auto!important;overflow-wrap:anywhere!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-pz{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;aspect-ratio:auto!important;height:auto!important;min-height:200px!important;max-height:none!important;padding:12px 9px!important;overflow:hidden!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-pz>img{position:static!important;inset:auto!important;order:1;flex:none!important;width:100%!important;height:110px!important;min-height:0!important;max-height:110px!important;margin:0!important;transform:none!important;object-fit:contain!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-pz>b{position:static!important;inset:auto!important;order:2;display:block!important;flex:none!important;width:100%!important;height:auto!important;min-height:32px!important;max-height:none!important;margin:0!important;white-space:normal!important;overflow-wrap:anywhere!important;line-height:1.3!important;font-size:13px!important;text-align:center!important;-webkit-line-clamp:unset!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-pz>span:not(.brainrot-mutation-badge){position:static!important;inset:auto!important;order:3;display:flex!important;align-items:center!important;justify-content:center!important;flex:none!important;gap:4px!important;width:100%!important;height:auto!important;min-height:20px!important;margin:0!important;margin-top:auto!important;line-height:1.4!important;font-size:13px!important;white-space:nowrap!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-strip:not(.cw-idle)>.cw-ri{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr) 34px 22px!important;align-items:center!important;justify-items:center!important;gap:6px!important;padding:10px 7px!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-strip:not(.cw-idle)>.cw-ri>img{position:static!important;inset:auto!important;grid-row:1;display:block!important;flex:none!important;width:100%!important;height:100%!important;min-height:0!important;max-height:100%!important;max-width:100%!important;margin:0!important;transform:none!important;object-fit:contain!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-strip:not(.cw-idle)>.cw-ri>span:not(.brainrot-mutation-badge){position:static!important;inset:auto!important;grid-row:2;display:block!important;width:100%!important;height:auto!important;max-height:34px!important;margin:0!important;white-space:normal!important;overflow-wrap:anywhere!important;text-align:center!important;font-size:11px!important;line-height:1.3!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-strip:not(.cw-idle)>.cw-ri>b{position:static!important;inset:auto!important;grid-row:3;display:block!important;width:100%!important;height:auto!important;margin:0!important;padding:0!important;font-size:13px!important;line-height:1.4!important;text-align:center!important;white-space:nowrap!important}
+
+/* Restore the continuous idle prize strip behind the chest. */
+html body.bu-winter .cw #cw-box.winter-case-window .cw-reels{height:auto!important;max-height:none!important}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-strip.cw-idle{animation:case-idle-prizes 24s linear infinite!important;transform:none!important;translate:0 0;will-change:translate}
+@keyframes case-idle-prizes{to{translate:-50% 0}}
+html body.bu-winter .cw,html body.bu-winter .cw :is(.cw-bg,.cw-box,.cw-panel){background:#080808!important;background-image:none!important}
+html body.bu-winter .cw #cw-box.winter-case-window :is(.cw-back,.cw-title){color:#eee!important;text-shadow:none!important}
+html body.bu-winter .cw #cw-box.winter-case-window :is(.case-drop-sell,.case-result-controls button){background:#181818!important;background-image:none!important;color:#eee!important;border:1px solid #444!important;box-shadow:none!important}
+@media(prefers-reduced-motion:reduce){html body.bu-winter .cw #cw-box.winter-case-window .cw-strip.cw-idle{animation:none!important}}
+@media(max-width:560px){html body.bu-winter .cw #cw-box.winter-case-window .cw-pz{min-height:185px!important}html body.bu-winter .cw #cw-box.winter-case-window .cw-pz>img{height:96px!important;max-height:96px!important}}
+html body.bu-winter .cw #cw-box.winter-case-window .cw-mark{background:#bdbdbd!important;box-shadow:none!important}
+
+/* A dedicated footer keeps the price last even when legacy card styles change. */
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card{height:210px!important;min-height:210px!important;justify-content:flex-start!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card>img{order:1!important;flex:1 1 92px!important;min-height:0!important;max-height:112px!important;position:static!important;inset:auto!important;transform:none!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card>.brainrot-card-details{position:static!important;inset:auto!important;order:3!important;display:flex!important;flex-direction:column!important;gap:5px!important;flex:none!important;width:100%!important;margin:auto 0 0!important;padding:0!important;transform:none!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .brainrot-card-details>.brainrot-name{position:static!important;display:block!important;width:100%!important;min-height:30px!important;margin:0!important;padding:0!important;white-space:normal!important;overflow-wrap:anywhere!important;font-size:12px!important;font-weight:700!important;line-height:1.25!important;text-align:center!important;color:#eee!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .brainrot-card-details>.brainrot-price{position:static!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;width:100%!important;min-height:20px!important;margin:0!important;padding:0!important;white-space:nowrap!important;font-size:12px!important;font-weight:700!important;line-height:1.4!important;color:#ddd!important}
+@media(max-width:560px){html body.bu-winter :is(.bu-app,.bu-mbox) .bu-card.polished-brainrot-card{height:196px!important;min-height:196px!important}}
+
+/* Compact live and idle strips use the same geometry, so the winner stays centered. */
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-reels{--rh:184px!important;--iw:148px!important;width:100%!important;max-width:800px!important;gap:10px!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-reel,
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-strip,
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-ri{height:var(--rh)!important;min-height:0!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-ri{width:var(--iw)!important;flex:0 0 var(--iw)!important;aspect-ratio:auto!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-idle .cw-ri img{height:118px!important;max-height:118px!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-ri>span:not(.brainrot-mutation-badge){max-width:100%!important}
+@media(max-width:680px){html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-reels{--rh:166px!important;--iw:130px!important;gap:8px!important}html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-idle .cw-ri img{height:104px!important;max-height:104px!important}}
+
+/* Existing modes, with outlined icons and a green active tab like the reference. */
+html body.bu-winter.bu-winter #wide-navigation{gap:6px!important;justify-content:center!important}
+html body.bu-winter.bu-winter #wide-navigation button{position:relative!important;flex:none!important;gap:9px!important;min-height:44px!important;padding:10px 13px!important;border:1px solid transparent!important;border-radius:12px!important;background:transparent!important;color:#7eaa71!important;font-size:12px!important;font-weight:700!important;text-transform:uppercase!important;letter-spacing:.02em!important;box-shadow:none!important}
+html body.bu-winter.bu-winter #wide-navigation button i{display:flex!important;align-items:center!important;color:inherit!important}
+html body.bu-winter.bu-winter #wide-navigation button svg{width:19px!important;height:19px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round;stroke-linejoin:round}
+html body.bu-winter.bu-winter #wide-navigation button.on{color:#b6ff83!important;background:#192014!important;border-color:#537a39!important}
+html body.bu-winter.bu-winter #wide-navigation button.on:after{content:"";position:absolute;left:15px;right:15px;bottom:-10px;height:2px;border-radius:2px;background:#8cff6a}
+html body.bu-winter.bu-winter #wide-navigation button:hover{color:#ceffb5!important;background:#1c2b16!important}
+html body.bu-winter.bu-winter #wide-navigation button:focus-visible{outline:2px solid #b6ff83!important;outline-offset:3px!important}
+html body.bu-winter.bu-winter #bu-drawer button[data-sec].on{color:#b6ff83!important;background:#192014!important;border-color:#537a39!important}
+@media(min-width:1200px) and (max-width:1390px){html body.bu-winter.bu-winter #wide-navigation button{padding-inline:8px!important;font-size:11px!important;gap:6px!important}}
+
+/* Center the compact strip on the same grid column as the chest. */
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .winter-case-scene{grid-template-columns:minmax(0,1fr)!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .winter-case-scene .cw-reels{width:min(800px,100%)!important;min-width:0!important;max-width:100%!important;justify-self:center!important;margin:0 auto!important}
+html body.bu-winter.bu-winter #wide-navigation button.on{box-shadow:inset 0 0 16px #8cff6a08,0 0 12px #8cff6a14!important}
+
+/* Case sections accept free text as well as existing-name suggestions. */
+html body.bu-winter .bu-am :is(.case-section-manager input,.case-section-name-input),
+html body.bu-winter .bu-mbox .case-section-name-input{box-sizing:border-box!important;width:100%!important;max-width:none!important;min-height:42px!important;padding:9px 12px!important;border:1px solid #526b43!important;border-radius:8px!important;background:#10150d!important;color:#efffe5!important;caret-color:#b6ff83!important;font-size:16px!important;line-height:1.4!important;pointer-events:auto!important;user-select:text!important;-webkit-user-select:text!important}
+html body.bu-winter :is(.bu-am,.bu-mbox) .case-section-name-input:focus,
+html body.bu-winter .bu-am .case-section-manager input:focus{outline:2px solid #8cff6a!important;outline-offset:1px!important}
+.case-section-assignment{display:flex;align-items:flex-end;flex-wrap:wrap;gap:8px}.case-section-assignment .case-section-field{flex:1 1 220px;min-width:0}.case-section-field small,.case-edit-fields small{display:block;max-width:320px;color:#a3b398;line-height:1.4;font-size:11px;font-weight:700}
+
+/* Revealed mines must outrank the shared neutral cell theme, including unhit mines. */
+html body.bu-winter #bu-mgrid .bu-mcell.m{border:2px solid #dc4768!important;background:#34151f!important;opacity:1!important;box-shadow:inset 0 0 18px #ed36531a!important}
+html body.bu-winter #bu-mgrid .bu-mcell.m.hit{border-color:#ff7892!important;background:#552032!important;box-shadow:inset 0 0 18px #fa385e22,0 0 16px #fa385e66!important}
+
+/* Bet pickers reuse the same image/name/price stack as the upgrade cards. */
+html body.bu-winter .bu-mbox .bu-cdrop:is([data-db="items"],[data-rb="items"]){display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(116px,100%),1fr))!important;align-items:stretch!important;gap:10px!important}
+html body.bu-winter .bu-mbox .bu-card.polished-brainrot-card{min-width:0!important;width:100%!important;box-sizing:border-box!important;overflow:hidden!important}
+
+/* All sections remain selectable, independent of the current name. */
+.case-section-picker{display:flex;flex-direction:column;gap:8px;min-width:0;width:100%}
+html body.bu-winter :is(.bu-am,.bu-mbox) .case-section-picker>select{display:block!important;box-sizing:border-box;width:100%!important;min-height:42px!important;max-width:none!important;padding:8px 12px!important;border:1px solid #526b43!important;border-radius:8px!important;background:#10150d!important;color:#efffe5!important;font-size:15px!important}
+html body.bu-winter .case-section-picker>input[hidden]{display:none!important}
+html body.bu-winter .inventory-sell-all{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:10px 15px;border:1px solid #537a39!important;border-radius:9px;background:#192014!important;color:#b6ff83!important;font-weight:900;cursor:pointer}
+html body.bu-winter .inventory-sell-all:disabled{opacity:.45;cursor:default}
+html body.bu-winter .cw .case-result-controls .case-sell-all{border-color:#537a39!important;background:#192014!important;color:#b6ff83!important}
+html body.bu-winter .cw .case-result-controls .case-sell-all:disabled{opacity:.55;cursor:default}
+html body.bu-winter .cw .case-odds-note{margin:4px auto 12px!important;padding:0 12px!important;max-width:100%;text-align:center!important;color:#b6ff83!important;font-size:14px!important;font-weight:700!important}
+
+/* Compact top-up form matching the supplied reference. */
+html body.bu-winter.bu-winter .bu-mbox:has(.topup-reference){width:min(588px,calc(100vw - 24px))!important;max-width:588px!important;max-height:calc(100dvh - 24px)!important;padding:20px 10px 12px!important;border:1px solid #293c32!important;border-radius:16px!important;background:#111a16!important}
+html body.bu-winter.bu-winter .bu-mbox:has(.topup-reference) .bu-mx{top:13px!important;right:19px!important;width:34px!important;height:34px!important;border-radius:10px!important;background:#19251f!important;color:#91a096!important}
+html body.bu-winter.bu-winter .topup-reference .bu-mt{font-size:20px!important;font-weight:700!important;text-transform:none!important;margin:0 0 18px!important}
+html body.bu-winter.bu-winter .topup-reference-tabs{display:grid!important;grid-template-columns:1fr 1fr!important;gap:5px!important;padding:4px!important;border:1px solid #283e32!important;border-radius:13px!important;background:#111a16!important;margin-bottom:14px!important}
+html body.bu-winter.bu-winter .topup-reference-tabs button{min-height:38px!important;border:1px solid transparent!important;border-radius:9px!important;background:transparent!important;color:#8c9e94!important;font-size:14px!important;font-weight:700!important}
+html body.bu-winter.bu-winter .topup-reference-tabs button.on{background:#1a2720!important;border-color:#354d40!important;color:#e7eee9!important}
+html body.bu-winter.bu-winter .topup-reference-tabs small{display:block!important;font-size:10px!important;font-weight:500!important}
+html body.bu-winter.bu-winter .topup-field-label{display:block!important;margin:12px 0 7px!important;color:#8c9e94!important;font-size:13px!important}
+html body.bu-winter.bu-winter .topup-reference :is(#tp-st,#topup-code,#tp-q,#tp-pr){box-sizing:border-box!important;width:100%!important;height:48px!important;padding:10px 14px!important;background:#0a120e!important;border:1px solid #293e33!important;border-radius:13px!important;color:#e7eee9!important;font:inherit!important;font-size:16px!important;outline:none!important}
+html body.bu-winter.bu-winter .topup-reference #tp-st{border-color:#7bb95a!important}
+html body.bu-winter.bu-winter .topup-reference :is(#tp-st,#topup-code,#tp-q,#tp-pr):focus{border-color:#7bb95a!important;box-shadow:0 0 0 2px #7bb95a18!important}
+html body.bu-winter.bu-winter .topup-receive{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:52px!important;box-sizing:border-box!important;margin:18px 0 16px!important;padding:12px 15px!important;background:#173729!important;border:1px solid #287448!important;border-radius:13px!important;color:#d9e9e0!important;font-size:14px!important}
+html body.bu-winter.bu-winter .topup-receive>div{display:flex!important;align-items:center!important;gap:8px!important}.topup-receive strong{font-size:22px!important;line-height:1.1!important}.topup-receive .bu-coin{width:18px!important;height:18px!important}
+html body.bu-winter.bu-winter .topup-reference .stars-create-invoice{width:100%!important;min-height:52px!important;padding:12px!important;border:1px solid #f18b22!important;border-radius:13px!important;background:linear-gradient(#ffa62c,#df6a11)!important;color:#171208!important;font-size:16px!important;font-weight:700!important;box-shadow:0 5px 16px #e67e171c!important}
+html body.bu-winter.bu-winter .topup-reference .stars-create-invoice:hover{filter:brightness(1.08)!important}
+html body.bu-winter.bu-winter .topup-reference .stars-create-invoice:disabled{opacity:.5!important;cursor:wait!important}
+html body.bu-winter.bu-winter .topup-rate{text-align:center!important;font-size:12px!important;color:#8c9e94!important;margin:10px 0 0!important}
+html body.bu-winter.bu-winter :is(.partner-balance-amount,.partner-accounting-card strong,.partner-accounting-card td).negative{color:#ff657c!important}
+.partner-negative-note{font-size:12px!important;color:#ff8f9f!important}.partner-accounting-card{margin:12px 0!important;padding:14px!important;border:1px solid #294337!important;border-radius:12px!important;background:#101b15!important}.partner-accounting-card header{display:flex!important;justify-content:space-between!important;gap:12px!important}.partner-accounting-card strong{color:#71eeaf!important}.partner-accounting-card p{color:#9eafa5!important;font-size:12px!important;line-height:1.6!important}.partner-accounting-card summary{cursor:pointer!important;font-size:13px!important}.partner-ledger-scroll{overflow-x:auto!important;margin-top:12px!important}.partner-ledger-scroll table{width:100%!important;border-collapse:collapse!important;font-size:12px!important;text-align:left!important;white-space:nowrap!important}.partner-ledger-scroll :is(th,td){padding:10px 8px!important;border-bottom:1px solid #26382d!important}.partner-ledger-scroll th{color:#9eafa5!important}.partner-ledger-scroll small{display:block!important;color:#80968a!important;margin-top:4px!important}
+@media(max-width:400px){html body.bu-winter.bu-winter .bu-mbox:has(.topup-reference){width:calc(100vw - 16px)!important;padding-top:18px!important}.partner-accounting-card header{flex-wrap:wrap!important}}
+
+/* Keep the section menu beside the brand and use crisp outline icons. */
+@media(min-width:1200px){html body.bu-winter.bu-winter #bu-head{justify-content:flex-start!important;gap:16px!important}html body.bu-winter.bu-winter #wide-navigation{flex:0 1 auto!important;justify-content:flex-start!important;margin-left:18px!important;margin-right:0!important}html body.bu-winter.bu-winter #bu-head .bu-hr{margin-left:auto!important}}
+html body.bu-winter.bu-winter #wide-navigation button svg{width:21px!important;height:21px!important;stroke-width:1.8!important;shape-rendering:geometricPrecision}
+html body.bu-winter.bu-winter .topup-reference-tabs{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+html body.bu-winter.bu-winter .topup-reference :is(#tp-uah,#tp-nk){box-sizing:border-box!important;width:100%!important;height:48px!important;padding:10px 14px!important;background:#0a120e!important;border:1px solid #293e33!important;border-radius:13px!important;color:#e7eee9!important;font:inherit!important;font-size:14px!important;outline:none!important}
+html body.bu-winter.bu-winter .topup-reference #tp-uah{border-color:#7bb95a!important;font-size:16px!important}
+.topup-identity-fields.with-nick{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important}.topup-identity-fields input{display:block!important;margin-top:7px!important}.topup-catalog-note{font-size:12px!important;color:#9ca89f!important;line-height:1.6!important}
+html body.bu-winter.bu-winter .tp-grid .topup-mutation-selector{position:absolute!important;top:6px!important;right:6px!important;z-index:6!important;display:grid!important;place-items:center!important;width:29px!important;height:29px!important;padding:3px!important;border:1px solid #4b6342!important;border-radius:8px!important;background:#122017!important;cursor:pointer!important}
+html body.bu-winter.bu-winter .tp-grid .topup-mutation-selector img{width:23px!important;height:23px!important;object-fit:contain!important;margin:0!important;filter:none!important}
+html body.bu-winter.bu-winter .tp-grid .topup-mutation-selector:hover{border-color:#8cff6a!important;background:#25402c!important}
+html body.bu-winter.bu-winter .tp-grid .polished-topup-card{cursor:pointer!important;padding-top:30px!important}
+.uah-request-summary{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px;background:#173729;border:1px solid #287448;border-radius:12px}.uah-request-summary b{font-size:22px}.uah-request-summary span{display:flex;gap:6px;align-items:center}.uah-card-number{padding:16px;border:1px solid #3b5b45;border-radius:12px;background:#0a120e;color:#bcf6cb;font-size:clamp(16px,4vw,23px);text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}.uah-request p{font-size:13px;line-height:1.6;color:#a6b9ad}.uah-request-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.uah-request-actions button,.uah-request>button{padding:11px 14px;border:1px solid #365442;border-radius:10px;background:#17261c;color:#e3f4e7;cursor:pointer}.uah-request-actions .primary{background:#1e854d;color:white}
+#uah-topup-badge{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:5200;max-width:calc(100vw - 30px);padding:12px 18px;border:1px solid #54c47b;border-radius:12px;background:#14271b;color:#d1ffdb;font:inherit;font-size:12px;box-shadow:0 6px 24px #0009;cursor:pointer}#uah-topup-badge[hidden]{display:none}
+.admin-topup-method{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:8px 0;padding:10px;border:1px solid #2c4434;border-radius:10px}.admin-topup-method small{display:block;margin-top:4px;color:#93a99a;font-size:11px}.uah-admin-row{padding:13px;margin:10px 0;border:1px solid #294632;border-radius:12px}.uah-admin-row small{color:#91a497}.uah-admin-row .tq-a{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.uah-admin-row button{white-space:normal}#admin-save-status{grid-column:1/-1;padding:10px 14px;border-radius:10px;background:#13291d;color:#a9eec1;font-size:12px}#admin-save-status.failed{background:#3a1b20;color:#ffb7bd}
+@media(max-width:440px){.topup-identity-fields.with-nick{grid-template-columns:1fr!important;gap:0!important}html body.bu-winter.bu-winter .topup-reference-tabs button{font-size:11px!important;padding:6px 4px!important}}
+
+/* One font, neutral controls, and aligned admin forms. */
+html body.bu-winter.bu-winter #bu-sup{background:#171a16!important;color:#b6ff83!important;border:1px solid #526b43!important;box-shadow:none!important}
+html body.bu-winter.bu-winter :is(.bu-ac button,.bu-atabs button,.bu-pcard button,.case-section-manager button,.case-section-assignment button){background:#242820!important;color:#e4efde!important;border:1px solid #44523a!important;border-radius:10px!important;box-shadow:none!important}
+html body.bu-winter.bu-winter :is(.bu-ac button,.bu-atabs button,.bu-pcard button):hover{background:#303e26!important;color:#c9ffab!important}
+html body.bu-winter.bu-winter :is(.bu-ac button,.bu-atabs button,.bu-pcard button).dg{background:#3a2022!important;border-color:#734044!important;color:#ffc9cf!important}
+html body.bu-winter.bu-winter .bu-am .bu-acont{gap:18px!important;align-content:start!important;align-items:start!important;min-width:0!important}
+html body.bu-winter.bu-winter .bu-am :is(.bu-ac,.bu-pcard){min-width:0!important;box-sizing:border-box!important;overflow-wrap:anywhere!important}
+html body.bu-winter.bu-winter .bu-am .bu-acont>.r,html body.bu-winter.bu-winter .bu-am .bu-acont>.li{grid-column:1/-1!important}
+html body.bu-winter.bu-winter .bu-am .r{display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:10px!important}
+html body.bu-winter.bu-winter .bu-am :is(input,select,textarea){box-sizing:border-box!important;min-width:0!important;min-height:44px!important;background:#11150f!important;color:#ebf2e6!important;border:1px solid #3e4936!important;border-radius:10px!important;padding:10px 12px!important;font-size:13px!important;line-height:1.4!important}
+html body.bu-winter.bu-winter .bu-am .r>input,html body.bu-winter.bu-winter .bu-am .r>select{flex:1 1 180px!important;width:auto!important}
+html body.bu-winter.bu-winter .bu-am .r>button{flex:0 0 auto!important;min-height:44px!important;padding:10px 16px!important;white-space:normal!important}
+.admin-payment-tabs,.admin-brain-tabs{display:flex;grid-column:1/-1;gap:8px;flex-wrap:wrap;margin-bottom:4px}.admin-payment-tabs button,.admin-brain-tabs button{min-height:44px;padding:10px 18px;border:1px solid #3d4a33;border-radius:11px;background:#171b14;color:#afbaa7;font:inherit;font-size:13px;cursor:pointer}.admin-payment-tabs button.on,.admin-brain-tabs button.on{background:#293d1f!important;border-color:#74a653!important;color:#c6ff9c!important}.admin-payment-tabs button{flex:1;min-width:100px}.archived-partners small{display:block;margin-top:6px;color:#a0ad96}.admin-feed-tools{grid-column:1/-1}.admin-feed-tools p{color:#9ba693;font-size:12px;line-height:1.6}
+html body.bu-winter.bu-winter #bu-head #header-settings,html body.bu-winter.bu-winter #bu-head #miniapp-size-toggle{position:static!important;inset:auto!important;display:grid!important;place-items:center!important;flex:0 0 36px!important;width:36px!important;height:36px!important;min-height:36px!important;padding:8px!important;border:1px solid #3d4934!important;border-radius:10px!important;background:#171b14!important;color:#b6db9f!important;box-shadow:none!important;transform:none!important}
+html body.bu-winter.bu-winter #header-settings svg{width:20px!important;height:20px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.7!important;stroke-linecap:round;stroke-linejoin:round}
+html body.bu-winter.bu-winter #bu-head .bu-bal{background:#161a13!important;border-color:#3e4935!important;color:#e6f0df!important}
+html body.bu-winter.bu-winter #bu-head .bu-bal button{background:#334829!important;color:#caffb0!important;border-color:#587443!important}
+html body.bu-winter.bu-winter .bu-sw.on{background:#436c2c!important;border-color:#7caa5c!important}
+html body.bu-winter.bu-winter .cw-back{display:none!important}
+html body.bu-winter.bu-winter .cw.on{left:0!important;right:0!important;top:var(--bu-head,80px)!important;width:100%!important;height:calc(100dvh - var(--bu-head,80px))!important;max-width:100%!important;padding:0!important;overflow-x:hidden!important;box-sizing:border-box!important;display:block!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window{position:relative!important;inset:auto!important;transform:none!important;box-sizing:border-box!important;width:calc(100% - var(--bu-rail,216px))!important;max-width:none!important;min-width:0!important;margin:0 0 0 var(--bu-rail,216px)!important;padding:24px clamp(16px,3vw,36px)!important}
+html body.bu-winter.bu-winter .cw #cw-box .cw-panel{width:100%!important;max-width:100%!important;min-width:0!important;margin:0 auto!important;box-sizing:border-box!important}
+html body.bu-winter.bu-winter .cw #cw-box .winter-case-scene{width:100%!important;max-width:800px!important;min-width:0!important;margin:0 auto!important}
+html body.bu-winter.bu-winter .fuse-layout{grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:stretch!important;gap:20px!important}
+html body.bu-winter.bu-winter .fuse-scene{aspect-ratio:auto!important;height:100%!important;min-height:520px!important;max-width:none!important}
+html body.bu-winter.bu-winter .fuse-console{height:100%!important;min-height:520px!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;gap:18px!important;margin:0!important}
+html body.bu-winter.bu-winter .fuse-console>:is(.fuse-slots,.fuse-auto,.fuse-totals){margin:0!important}.fuse-console .fuse-start{margin-top:auto!important}
+html body.bu-winter.bu-winter .bu-mmain{display:grid!important;grid-template-columns:minmax(0,560px) minmax(300px,400px)!important;gap:24px!important;align-items:stretch!important;justify-content:center!important;width:100%!important;max-width:1000px!important;margin:0 auto!important}
+html body.bu-winter.bu-winter .bu-mgrid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:10px!important;width:100%!important;min-width:0!important;align-self:start!important}
+html body.bu-winter.bu-winter .bu-mcell{aspect-ratio:1!important;min-height:0!important;height:auto!important;max-width:100%!important;box-sizing:border-box!important}
+html body.bu-winter.bu-winter .bu-mpanel{display:flex!important;flex-direction:column!important;height:100%!important;min-width:0!important;padding:20px!important;box-sizing:border-box!important;gap:14px!important}
+html body.bu-winter.bu-winter .bu-mpanel .bu-minv{min-height:110px!important;max-height:220px!important;overflow:auto!important}.bu-mpanel .bu-mempty{display:grid;place-items:center;min-height:100px}.bu-mpanel .bu-mbet{margin-top:auto!important}.bu-mpanel .bu-mplay{flex:none!important;min-height:54px!important;margin:0!important}
+.slot-booking label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#aebba5}.slot-booking input,.slot-booking select{width:100%;min-width:0;box-sizing:border-box;background:#10150e;color:#e4eddf;border:1px solid #405035;border-radius:10px;height:46px;padding:10px 12px;font:inherit;font-size:13px}.slot-booking-items{max-height:36vh;overflow:auto;padding-right:4px}.slot-booking-row{padding:14px;border:1px solid #34432c;border-radius:12px;margin-bottom:10px;background:#141a10}.slot-booking-source{display:flex;align-items:center;gap:12px;min-width:0;margin-bottom:12px}.slot-booking-source img{width:58px;height:58px;object-fit:contain}.slot-booking-source b{display:block;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.slot-booking-source small{display:block;margin-top:5px;color:#99ad8c;font-size:11px}.slot-booking-controls,.slot-booking-fields{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:12px}.slot-booking-fields{grid-template-columns:repeat(2,minmax(0,1fr));margin:16px 0}.slot-booking>p{font-size:12px;line-height:1.7;color:#a2ad9b}#slot-booking-summary{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;padding:12px 0;color:#bcdda5}.slot-booking>[data-slot-book-create]{width:100%}.profile-booking{display:grid;gap:8px}.profile-booking>p{margin:0}.profile-booking-actions{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:1100px){html body.bu-winter.bu-winter .fuse-layout{grid-template-columns:minmax(0,1fr)!important}html body.bu-winter.bu-winter .fuse-scene{aspect-ratio:1.15!important;height:auto!important;min-height:0!important}html body.bu-winter.bu-winter .fuse-console{height:auto!important;min-height:0!important}}
+@media(max-width:992px){html body.bu-winter.bu-winter .cw #cw-box.winter-case-window{width:100%!important;margin:0!important;padding:18px 14px!important}}
+@media(max-width:800px){html body.bu-winter.bu-winter .bu-mmain{grid-template-columns:minmax(0,1fr)!important;max-width:560px!important}html body.bu-winter.bu-winter .bu-mpanel{height:auto!important}.slot-booking-fields{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){html body.bu-winter.bu-winter #bu-head #header-settings,html body.bu-winter.bu-winter #bu-head #miniapp-size-toggle{flex-basis:30px!important;width:30px!important;height:32px!important;min-height:32px!important;padding:6px!important}html body.bu-winter.bu-winter #bu-head .brainup-brand{font-size:18px!important}.slot-booking-controls{grid-template-columns:minmax(0,1fr)}.admin-payment-tabs button{min-width:70px;padding:10px 8px;font-size:11px}.bu-am .bu-acont{grid-template-columns:minmax(0,1fr)!important}}
+
+html body.bu-winter.bu-winter #bu-head #miniapp-size-toggle[hidden]{display:none!important}
+html body.bu-winter.bu-winter .bu-btn:not(.stars-create-invoice){background:#232b1d!important;color:#d6f2c2!important;border:1px solid #4b603c!important;box-shadow:none!important}
+html body.bu-winter.bu-winter .cw.on{transform:none!important}
+
+html body.bu-winter.bu-winter .bu-mpanel{gap:12px!important;padding:18px!important}
+html body.bu-winter.bu-winter .bu-mpanel>:is(.bu-mrow,.bu-mqs,.bu-mstrip){margin:0!important}
+html body.bu-winter.bu-winter .bu-mpanel .bu-minv{min-height:64px!important;max-height:170px!important;flex:1 1 auto!important}
+html body.bu-winter.bu-winter .bu-mpanel .bu-mempty{min-height:64px!important;flex:1 1 auto!important}
+
+/* Player identities retain the entire first column; action fields wrap below. */
+html body.bu-winter.bu-winter .bu-am .admin-player-list{grid-column:1/-1!important;width:100%!important;min-width:0!important}
+html body.bu-winter.bu-winter .bu-am .net-player-row{display:grid!important;grid-template-columns:minmax(180px,1fr) minmax(280px,420px)!important;align-items:center!important;gap:16px!important;width:100%!important;min-width:0!important;padding:16px!important;box-sizing:border-box!important}
+html body.bu-winter.bu-winter .bu-am .net-player-identity{min-width:0!important;width:100%!important;display:flex!important;flex-direction:column!important;gap:7px!important;flex:none!important}
+html body.bu-winter.bu-winter .bu-am .net-player-identity :is(b,small,span){width:100%!important;max-width:100%!important;min-width:0!important;white-space:normal!important;overflow-wrap:anywhere!important;word-break:normal!important;line-height:1.5!important}
+html body.bu-winter.bu-winter .bu-am .net-player-actions{display:grid!important;grid-template-columns:minmax(100px,1fr) auto auto!important;gap:8px!important;min-width:0!important;width:100%!important;margin:0!important}
+html body.bu-winter.bu-winter .bu-am .net-player-actions input{width:100%!important;min-width:0!important;max-width:100%!important}
+html body.bu-winter.bu-winter .bu-am .net-player-actions button{white-space:nowrap!important;padding:10px 13px!important;min-width:0!important}
+html body.bu-winter.bu-winter #bu-head{padding-right:calc(14px + var(--miniapp-safe-right,0px))!important;z-index:9500!important}
+html body.bu-winter.bu-winter.tg-fullscreen #bu-head{padding-right:calc(14px + var(--miniapp-safe-right,0px))!important}
+html body.bu-winter.bu-winter .cw.on #bu-live{top:var(--bu-head,80px)!important;bottom:0!important;height:calc(100dvh - var(--bu-head,80px))!important;max-height:calc(100dvh - var(--bu-head,80px))!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window #cw-ctl:is(.off,.case-controls-settled,[hidden]),html body.bu-winter.bu-winter .cw #cw-box.winter-case-window:has(.case-result-reels) #cw-ctl{display:none!important}
+html body.bu-winter.bu-winter #bu-head .bu-bal [data-act="topup"]{background:#334829!important;border-color:#587443!important;color:#dcffc6!important}
+@media(max-width:900px){html body.bu-winter.bu-winter .bu-am .net-player-row{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:560px){html body.bu-winter.bu-winter .bu-am .net-player-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}html body.bu-winter.bu-winter .bu-am .net-player-actions input{grid-column:1/-1!important}html body.bu-winter.bu-winter #bu-head{padding-right:calc(10px + var(--miniapp-safe-right,0px))!important}}
+
+html body.bu-winter.bu-winter .cw.on{z-index:8000!important}
+html body.bu-winter.bu-winter #bu-head #bu-topup>span{background:#334829!important;color:#dcffc6!important;border:1px solid #587443!important;box-shadow:none!important}
+
+/* Cannelloni stays inside the brand's own footprint, aligned with the wordmark. */
+html body.bu-winter.bu-winter #bu-head .brainup-brand{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:9px!important;flex-shrink:0!important;line-height:1!important}
+html body.bu-winter.bu-winter #bu-head .brainup-brand .brand-cannelloni{display:block!important;position:static!important;flex:0 0 42px!important;width:42px!important;height:46px!important;max-width:42px!important;object-fit:contain!important;margin:0!important;transform:none!important;filter:none!important}
+html body.bu-winter.bu-winter #bu-head .brainup-brand .brand-word{margin:0!important;line-height:1!important;letter-spacing:-.04em!important}
+.topup-methods-with-buffs{display:flex;gap:8px;align-items:stretch;margin-bottom:14px}
+html body.bu-winter.bu-winter .topup-methods-with-buffs .topup-reference-tabs{flex:1;min-width:0;margin-bottom:0!important}
+html body.bu-winter.bu-winter .buff-catalog-trigger{border:1px solid #3c4b35!important;border-radius:11px!important;background:#141b10!important;color:#bcf292!important;padding:8px 12px!important;font:inherit!important;font-size:12px!important}
+html body.bu-winter.bu-winter .buff-layout{display:grid!important;grid-template-columns:minmax(0,1.6fr) minmax(290px,1fr)!important;gap:24px!important;align-items:start!important;width:calc(100vw - 32px)!important;max-width:1120px!important}
+.buff-layout>.bu-mx{position:absolute!important;right:12px!important;top:12px!important;z-index:2}
+.buff-layout>.tp-wrap{min-width:0}
+.buff-catalog-panel{border-left:1px solid #34432b;padding-left:22px;min-width:0;color:#e5ecdf}
+.buff-catalog-panel>header{display:flex;align-items:center;justify-content:space-between;padding-right:36px;gap:12px;margin-bottom:16px}
+.buff-catalog-panel h3{margin:0;font-size:20px}
+.buff-catalog-panel>header button{border:1px solid #36462d;border-radius:8px;background:#171d13;color:#c5e5b2;width:30px;height:30px;cursor:pointer}
+.buff-catalog-panel p{font-size:12px;line-height:1.7;color:#b4c0ac}
+.buff-help{display:block;color:#98aa8b;font-size:11px;line-height:1.6;margin:8px 0}
+.buff-catalog-scroll{overflow:auto;max-height:min(67vh,720px);padding-right:4px;scrollbar-color:#607b48 #151a11;scrollbar-width:thin}
+.buff-group{border-bottom:1px solid #2c3924;margin:0 0 8px}
+.buff-group>summary{display:flex;align-items:center;gap:7px;cursor:pointer;list-style:none;padding:12px 0;font-size:12px;color:#e0ebd7}
+.buff-group>summary::-webkit-details-marker{display:none}.buff-group>summary:after{content:'⌄';color:#a3d180}.buff-group[open]>summary:after{content:'⌃'}
+.buff-group summary small{font-size:10px;color:#9aaa8e}.buff-group summary>span{margin-left:auto;font-size:10px;color:#9aaa8e}
+.buff-table{border-collapse:separate;border-spacing:0 5px;width:100%;table-layout:fixed;font-size:11px}
+.buff-table tr{background:#151b11}.buff-table th,.buff-table td{border-block:1px solid #33412b;padding:9px 8px;vertical-align:middle}
+.buff-table th{font-weight:700;text-align:left;width:74%;border-left:1px solid #33412b;border-radius:7px 0 0 7px}.buff-table td{border-right:1px solid #33412b;border-radius:0 7px 7px 0;text-align:right;white-space:nowrap}
+.buff-name,.buff-table label{display:flex;align-items:center;gap:8px;line-height:1.4;overflow-wrap:anywhere}
+.buff-table label{cursor:pointer}.buff-table input[type=checkbox]{width:16px!important;height:16px!important;min-height:0!important;margin:0!important;accent-color:#9af34e;flex-shrink:0}
+.buff-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 23px;font-size:18px}
+.buff-positive{color:#a3f574!important}.buff-negative{color:#ff7e96!important}
+.buff-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.admin-buff-form{padding:12px;border:1px solid #34422d;border-radius:12px;background:#0c100a;margin:12px 0;min-width:0}
+.admin-buff-position{border-bottom:1px solid #2b3624;padding:8px 0;min-width:0}.admin-buff-position>summary{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:12px}.admin-buff-position>summary>img{width:42px;height:42px;object-fit:contain;flex-shrink:0}.admin-buff-position>summary>span{flex:1;min-width:0;overflow-wrap:anywhere}.admin-buff-position>summary small{display:block;color:#9ead94;margin-top:5px;font-size:10px}.admin-buff-position>summary>b{color:#bcf292;font-size:11px;text-align:right;max-width:150px;flex-shrink:0}.admin-buff-position>p{font-size:11px;color:#a6b09e}.admin-buff-position .buff-table{font-size:12px}.admin-buff-total{display:grid;gap:9px;padding:14px 0;font-size:12px}.admin-buff-total>span{display:flex;justify-content:space-between;gap:14px}.admin-buff-total strong{font-size:15px;color:#bbf295}.admin-buff-form>button{width:100%}
+html body.bu-winter.bu-winter .slot-exchange{color:#e8efdf;min-width:0}.slot-exchange .bu-mt{font-size:25px!important;margin:0 0 10px!important}.slot-exchange-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,1fr);gap:28px;align-items:start;margin-top:24px}.slot-exchange-main,.slot-exchange-side{min-width:0}.slot-source-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 14px}.slot-source-title h4{margin:0;font-size:14px}.slot-source-title>span{font-size:11px;color:#b1c5a0;white-space:nowrap}.slot-source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;max-height:45vh;overflow:auto;padding:2px}.slot-source-card{max-width:140px;background:#151c11;border:1px solid #749b50;border-radius:12px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;min-height:166px}.slot-source-card>img{width:90px;height:88px;object-fit:contain;max-width:100%}.slot-source-card>b{font-size:11px;line-height:1.4;overflow-wrap:anywhere}.slot-source-card>span{font-size:10px;color:#b2ca9d;margin-top:auto}.slot-exchange-side{background:#11160e;border:1px solid #2d3d24;border-radius:16px;padding:18px}.slot-exchange-side>h4{margin:0 0 15px;font-size:14px}.slot-exchange .slot-booking-items{max-height:42vh}.slot-exchange .slot-booking-row{padding:0 0 16px;background:transparent;border:0;border-radius:0;margin-bottom:12px;border-bottom:1px solid #2b3823}.slot-booking-row>header{display:flex;gap:8px;align-items:center;margin-bottom:12px;font-size:11px}.slot-booking-row>header>img{width:35px;height:35px;object-fit:contain}.slot-booking-row>header small{display:block;color:#9fb38f;font-size:10px;margin-top:4px}.slot-booking-row:only-child>header{display:none}.slot-replacement-options{display:grid;gap:8px}.slot-exchange .slot-replacement-option{display:flex;flex-direction:row;align-items:center;gap:9px;border:1px solid #3b4d30;border-radius:10px;background:#0e120c;padding:10px;cursor:pointer;position:relative}.slot-exchange .slot-replacement-option.selected{background:#1c2b14;border-color:#94d65d;box-shadow:inset 0 0 0 1px #94d65d}.slot-replacement-option>input{position:absolute;opacity:0;width:1px!important;height:1px!important;padding:0!important}.slot-replacement-option:focus-within{outline:2px solid #b6fb83;outline-offset:2px}.slot-replacement-option>img{width:44px;height:44px;object-fit:contain;flex-shrink:0}.slot-replacement-option>span{min-width:0;flex:1}.slot-replacement-option b{font-size:11px;line-height:1.5;display:block;color:#e4eedc;overflow-wrap:anywhere}.slot-replacement-option small{display:block;margin-top:4px;font-size:10px;color:#a9bf98}.slot-replacement-option>i{width:15px;height:15px;flex:0 0 15px;border:1px solid #6e845d;border-radius:50%}.slot-replacement-option.selected>i{border-color:#b0f472;background:#b0f472;box-shadow:inset 0 0 0 3px #1c2b14}.slot-exchange .slot-quantity-label{display:flex;flex-direction:row;justify-content:space-between;align-items:center;margin-top:12px;font-size:11px}.slot-exchange .slot-quantity-label input{width:70px;height:34px;text-align:center}.slot-exchange-side #slot-booking-summary{display:grid;font-size:11px;padding:0 0 16px}.slot-exchange-side>[data-slot-book-create]{width:100%;margin-top:16px;min-height:46px}.slot-window-note{display:block;font-size:10px;color:#97aa88;line-height:1.6;margin-top:8px}.slot-exchange .slot-exchange-note{font-size:11px;max-width:750px;color:#9aaa90;line-height:1.7}
+@media(max-width:800px){html body.bu-winter.bu-winter .buff-layout{grid-template-columns:minmax(0,1fr)!important}.buff-catalog-panel{position:absolute;inset:0;z-index:4;border:1px solid #415332;border-radius:14px;padding:22px;background:#10150d;overflow:auto}.buff-catalog-panel>header{padding-right:0}.buff-catalog-scroll{max-height:none}.slot-exchange-layout{grid-template-columns:minmax(0,1fr);gap:22px}.slot-source-grid{max-height:26vh}.slot-exchange .slot-booking-items{max-height:38vh}}
+@media(max-width:560px){html body.bu-winter.bu-winter #bu-head .brainup-brand{gap:5px!important}html body.bu-winter.bu-winter #bu-head .brainup-brand .brand-cannelloni{width:28px!important;max-width:28px!important;height:34px!important;flex-basis:28px!important}.topup-methods-with-buffs{gap:5px}html body.bu-winter.bu-winter .buff-catalog-trigger{font-size:10px!important;padding:6px!important}.slot-exchange .bu-mt{font-size:21px!important}.slot-source-title{align-items:flex-start}.slot-source-title>span{white-space:normal;text-align:right}.admin-buff-position>summary>b{max-width:105px;font-size:10px}.buff-table th{width:72%}}
+html body.bu-winter.bu-winter .buff-layout{position:relative!important;box-sizing:border-box!important}
+.user-buff-receipt{border:1px solid #36462b;border-radius:12px;padding:14px;margin-top:16px;background:#10160c}.user-buff-receipt h4{margin:0 0 12px;font-size:14px}.user-buff-receipt p{font-size:11px;margin:10px 0}.user-buff-receipt small{display:block;color:#a4bb91;margin-top:5px;line-height:1.5}
+
+/* Payment windows share the site's flat black and lime palette. */
+html body.bu-winter.bu-winter .topup-reference .topup-reference-tabs{box-sizing:border-box!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;min-height:48px!important;background:#111710!important;border-color:#35482b!important}
+html body.bu-winter.bu-winter .topup-reference .topup-reference-tabs button{height:38px!important;min-height:38px!important;line-height:1.25!important;padding:8px!important;color:#9bb08c!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center}
+html body.bu-winter.bu-winter .topup-reference .topup-reference-tabs button.on{background:#23391b!important;border-color:#67984a!important;color:#c8ff9f!important}
+html body.bu-winter.bu-winter .topup-reference .topup-methods-with-buffs{align-items:stretch!important;gap:8px!important}
+html body.bu-winter.bu-winter .topup-reference .buff-catalog-trigger{flex:0 0 68px!important;width:68px!important;min-height:48px!important;margin:0!important;padding:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;color:#c8ff9f!important;background:#172412!important;border-color:#527b38!important}
+html body.bu-winter.bu-winter .bu-mbox:has(.topup-reference){background:#101310!important;border:1px solid #33452b!important;border-radius:18px!important;box-shadow:0 18px 60px #0009!important}
+html body.bu-winter.bu-winter .topup-reference :is(input[type=text],input[type=number],input[type=search],textarea){background:#090e09!important;border-color:#374c2e!important;color:#ebf7e4!important;border-radius:12px!important;box-sizing:border-box!important;min-height:46px!important}
+html body.bu-winter.bu-winter .topup-reference :is(input,textarea):focus{outline:2px solid #94e85e!important;outline-offset:1px!important;border-color:#94e85e!important;box-shadow:none!important}
+html body.bu-winter.bu-winter .topup-reference .stars-create-invoice{background:#9aee61!important;background-image:none!important;border-color:#aafc76!important;color:#112009!important;box-shadow:none!important;min-height:48px!important;display:flex!important;align-items:center!important;justify-content:center!important;line-height:1.3!important}
+html body.bu-winter.bu-winter .topup-reference .stars-create-invoice:hover:not(:disabled){background:#b1ff7c!important}
+html body.bu-winter.bu-winter .topup-reference .stars-create-invoice:disabled{background:#263021!important;border-color:#3a4632!important;color:#78896b!important;opacity:1!important}
+html body.bu-winter.bu-winter .topup-receive{background:#182512!important;border-color:#4e7437!important}.topup-receive strong{color:#b9ff89!important}
+html body.bu-winter.bu-winter .uah-request-actions{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(125px,1fr))!important;align-items:stretch!important;gap:8px!important}
+html body.bu-winter.bu-winter .uah-request-actions button{min-height:44px!important;border:1px solid #4e6b3d!important;border-radius:11px!important;background:#203219!important;color:#c9f4ad!important;font:inherit!important;font-size:12px!important;padding:10px!important}
+.buff-icon img{display:block;width:24px;height:24px;object-fit:contain}.admin-buff-form>h4{margin:0 0 9px;font-size:13px;color:#c8ff9f}
+html body.bu-winter.bu-winter #bu-head .brainup-brand{gap:0!important;min-width:0!important;padding:0!important;width:168px!important;flex:0 0 168px!important;letter-spacing:0!important}
+html body.bu-winter.bu-winter #bu-head .brainup-brand img.brand-wordmark-image{display:block!important;width:168px!important;height:55px!important;max-width:100%!important;object-fit:contain!important;position:static!important;margin:0!important;transform:none!important;filter:none!important}
+html body.bu-winter.bu-winter :is(up-app-root,up-app-root>div,up-app-root>div>div,up-main,main,footer,.bu-app,#bu-soon,.bu-mwrap,.cw,.cw-bg,#cw-box,.cw-panel){background-color:#050505!important;background-image:none!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window,html body.bu-winter.bu-winter .cw #cw-box .cw-panel{background:#050505!important;background-image:none!important;box-shadow:none!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window:before,html body.bu-winter.bu-winter .cw #cw-box.winter-case-window:after{display:none!important}
+html body.bu-winter.bu-winter .cw #cw-box .cw-panel{width:100%!important;max-width:1360px!important;margin-inline:auto!important}
+html body.bu-winter.bu-winter .cw #cw-box .cw-title{text-align:center!important;width:100%!important;margin-inline:auto!important}
+html body.bu-winter.bu-winter .cw #cw-box .winter-case-scene,html body.bu-winter.bu-winter .cw #cw-box #cw-ctl{justify-self:center!important;margin-inline:auto!important}
+html body.bu-winter.bu-winter .winter-catalog .winter-hero{display:block!important;background-image:var(--winter-backdrop)!important;background-position:center!important;text-align:center!important}
+html body.bu-winter.bu-winter .winter-catalog .winter-hero:before{content:'';position:absolute;inset:0;background:#0009;z-index:0;pointer-events:none}
+html body.bu-winter.bu-winter .winter-hero-copy{position:relative!important;z-index:1!important;padding:28px 20px!important;max-width:900px!important;margin:auto!important;text-align:center!important}
+html body.bu-winter.bu-winter .winter-hero-art{display:none!important}.winter-hero .winter-promo-actions{justify-content:center!important;flex-wrap:wrap!important}.winter-hero .winter-promo-actions>*{box-sizing:border-box!important;min-height:48px!important;margin:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:10px!important}.winter-hero .winter-code{border-color:#769665!important;background:#10190e!important}.winter-hero .winter-promo-actions .bu-btn{background:#9aee61!important;border-color:#aafc76!important;color:#12200a!important;box-shadow:none!important}.winter-hero .winter-promo-clock span{display:inline-block!important}.winter-hero h1{white-space:normal!important}
+@media(max-width:560px){html body.bu-winter.bu-winter #bu-head .brainup-brand{width:105px!important;flex-basis:105px!important}html body.bu-winter.bu-winter #bu-head .brainup-brand img.brand-wordmark-image{width:105px!important;height:36px!important}html body.bu-winter.bu-winter .topup-reference .topup-reference-tabs button{font-size:10px!important;padding:7px 3px!important}html body.bu-winter.bu-winter .topup-reference .buff-catalog-trigger{flex-basis:52px!important;width:52px!important;font-size:10px!important}.winter-hero .winter-promo-actions{display:grid!important;grid-template-columns:1fr!important}.winter-hero .winter-code{font-size:14px!important}.winter-hero .winter-promo-clock span{margin:7px 0 0!important;display:block!important}}
+
+/* A wide payment form and one dismiss control for the buff reference. */
+html body .bu-modal.on>.bu-mbox.brainup-topup-dialog{width:min(780px,calc(100vw - 32px))!important;max-width:780px!important;box-sizing:border-box!important;flex-shrink:0!important;padding:28px!important}
+html body .bu-modal.on>.bu-mbox.buff-layout{width:min(1180px,calc(100vw - 32px))!important;max-width:1180px!important;grid-template-columns:minmax(0,1fr) 350px!important;gap:26px!important;flex-shrink:0!important;box-sizing:border-box!important;padding:28px!important}
+html body .bu-modal.on>.bu-mbox.buff-layout>.bu-mx{display:none!important}
+html body .bu-modal.on>.bu-mbox.buff-layout>.tp-wrap{width:100%!important;max-width:none!important;min-width:0!important}
+html body .bu-modal.on .topup-reference .topup-reference-tabs{grid-template-columns:repeat(3,minmax(0,1fr))!important;width:100%!important}
+html body .bu-modal.on .topup-reference .topup-reference-tabs button{white-space:nowrap!important;word-break:normal!important;overflow-wrap:normal!important;font-size:13px!important;padding-inline:10px!important;min-width:0!important}
+html body .bu-modal.on .topup-reference .tp-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;width:100%!important;gap:10px!important;max-height:48vh!important}
+html body .bu-modal.on .topup-reference .topup-identity-fields{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+html body .bu-modal.on .topup-reference :is([data-tp2="send"],.stars-create-invoice){background:#9aee61!important;background-image:none!important;color:#13220c!important;border:1px solid #abfa79!important;box-shadow:none!important;min-height:48px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:700!important}
+html body .bu-modal.on .buff-catalog-panel{position:static!important;inset:auto!important;width:100%!important;box-sizing:border-box!important;border-radius:0!important;border:0!important;border-left:1px solid #34432b!important;padding:0 0 0 22px!important;background:transparent!important}
+html body .bu-modal.on .buff-catalog-panel>header{padding-right:0!important;min-height:32px!important}.buff-catalog-panel>header button{flex-shrink:0}
+.admin-buff-heading{display:flex;align-items:center;justify-content:space-between;gap:14px}.admin-buff-heading>h4{margin:0!important;font-size:13px!important}.admin-buff-heading>button{min-height:38px!important;min-width:80px!important;background:#253e19!important;color:#c3fb9c!important;border:1px solid #608447!important;border-radius:9px!important;cursor:pointer}
+.admin-buff-editor[hidden]{display:none!important}.admin-buff-editor>[data-admin-buffs-save]{width:100%!important;margin-top:12px!important;min-height:44px!important;background:#9aee61!important;color:#14230b!important;border:1px solid #b1ff7b!important;border-radius:10px!important}.tq-a [data-simulation-accept]:disabled{opacity:.5!important;cursor:not-allowed!important}
+/* Promo copy and both actions share the same centered column and row height. */
+html body #bu-soon .winter-catalog .winter-hero{min-height:280px!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;place-items:center!important;padding:28px 24px!important;box-sizing:border-box!important;clip-path:none!important;border-radius:16px!important}
+html body #bu-soon .winter-catalog .winter-hero>.winter-hero-copy{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:14px!important;width:100%!important;max-width:900px!important;padding:0!important;margin:0 auto!important;box-sizing:border-box!important;text-align:center!important}
+html body #bu-soon .winter-hero-copy>:is(.winter-eyebrow,.winter-promo-clock,h1,p){width:100%!important;margin:0!important;text-align:center!important}
+html body #bu-soon .winter-hero-copy h1{display:block!important;line-height:1.15!important}.winter-hero-copy h1 em{display:inline!important}
+html body #bu-soon .winter-hero-copy .winter-promo-actions{display:grid!important;grid-template-columns:minmax(0,320px) 160px!important;align-items:stretch!important;justify-content:center!important;gap:12px!important;width:100%!important;max-width:492px!important;margin:4px auto 0!important}
+html body #bu-soon .winter-hero-copy .winter-promo-actions>button{height:50px!important;min-height:50px!important;max-height:50px!important;box-sizing:border-box!important;margin:0!important;padding:10px 14px!important;border-radius:10px!important;display:flex!important;align-items:center!important;justify-content:center!important;line-height:1.3!important;white-space:nowrap!important;transform:none!important}
+html body #bu-soon .winter-hero-copy .winter-promo-actions>.bu-btn{background:#9aee61!important;color:#14230c!important;border:1px solid #a9f778!important;box-shadow:none!important}
+@media(max-width:960px){html body .bu-modal.on>.bu-mbox.buff-layout{grid-template-columns:minmax(0,1fr)!important;width:min(780px,calc(100vw - 24px))!important;gap:0!important}html body .bu-modal.on>.bu-mbox.buff-layout>.tp-wrap{display:none!important}html body .bu-modal.on .buff-catalog-panel{border-left:0!important;padding:0!important}html body .bu-modal.on .buff-catalog-scroll{max-height:68dvh!important;overflow:auto!important}}
+@media(max-width:600px){html body .bu-modal.on>.bu-mbox.brainup-topup-dialog,html body .bu-modal.on>.bu-mbox.buff-layout{padding:22px 16px!important;width:calc(100vw - 20px)!important;max-width:calc(100vw - 20px)!important;border-radius:16px!important}html body .bu-modal.on .topup-reference .tp-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}html body .bu-modal.on .topup-reference .topup-reference-tabs button{font-size:11px!important;padding-inline:3px!important}html body .bu-modal.on .topup-reference .topup-identity-fields{grid-template-columns:minmax(0,1fr)!important;gap:0!important}html body #bu-soon .winter-catalog .winter-hero{padding:24px 16px!important}html body #bu-soon .winter-hero-copy .winter-promo-actions{grid-template-columns:minmax(0,1fr)!important;max-width:340px!important}.winter-promo-clock span{display:block!important;margin:7px 0 0!important}}
+@media(max-width:380px){html body .bu-modal.on .topup-reference .tp-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}html body .bu-modal.on .topup-reference .topup-reference-tabs button{font-size:10px!important}}
+
+/* Center the upper case scene in the viewport; retain the content grid beside the feed. */
+@media(min-width:993px){html body.bu-winter.bu-winter .cw #cw-box.winter-case-window>.cw-panel{position:relative!important;left:calc(var(--bu-rail,216px) / -2)!important}}
+@media(max-width:992px){html body.bu-winter.bu-winter .cw #cw-box.winter-case-window>.cw-panel{left:0!important}}
+html body #bu-soon .winter-catalog .winter-hero{place-items:center start!important}
+html body #bu-soon .winter-catalog .winter-hero>.winter-hero-copy{max-width:none!important;align-items:flex-start!important;margin-inline:0!important;text-align:left!important}
+html body #bu-soon .winter-hero-copy>:is(.winter-eyebrow,.winter-promo-clock,h1,p){text-align:left!important}
+html body #bu-soon .winter-hero-copy .winter-promo-actions{justify-content:start!important;margin-inline:0!important}
+html body :is(#bu-live,#cw-live-drops) .live-reference-card{position:relative!important;padding-right:27px!important}
+html body :is(#bu-live,#cw-live-drops) .live-mutation-icon{position:absolute!important;top:5px!important;right:5px!important;width:21px!important;height:21px!important;display:grid!important;place-items:center!important;z-index:5!important;pointer-events:none!important;background:none!important;border:0!important;padding:0!important;line-height:0!important}
+html body :is(#bu-live,#cw-live-drops) .live-mutation-icon>img{position:static!important;display:block!important;width:20px!important;height:20px!important;max-width:20px!important;min-width:0!important;margin:0!important;object-fit:contain!important;image-rendering:auto!important}
+html body .dice-surface [data-dc="fast"]{display:none!important}
+.admin-item-art{grid-column:1/-1}.admin-item-art>label{display:grid;gap:8px;margin:12px 0;font-size:12px}.admin-item-art select,.admin-item-art input{box-sizing:border-box;width:100%;min-height:44px}.admin-item-art>img{display:block;width:100%;height:220px;object-fit:contain;background:#0b0f09;border:1px solid #34442b;border-radius:12px;margin:14px 0}.admin-item-art>p{font-size:12px;color:#afc39f;line-height:1.6}
+html body img[src*="/assets/catalog/"]{image-rendering:auto!important;object-fit:contain!important;filter:none!important}
+
+/* Prize cards fill the case content width, including cases with few items. */
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-pzg{display:grid!important;width:100%!important;max-width:none!important;min-width:0!important;box-sizing:border-box!important;align-self:stretch!important;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr))!important;margin-inline:0!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-pzg>.cw-pz{width:100%!important;max-width:none!important;min-width:0!important;box-sizing:border-box!important}
+@media(max-width:600px){html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-pzg{grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr))!important}}
+
+/* Request and queue status dialogs share the site's black/lime palette. */
+html body.bu-winter.bu-winter .bu-modal.on>.bu-mbox:has(:is(.test-queue,.uah-request)){box-sizing:border-box!important;width:min(560px,calc(100vw - 28px))!important;max-width:560px!important;max-height:90dvh!important;overflow:auto!important;padding:28px!important;background:#0c100b!important;background-image:none!important;color:#edf5e8!important;border:1px solid #3b542e!important;border-radius:18px!important;box-shadow:0 20px 70px #000b!important}
+html body.bu-winter.bu-winter .bu-mbox:has(:is(.test-queue,.uah-request))>.bu-mx{top:16px!important;right:16px!important;width:32px!important;height:32px!important;border:1px solid #3b542e!important;border-radius:9px!important;background:#151e11!important;color:#b9d5a8!important;box-shadow:none!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request){width:100%!important;min-width:0!important;box-sizing:border-box!important;background:transparent!important;background-image:none!important;color:#edf5e8!important}
+html body.bu-winter.bu-winter .test-queue>header{padding:0 36px 18px 0!important;border-color:#2d3d25!important}
+html body.bu-winter.bu-winter :is(.test-queue>header h3,.uah-request>.bu-mt){font-size:22px!important;line-height:1.35!important;color:#edf5e8!important;overflow-wrap:anywhere!important}
+html body.bu-winter.bu-winter .uah-request>.bu-mt{padding-right:34px!important}
+html body.bu-winter.bu-winter .test-queue h4{color:#edf5e8!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request) :is(p,label,small,li){color:#a8ba9c!important}
+html body.bu-winter.bu-winter .test-queue :is(.test-queue-icon,.test-queue-estimate,.test-queue-field,.test-queue-instructions,.test-queue-warning,.test-queue-disclaimer,.test-queue-entry),html body.bu-winter.bu-winter .uah-request :is(.uah-request-summary,.uah-card-number){box-sizing:border-box!important;background:#131c0f!important;background-image:none!important;border:1px solid #3b542e!important;border-radius:12px!important;color:#d9efcb!important;box-shadow:none!important}
+html body.bu-winter.bu-winter .test-queue .test-queue-icon{color:#9aee61!important;border-radius:18px!important}
+html body.bu-winter.bu-winter .test-queue :is(.test-queue-estimate b,.test-queue-deadline b,.free-queue-player b,.test-queue-position),html body.bu-winter.bu-winter .uah-request-summary span{color:#a5f174!important}
+html body.bu-winter.bu-winter .test-queue .test-queue-ring{box-sizing:border-box!important;border-color:#9aee61!important;background:#10170d!important;color:#c5ff9f!important;box-shadow:0 0 22px #9aee611a,inset 0 0 16px #9aee610a!important;font-variant-numeric:tabular-nums}
+html body.bu-winter.bu-winter .test-queue :is(.test-queue-search,.test-queue-tag){background:#182412!important;border:1px solid #486737!important;border-radius:8px!important;color:#b6e797!important}
+html body.bu-winter.bu-winter .test-queue .test-queue-field{padding:14px!important;color:#e1f5d6!important}
+html body.bu-winter.bu-winter .test-queue>footer{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;border-color:#2d3d25!important;margin-top:22px!important;padding-top:18px!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request) button{box-sizing:border-box!important;min-width:0!important;min-height:46px!important;padding:12px 14px!important;border:1px solid #486737!important;border-radius:11px!important;background:#172212!important;background-image:none!important;color:#d2efc0!important;box-shadow:none!important;line-height:1.4!important;white-space:normal!important;cursor:pointer;transition:none!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request) button.primary{background:#9aee61!important;border-color:#aafc76!important;color:#122108!important}
+html body.bu-winter.bu-winter .test-queue button.danger{background:#10160d!important;border-color:#3b4b31!important;color:#aebfa2!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request) button:hover:not(:disabled){background:#24361b!important;border-color:#86bd61!important;color:#e3ffd1!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request) button.primary:hover:not(:disabled){background:#b1ff7c!important;color:#122108!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request) button:focus-visible{outline:2px solid #9aee61!important;outline-offset:3px!important}
+html body.bu-winter.bu-winter :is(.test-queue,.uah-request) button:disabled{background:#192015!important;border-color:#34412c!important;color:#7f9073!important;cursor:wait!important}
+html body.bu-winter.bu-winter :is(#free-queue-badge,#test-queue-badge,#uah-topup-badge){border-color:#547b3d!important;background:#14200e!important;background-image:none!important;color:#c7f7a8!important;box-shadow:0 8px 28px #0009!important}
+html body.bu-winter.bu-winter .bu-queue{background:#10160c!important;background-image:none!important;border:1px solid #354b29!important;border-radius:12px!important;color:#d8edcd!important}
+html body.bu-winter.bu-winter .bu-queue .bu-btn{background:#1b2a13!important;background-image:none!important;border-color:#4d7139!important;color:#c7edaf!important}
+@media(max-width:420px){html body.bu-winter.bu-winter .bu-modal.on>.bu-mbox:has(:is(.test-queue,.uah-request)){padding:22px 18px!important}html body.bu-winter.bu-winter .test-queue>footer{grid-template-columns:minmax(0,1fr)!important}html body.bu-winter.bu-winter :is(.test-queue>header h3,.uah-request>.bu-mt){font-size:20px!important}}
+
+/* Keep the request actions on the same surface as the dialog. */
+html body.bu-winter.bu-winter .test-queue>#request-queue-actions{background:transparent!important;background-image:none!important;box-shadow:none!important}
+.winter-free-case small{white-space:normal!important;line-height:1.4!important}
+/* Reserve room for the profile on phones instead of letting large controls overflow. */
+@media(max-width:600px){
+ html body.bu-winter.bu-winter #bu-head{box-sizing:border-box!important;flex-wrap:nowrap!important;gap:4px!important;padding-left:calc(8px + var(--miniapp-safe-left,0px))!important;padding-right:calc(8px + var(--miniapp-safe-right,0px))!important}
+ html body.bu-winter.bu-winter #bu-head .bu-hl{flex:0 1 auto!important;min-width:0!important;gap:4px!important}
+ html body.bu-winter.bu-winter #bu-head .brainup-brand{width:clamp(64px,21vw,88px)!important;flex:0 1 clamp(64px,21vw,88px)!important;min-width:0!important}
+ html body.bu-winter.bu-winter #bu-head .brainup-brand img.brand-wordmark-image{width:100%!important;height:32px!important}
+ html body.bu-winter.bu-winter #bu-head #bu-burger{flex:0 0 28px!important;width:28px!important;min-width:28px!important;height:34px!important;min-height:34px!important;padding:6px!important}
+ html body.bu-winter.bu-winter #bu-head .bu-hr{display:flex!important;flex:1 1 0!important;min-width:0!important;width:auto!important;flex-wrap:nowrap!important;gap:4px!important;justify-content:flex-end!important;margin-left:auto!important;overflow:visible!important}
+ html body.bu-winter.bu-winter #bu-head :is(.bu-cnt,.bu-tgl,#miniapp-size-toggle){display:none!important}
+ html body.bu-winter.bu-winter #bu-head #header-settings{flex:0 0 28px!important;width:28px!important;min-width:28px!important;height:32px!important;min-height:32px!important;padding:6px!important}
+ html body.bu-winter.bu-winter #bu-head #header-settings svg{width:16px!important;height:16px!important}
+ html body.bu-winter.bu-winter #bu-head #bu-topup{display:flex!important;flex:0 1 auto!important;min-width:0!important;max-width:160px!important;height:34px!important;min-height:34px!important;padding:4px 5px!important;gap:4px!important;overflow:hidden!important}
+ html body.bu-winter.bu-winter #bu-head #bu-hb{min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;font-size:11px!important;line-height:1.2!important}
+ html body.bu-winter.bu-winter #bu-head #bu-topup>.coin{flex:0 0 14px!important;width:14px!important;height:14px!important;font-size:14px!important}
+ html body.bu-winter.bu-winter #bu-head #bu-topup>span{flex:0 0 22px!important;width:22px!important;min-width:22px!important;height:24px!important;min-height:24px!important;padding:0!important;font-size:17px!important;display:grid!important;place-items:center!important}
+ html body.bu-winter.bu-winter.bu-winter #bu-head .bu-hr>.bu-hav{display:flex!important;visibility:visible!important;opacity:1!important;position:static!important;flex:0 0 34px!important;width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;margin:0!important;order:10!important;overflow:hidden!important}
+ html body.bu-winter.bu-winter #bu-head .bu-hav img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+}
+
+/* The hidden live rail must not reserve an empty column in case pages. */
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window{width:100%!important;margin-left:0!important;margin-right:0!important;padding-inline:clamp(12px,1.4vw,24px)!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window>.cw-panel{left:0!important}
+@media(min-width:993px){html body.bu-winter.bu-winter .cw #cw-box.winter-case-window .cw-pzg{grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr))!important;gap:14px!important}}
+.case-distribution-note{margin:0 0 16px!important;color:#a6c293!important;font-size:11px!important;line-height:1.5!important;text-align:left!important}
+html body.bu-winter.bu-winter .cw.on:has(>#bu-live){padding-left:0!important;padding-right:0!important}
+
+/* Reserve only the measured visible feed, never a guessed empty sidebar. */
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window{width:calc(100% - var(--case-live-space,0px))!important;margin-left:var(--case-live-space,0px)!important;margin-right:0!important;min-width:0!important}
+html body.bu-winter.bu-winter .cw #cw-box.winter-case-window>.cw-panel{left:0!important}
+html body.bu-winter.bu-winter .topup-reference .topup-reference-tabs{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+@media(max-width:600px){html body.bu-winter.bu-winter .topup-reference .topup-reference-tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+
+/* Match the red percentage typography and mirrored corner spacing. */
+/* Phone admin: persistent header, horizontally scrolling tabs, one content scroller. */
+@media(max-width:800px){
+ html body.bu-winter #bu-adm{height:100dvh!important;max-height:100dvh!important;overflow:hidden!important}
+ html body.bu-winter #bu-adm .bu-am.bu-full{width:100%!important;height:100%!important;min-height:0!important;padding:0!important;overflow:hidden!important}
+ html body.bu-winter #bu-adm .bu-ahd{margin:0!important;padding: max(8px,var(--miniapp-safe-top,env(safe-area-inset-top,0px))) max(12px,env(safe-area-inset-right)) 0 max(12px,env(safe-area-inset-left))!important;background:#10150f!important}
+ html body.bu-winter #bu-adm .bu-ah{gap:12px!important;padding:4px 0 10px!important}
+ html body.bu-winter #bu-adm .bu-ah h3{min-width:0!important;font-size:18px!important;line-height:1.3!important}
+ html body.bu-winter #bu-adm .bu-x{flex:0 0 44px!important;width:44px!important;height:44px!important;min-height:44px!important}
+ html body.bu-winter #bu-adm .bu-abody{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr)!important;min-width:0!important;min-height:0!important;overflow:hidden!important}
+ html body.bu-winter #bu-adm .bu-atabs{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;gap:7px!important;min-width:0!important;max-width:100%!important;padding:8px 12px!important;margin:0!important;overflow-x:auto!important;overflow-y:hidden!important;border-right:0!important;scroll-padding-inline:12px;touch-action:pan-x}
+ html body.bu-winter #bu-adm .bu-atabs button{flex:0 0 auto!important;width:auto!important;height:auto!important;min-height:44px!important;max-width:220px!important;padding:10px 14px!important;font-size:13px!important;line-height:1.3!important;white-space:nowrap!important;text-align:center!important}
+ html body.bu-winter #bu-adm .bu-acont{display:grid!important;grid-template-columns:minmax(0,1fr)!important;min-width:0!important;min-height:0!important;width:100%!important;box-sizing:border-box!important;padding:12px 12px max(24px,env(safe-area-inset-bottom))!important;gap:12px!important;overflow:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ html body.bu-winter #bu-adm .bu-acont>:is(.bu-ac,.bu-as,.r,.li){grid-column:1/-1!important;max-width:100%!important;min-width:0!important}
+ html body.bu-winter #bu-adm .bu-ac{padding:12px!important;margin:0!important}
+ html body.bu-winter #bu-adm .bu-as{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ html body.bu-winter #bu-adm :is(input,select,textarea){max-width:100%!important;font-size:16px!important}
+ html body.bu-winter #bu-adm :is(button,input:not([type=checkbox]):not([type=radio]),select){min-height:44px!important;height:auto!important}
+ html body.bu-winter #bu-adm :is(button,label,summary){overflow-wrap:anywhere!important}
+ html body.bu-winter #bu-adm .net-player-row{grid-template-columns:minmax(0,1fr)!important}
+}
+@media(max-width:560px){
+ html body.bu-winter #bu-adm .r{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;width:100%!important;min-width:0!important}
+ html body.bu-winter #bu-adm .r>:is(input,select,textarea,label,span){grid-column:1/-1!important;width:100%!important;min-width:0!important;max-width:100%!important}
+ html body.bu-winter #bu-adm .r>button{width:100%!important;min-width:0!important;padding:10px 8px!important;line-height:1.35!important;white-space:normal!important}
+ html body.bu-winter #bu-adm .li{flex-direction:column!important;align-items:stretch!important;gap:10px!important;padding:12px 0!important;min-width:0!important}
+ html body.bu-winter #bu-adm .li>:is(span,div){min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ html body.bu-winter #bu-adm .bu-ii{display:flex!important;flex-wrap:wrap!important;gap:8px!important;align-items:center!important;min-width:0!important}
+ html body.bu-winter #bu-adm .bu-ii img{flex:0 0 42px!important;width:42px!important;height:42px!important;object-fit:contain!important}
+ html body.bu-winter #bu-adm .bu-ii b{flex:1 1 140px!important;min-width:0!important}
+ html body.bu-winter #bu-adm :is(.tq-a,.wq-a,.case-section-actions,.admin-item-art>.r){display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ html body.bu-winter #bu-adm :is(.tq-a,.wq-a)>button{width:100%!important;white-space:normal!important}
+ html body.bu-winter #bu-adm .admin-payment-tabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ html body.bu-winter #bu-adm .admin-payment-tabs button{width:100%!important;min-width:0!important;padding:10px 6px!important}
+ html body.bu-winter #bu-adm :is(.admin-brain-tabs,.admin-topup-method,.admin-buff-heading){flex-wrap:wrap!important;gap:8px!important}
+ html body.bu-winter #bu-adm .admin-brain-tabs button{flex:1 1 120px!important;min-width:0!important;padding:10px 8px!important}
+ html body.bu-winter #bu-adm .buff-options{grid-template-columns:minmax(0,1fr)!important}
+ html body.bu-winter #bu-adm .net-player-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ html body.bu-winter #bu-adm .net-player-actions input{grid-column:1/-1!important}
+ html body.bu-winter #bu-adm .admin-item-art>img{height:160px!important}
+}
+
+/* Shop and owned purchase markers share the black/green upgrade controls. */
+html body.bu-winter .bu-app :is(#bu-tinv,#bu-tshop){width:auto!important;min-width:100px!important;min-height:40px!important;padding:9px 12px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-size:12px!important;line-height:1.3!important}
+html body.bu-winter .bu-app .bu-ph:has(#bu-tshop){flex-wrap:wrap!important;gap:10px!important}
+html body.bu-winter .bu-app #bu-shop-note{margin:12px 0!important;padding:12px!important;border:1px solid #3d5031!important;border-radius:10px!important;background:#11190d!important;color:#bbd5a7!important;font-size:12px!important;line-height:1.6!important}
+html body.bu-winter .bu-app #bu-shop-note[hidden]{display:none!important}
+html body.bu-winter :is(.bu-app,.bu-mbox) .purchased-item-lock{position:absolute!important;left:6px!important;top:6px!important;right:auto!important;display:grid!important;place-items:center!important;width:24px!important;height:24px!important;border:1px solid #496039!important;border-radius:7px!important;background:#111b0f!important;color:#bded9d!important;z-index:4!important;pointer-events:none!important}
+.purchased-item-lock svg{width:17px!important;height:17px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important}
+@media(max-width:560px){html body.bu-winter .bu-app .bu-ph:has(#bu-tshop) .bu-tabs{display:flex!important;width:100%!important;gap:6px!important}html body.bu-winter .bu-app :is(#bu-tinv,#bu-tshop){flex:1!important;min-width:0!important}html body.bu-winter .bu-app .bu-ph:has(#bu-tshop) .bu-pr{width:100%!important;min-width:0!important}html body.bu-winter .bu-app .bu-ph:has(#bu-tshop) .bu-pr input{flex:1!important;min-width:0!important}}
+
+/* A thin lit upper edge echoes the reference without obscuring the artwork. */
+html body.bu-winter.bu-winter :is(.bu-app,.bu-mbox,#cw-box,#bu-soon) :is(.bu-card.polished-brainrot-card,.profile-item.polished-profile-card,.cw-pz,.bu-ic,.public-inventory-card,.tp-it.polished-topup-card,.mutation-choice-card,.fuse-item){position:relative!important;border-radius:10px!important;clip-path:none!important;background:radial-gradient(ellipse at 50% 0%,rgba(var(--tc,154,239,106),.13),transparent 65%),#111511!important;border-color:rgba(var(--tc,154,239,106),.3)!important;box-shadow:inset 0 1px 0 rgba(var(--tc,154,239,106),.16),0 4px 14px #0003!important}
+html body.bu-winter.bu-winter :is(.bu-app,.bu-mbox,#cw-box,#bu-soon) :is(.bu-card.polished-brainrot-card,.profile-item.polished-profile-card,.cw-pz,.bu-ic,.public-inventory-card,.tp-it.polished-topup-card,.mutation-choice-card,.fuse-item)::before{content:''!important;position:absolute!important;inset:0 28% auto!important;width:auto!important;height:2px!important;margin:0!important;border:0!important;border-radius:0 0 4px 4px!important;background:rgb(var(--tc,154,239,106))!important;box-shadow:0 0 9px rgba(var(--tc,154,239,106),.75)!important;opacity:.85!important;pointer-events:none!important;transform:none!important;animation:none!important;z-index:1!important}
+html body.bu-winter.bu-winter :is(.bu-app,.bu-mbox,#cw-box,#bu-soon) :is(.bu-card.polished-brainrot-card,.profile-item.polished-profile-card,.cw-pz,.bu-ic,.public-inventory-card,.tp-it.polished-topup-card,.mutation-choice-card,.fuse-item):is(:hover,:focus-visible,.s){border-color:rgba(var(--tc,154,239,106),.75)!important;box-shadow:inset 0 1px 0 rgba(var(--tc,154,239,106),.35),0 0 16px rgba(var(--tc,154,239,106),.14)!important}
+html body.bu-winter.bu-winter #bu-soon .winter-catalog .bu-ccard{background:radial-gradient(ellipse at 50% 0%,color-mix(in srgb,var(--ca,#9aef6a) 15%,transparent),transparent 68%),#101510!important;border-color:color-mix(in srgb,var(--ca,#9aef6a) 32%,#253025)!important;box-shadow:inset 0 1px 0 color-mix(in srgb,var(--ca,#9aef6a) 24%,transparent)!important}
+html body.bu-winter.bu-winter #bu-soon .winter-catalog .bu-ccard .winter-card-snow{display:block!important;left:29%!important;right:29%!important;top:0!important;height:2px!important;background:var(--ca,#b7f2d8)!important;box-shadow:0 0 10px var(--ca,#b7f2d8)!important;pointer-events:none!important}
+html body.bu-winter.bu-winter #bu-soon .winter-catalog .bu-ccard .winter-card-snow::after{content:none!important}
+html body.bu-winter.bu-winter #bu-soon .winter-catalog .bu-ccard:is(:hover,:focus-visible){border-color:var(--ca,#9aef6a)!important;box-shadow:0 0 18px color-mix(in srgb,var(--ca,#9aef6a) 16%,transparent)!important}
+
+/* Contained playfield and green focus lighting. */
+html body.bu-winter.bu-winter .bu-app .bu-panel{border-color:#314b32!important;box-shadow:0 0 20px #72e6580d!important}
+html body.bu-winter.bu-winter .bu-app :is(#bu-tinv,#bu-tshop).on{border:1px solid #75c751!important;background:#1e3119!important;color:#c7ffac!important;box-shadow:0 0 12px #79ee4a22!important}
+.admin-item-pricing{padding:14px;margin:12px 0;border:1px solid #385734;border-radius:12px;background:#101a0e}.admin-item-pricing>label{display:grid;gap:8px;font-size:12px}.admin-item-pricing p{font-size:11px;line-height:1.6;color:#adc29f}.admin-item-pricing input{width:100%;min-width:0;box-sizing:border-box}
+
+/* Neutral black surfaces retain the surrounding green accents. */
+html body.bu-winter.bu-winter .profile-stat-grid>div{background:#101010!important;background-image:none!important;box-shadow:none!important}
+html body.bu-winter.bu-winter #bu-adm .bu-acont[data-admin-tab="items"]{grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:start!important}
+html body.bu-winter.bu-winter #bu-adm .admin-item-art{min-width:0!important;max-width:100%!important}
+html body.bu-winter.bu-winter #bu-adm #admin-art-preview{display:block!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;height:220px!important;max-height:220px!important;object-fit:contain!important;background:#000!important;border:1px solid #34442b!important;border-radius:12px!important;margin:14px 0!important}
+html body.bu-winter.bu-winter #bu-adm .admin-item-art>label{display:grid!important;gap:8px!important;margin:12px 0!important}
+html body.bu-winter.bu-winter #bu-adm .admin-item-art :is(select,input){box-sizing:border-box!important;width:100%!important;min-width:0!important;max-width:100%!important}
+@media(max-width:800px){html body.bu-winter.bu-winter #bu-adm .bu-acont[data-admin-tab="items"]{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:560px){html body.bu-winter.bu-winter #bu-adm #admin-art-preview{height:160px!important;max-height:160px!important}}
+
+
+
+/* Reserve a clear corner for mutation icons in the compact drop list. */
+html body.bu-winter.bu-winter :is(#bu-live,#cw-live-drops) .bu-ll .bu-ld.live-reference-card{padding:8px 10px!important}
+html body.bu-winter.bu-winter :is(#bu-live,#cw-live-drops) .bu-ll .live-prize-face{gap:8px!important;overflow:hidden!important}
+html body.bu-winter.bu-winter :is(#bu-live,#cw-live-drops) .bu-ll .live-reference-card .im{flex:0 0 44px!important;width:44px!important;max-width:44px!important;height:52px!important;min-width:0!important}
+html body.bu-winter.bu-winter :is(#bu-live,#cw-live-drops) .bu-ll .live-reference-card .tx{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto 14px 12px!important;align-content:center!important;gap:3px!important;min-width:0!important;overflow:hidden!important}
+html body.bu-winter.bu-winter :is(#bu-live,#cw-live-drops) .bu-ll .live-reference-card .n{box-sizing:border-box!important;padding-right:19px!important;line-height:1.3!important}
+html body.bu-winter.bu-winter :is(#bu-live,#cw-live-drops) .live-reference-card .live-mutation-icon{top:6px!important;right:6px!important;width:18px!important;height:18px!important}
+html body.bu-winter.bu-winter :is(#bu-live,#cw-live-drops) .live-reference-card .live-mutation-icon>img{width:18px!important;height:18px!important;max-width:18px!important}
+
+/* Profile inventory uses the same artwork, name, price and mutation corner. */
+html body.bu-winter.bu-winter #bu-soon .profile-inventory-grid{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))!important;gap:8px!important;grid-auto-rows:210px!important}
+html body.bu-winter.bu-winter #bu-soon .profile-item.polished-profile-card{box-sizing:border-box!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr) 69px!important;gap:6px!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;padding:10px 7px 8px!important;align-items:stretch!important;overflow:hidden!important;border-bottom-width:2px!important}
+html body.bu-winter.bu-winter #bu-soon .profile-item.polished-profile-card>img{width:100%!important;height:100%!important;min-height:0!important;max-height:100%!important;object-fit:contain!important;margin:0!important}
+html body.bu-winter.bu-winter #bu-soon .profile-item.polished-profile-card>.brainrot-card-details{display:grid!important;grid-template-rows:45px 20px!important;gap:4px!important;min-width:0!important;margin:0!important;align-self:end!important}
+html body.bu-winter.bu-winter #bu-soon .profile-item.polished-profile-card .brainrot-name{display:flex!important;align-items:center!important;justify-content:center!important;height:45px!important;min-height:0!important;margin:0!important;overflow:hidden!important;font-size:12px!important;font-weight:700!important;line-height:1.25!important;text-align:center!important;color:#eee!important;overflow-wrap:anywhere!important}
+html body.bu-winter.bu-winter #bu-soon .profile-item.polished-profile-card .brainrot-price{display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:0!important;margin:0!important;white-space:nowrap!important;font-size:12px!important;font-weight:700!important;line-height:1.4!important;color:#ddd!important}
+html body.bu-winter.bu-winter #bu-soon .profile-item.polished-profile-card.selected{border-color:#8ae568!important;box-shadow:inset 0 0 0 1px #8ae568,0 0 12px #8ae56822!important}
+@media(max-width:560px){html body.bu-winter.bu-winter #bu-soon .profile-inventory-grid{grid-auto-rows:196px!important}}
+
+
+
+html body.bu-winter .bu-app .upgrade-percent .upgrade-percent__label--win{top:4%!important;right:5%!important;bottom:auto!important;left:auto!important;font-size:clamp(.4rem,calc(var(--loss-frac,.5) * 13cqw + 2cqw),2rem)!important;line-height:1!important;white-space:nowrap!important;color:var(--win-label)!important;transform:scale(var(--chance-label-scale,1))!important;transform-origin:top right!important;transition:none!important}

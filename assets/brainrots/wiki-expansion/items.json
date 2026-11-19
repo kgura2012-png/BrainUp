@@ -1,0 +1,260 @@
+[
+  {
+    "id": 95,
+    "name": "Noobini Pizzanini",
+    "price": 1,
+    "rarity": "Common",
+    "source": "https://stealabrainrot.fandom.com/wiki/Noobini_Pizzanini",
+    "imageSource": "https://steal-a-brainrot.wiki/wp-content/uploads/2025/07/Noobini-Pizzanini-1.png",
+    "imageFile": "noobini-pizzanini.png",
+    "mime": "image/png"
+  },
+  {
+    "id": 96,
+    "name": "Lirilì Larilà",
+    "price": 2,
+    "rarity": "Common",
+    "source": "https://stealabrainrot.fandom.com/wiki/Liril%C3%AC_Laril%C3%A0",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0f/Liril%C3%AC_Laril%C3%A0.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "lirili-larila.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 97,
+    "name": "Los Tralaleritos",
+    "price": 12,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Los_Tralaleritos",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0f/Los_Tralaleritos.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "los-tralaleritos.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 98,
+    "name": "Las Tralaleritas",
+    "price": 14,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Las_Tralaleritas",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5e/Las_Tralaleritas.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "las-tralaleritas.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 99,
+    "name": "Graipuss Medussi",
+    "price": 18,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Graipuss_Medussi",
+    "imageSource": "https://steal-a-brainrot.wiki/wp-content/uploads/2025/07/Graipuss-Medussi.png",
+    "imageFile": "graipuss-medussi.png",
+    "mime": "image/png"
+  },
+  {
+    "id": 100,
+    "name": "La Cucaracha",
+    "price": 24,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/La_Cucaracha",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/46/La_Cucaracha.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "la-cucaracha.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 101,
+    "name": "Job Job Job Sahur",
+    "price": 26,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Job_Job_Job_Sahur",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ad/Job_Job_Job_Sahur.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "job-job-job-sahur.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 102,
+    "name": "Pot Hotspot",
+    "price": 28,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Pot_Hotspot",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4b/Pot_Hotspot.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "pot-hotspot.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 103,
+    "name": "Chicleteira Bicicleteira",
+    "price": 8,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Chicleteira_Bicicleteira",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5a/Chicleteira.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "chicleteira-bicicleteira.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 104,
+    "name": "Los Spyderinis",
+    "price": 9,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Los_Spyderinis",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/ff/Los_Spyderinis.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "los-spyderinis.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 105,
+    "name": "67",
+    "price": 12,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/67",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/30/67.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "67.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 106,
+    "name": "La Grande Combinasion",
+    "price": 10,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/La_Grande_Combinasion",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b2/La_Grande_Combinasion.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "la-grande-combinasion.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 107,
+    "name": "Nuclearo Dinossauro",
+    "price": 16,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Nuclearo_Dinossauro",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b5/Nuclearo_Dinossauro.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "nuclearo-dinossauro.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 108,
+    "name": "Esok Sekolah",
+    "price": 18,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Esok_Sekolah",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1e/Esok_Sekolah.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "esok-sekolah.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 109,
+    "name": "Los Combinasionas",
+    "price": 22,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Los_Combinasionas",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f6/Los_Combinasionas.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "los-combinasionas.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 110,
+    "name": "Los 67",
+    "price": 24,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Los_67",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c1/Los_67.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "los-67.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 111,
+    "name": "Tacorita Bicicleta",
+    "price": 290,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Tacorita_Bicicleta",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9d/Tacorita_Bicicleta.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "tacorita-bicicleta.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 112,
+    "name": "Chipso and Queso",
+    "price": 310,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Chipso_and_Queso",
+    "imageSource": "https://steal-a-brainrot.wiki/wp-content/uploads/2025/10/Steal-a-Brainrot-Wiki-Chipso-and-Queso-Icon.png",
+    "imageFile": "chipso-and-queso.png",
+    "mime": "image/png"
+  },
+  {
+    "id": 113,
+    "name": "Money Money Puggy",
+    "price": 30,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Money_Money_Puggy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d6/Money_Money_Puggy.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "money-money-puggy.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 114,
+    "name": "Los Spaghettis",
+    "price": 420,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Los_Spaghettis",
+    "imageSource": "https://steal-a-brainrot.wiki/wp-content/uploads/2025/11/Steal-a-Brainrot-Wiki-Los-Spaghettis-Icon.png",
+    "imageFile": "los-spaghettis.png",
+    "mime": "image/png"
+  },
+  {
+    "id": 115,
+    "name": "Fragrama and Chocrama",
+    "price": 950,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Fragrama_and_Chocrama",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9a/Fragrama_and_Chocrama.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "fragrama-and-chocrama.png",
+    "mime": "image/png",
+    "artReviewedAt": "2026-11-11"
+  },
+  {
+    "id": 116,
+    "name": "Los Sekolahs",
+    "price": 1150,
+    "rarity": "Secret",
+    "source": "https://stealabrainrot.fandom.com/wiki/Los_Sekolahs",
+    "imageSource": "https://steal-a-brainrot.wiki/wp-content/uploads/2026/01/Steal-A-Brainrot-Wiki-Los-Sekolahs-Icon-.png",
+    "imageFile": "los-sekolahs.png",
+    "mime": "image/png"
+  },
+  {
+    "id": 117,
+    "name": "Headless Horseman",
+    "price": 200000,
+    "rarity": "OG",
+    "source": "https://stealabrainrot.fandom.com/wiki/Headless_Horseman",
+    "imageSource": "https://steal-a-brainrot.wiki/wp-content/uploads/2025/10/Steal-a-Brainrot-Wiki-Headless-Horseman-Icon.png",
+    "imageFile": "headless-horseman.png",
+    "mime": "image/png"
+  },
+  {
+    "id": 118,
+    "name": "Spyder Elephant",
+    "price": 60000,
+    "rarity": "OG",
+    "source": "https://stealabrainrot.fandom.com/wiki/Spyder_Elephant",
+    "imageSource": "https://steal-a-brainrot.wiki/wp-content/uploads/2026/05/Steal-A-Brainrot-Spyder-Elephant-Icon.-.png",
+    "imageFile": "spyder-elephant.png",
+    "mime": "image/png",
+    "hidden": true
+  }
+]

@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {targetUpgradeChance} from '../client/target-chances.mjs';
+test('target probabilities follow combined item and token stake and respect the 80 percent limit',()=>{assert.equal(targetUpgradeChance(25,100),25);assert.equal(targetUpgradeChance(25+15,100),40);assert.equal(targetUpgradeChance(80,100),80);assert.equal(targetUpgradeChance(81,100),null);assert.equal(targetUpgradeChance(0,100),null);assert.equal(targetUpgradeChance(5,50000),.01);assert.equal(targetUpgradeChance(NaN,100),null)});

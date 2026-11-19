@@ -1,0 +1,37 @@
+[
+  {
+    "id": 119,
+    "name": "Sammyni Fattini",
+    "catalogName": "Sammyni Fattini",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/01/Sammyni_Fattini.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "base-images/119.png"
+  },
+  {
+    "id": 120,
+    "name": "Capitano Americano",
+    "catalogName": "Capitano Americano",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/43/Capitano_Americano.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "base-images/120.png"
+  },
+  {
+    "id": 121,
+    "name": "Tralaledon",
+    "catalogName": "Tralaledon",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/34/Tralaledon.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "base-images/121.png"
+  },
+  {
+    "id": 122,
+    "name": "La Fuse Machine",
+    "catalogName": "La Fuse Machine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ae/La_Fuse_Machine.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "base-images/122.png"
+  },
+  {
+    "id": 123,
+    "name": "Los Admins",
+    "catalogName": "Los Admins",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d8/Los_Admins.png/revision/latest/scale-to-width-down/512?format=original",
+    "imageFile": "base-images/123.png"
+  }
+]

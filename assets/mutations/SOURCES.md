@@ -1,0 +1,15 @@
+# Brainrot mutation artwork
+
+Catalog names and artwork references: https://stealabrainrot.fandom.com/wiki/Brainrots and linked character galleries. The exact original public CDN URL for each retrieved image is preserved in `art.json`; new normal characters have equivalent attribution in `new-base-art.json`. Images were retrieved on 2026-11-11 and retained as PNG files. Fandom community text is generally CC BY-SA; character images remain subject to their respective creators' rights and the source site's individual media terms.
+
+The 11 cube icons in `icons/` were provided by the project owner in this conversation. At the owner's request, Lava was edited to remove the white exterior background and empty margins, then optimized as a transparent UI icon. Only their ten colored mutation types are included. Bloodrot and other types visible only in the example interface are excluded.
+
+The price factors are the exact ratios from the owner's Meowl screenshot, with ordinary Meowl priced at 17,640. These are catalog price factors, not the original game's income multipliers. `shared/mutations.mjs` stores the integer numerators and rounds only the final BU price to cents.
+
+There are 460 mutation catalog entries for 46 normal characters. 426 retrieved PNGs are retained as research references. A further image search on 2026-11-11 confirmed that several character galleries explicitly list missing images, including Fragrama and Chocrama, Celestial Pegasus and Boppin Bunny.
+
+The owner then supplied a second screenshot and requested consistent visual materials across every mutated character. All 460 current presentation images are rendered from the 46 original model textures in `normal-images/`, with shared SVG materials implemented in `server/mutation-materials.mjs`. The models were extracted from the app's existing attributed catalog artwork and converted to transparent PNGs at a maximum of 320 pixels for consistent embedded-image support. Their original textures and silhouettes remain visible. Materials reproduce the reference's gold and diamond lighting, rainbow gradient, candy waves, lava seams, galaxy stars, yin-yang split, radioactive stripes, cursed red/black runes and divine gold symbols. These are reference-based visual renditions, not newly downloaded official screenshots of all 460 variants.
+
+Material responses contain their model image inline and do not depend on Fandom, remote image proxies, CSS hue rotation, or a first external cache fill. This presentation change preserves all catalog IDs, exact price factors and inventory behavior.
+
+After the owner's subsequent feedback, the four types Radioactive, Yin Yang, Cursed and Divine use the 171 available original wiki model images directly. `original-webp/` contains optimized transparent WebP copies of their original PNGs from `art.json`, embedded in the deployed Worker for reliable delivery. The 13 missing combinations retain a revised material rendition: fine hatch texture, natural black/white texture mapping, finer red glyphs, or white glyphs on yellow respectively. The owner requested no price or multiplier changes.

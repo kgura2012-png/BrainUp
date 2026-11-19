@@ -1,0 +1,4075 @@
+[
+  {
+    "id": 2000193,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/21/Gold_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000193.png",
+    "bytes": 108713
+  },
+  {
+    "id": 2000194,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/bf/Diamond_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000194.png",
+    "bytes": 110883
+  },
+  {
+    "id": 2000195,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a8/Rainbow_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000195.png",
+    "bytes": 69315
+  },
+  {
+    "id": 2000196,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c5/Candy_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000196.png",
+    "bytes": 109584
+  },
+  {
+    "id": 2000197,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1d/Lava_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000197.png",
+    "bytes": 91827
+  },
+  {
+    "id": 2000198,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/30/Galaxy_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000198.png",
+    "bytes": 95687
+  },
+  {
+    "id": 2000199,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e0/Yin_Yang_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000199.png",
+    "bytes": 85794
+  },
+  {
+    "id": 2000200,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0e/Radioactive_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000200.png",
+    "bytes": 120903
+  },
+  {
+    "id": 2000201,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ac/Cursed_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000201.png",
+    "bytes": 105456
+  },
+  {
+    "id": 2000202,
+    "baseId": 6,
+    "baseName": "Ketchuru and Musturu",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/dc/Divine_Ketchuru_and_Musturu.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000202.png",
+    "bytes": 104228
+  },
+  {
+    "id": 2000545,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d1/Gold_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000545.png",
+    "bytes": 94732
+  },
+  {
+    "id": 2000546,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2e/Diamond_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000546.png",
+    "bytes": 110631
+  },
+  {
+    "id": 2000547,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "rainbow",
+    "missing": true
+  },
+  {
+    "id": 2000548,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/76/Candy_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000548.png",
+    "bytes": 102435
+  },
+  {
+    "id": 2000549,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c3/Lava_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000549.png",
+    "bytes": 55764
+  },
+  {
+    "id": 2000550,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "galaxy",
+    "missing": true
+  },
+  {
+    "id": 2000551,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/32/Yin_Yang_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000551.png",
+    "bytes": 94400
+  },
+  {
+    "id": 2000552,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/33/Radioactive_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000552.png",
+    "bytes": 98620
+  },
+  {
+    "id": 2000553,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/03/Cursed_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000553.png",
+    "bytes": 99688
+  },
+  {
+    "id": 2000554,
+    "baseId": 17,
+    "baseName": "Pizza and Ranch",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5c/Divine_Pizza_and_Ranch.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000554.png",
+    "bytes": 78644
+  },
+  {
+    "id": 2000673,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6c/Gold_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000673.png",
+    "bytes": 90997
+  },
+  {
+    "id": 2000674,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1d/Diamond_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000674.png",
+    "bytes": 88319
+  },
+  {
+    "id": 2000675,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f6/Rainbow_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000675.png",
+    "bytes": 90884
+  },
+  {
+    "id": 2000676,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9f/Candy_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000676.png",
+    "bytes": 87439
+  },
+  {
+    "id": 2000677,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/41/Lava_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000677.png",
+    "bytes": 77049
+  },
+  {
+    "id": 2000678,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f5/Galaxy_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000678.png",
+    "bytes": 88153
+  },
+  {
+    "id": 2000679,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0c/Yin_Yang_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000679.png",
+    "bytes": 80956
+  },
+  {
+    "id": 2000680,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/59/Radioactive_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000680.png",
+    "bytes": 100450
+  },
+  {
+    "id": 2000681,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5d/Cursed_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000681.png",
+    "bytes": 109255
+  },
+  {
+    "id": 2000682,
+    "baseId": 21,
+    "baseName": "Garama and Madundung",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cf/Divine_Garama_and_Madundung.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000682.png",
+    "bytes": 86630
+  },
+  {
+    "id": 2000737,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/39/Gold_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000737.png",
+    "bytes": 84471
+  },
+  {
+    "id": 2000738,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/eb/Diamond_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000738.png",
+    "bytes": 84377
+  },
+  {
+    "id": 2000739,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/54/Rainbow_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000739.png",
+    "bytes": 67454
+  },
+  {
+    "id": 2000740,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/52/Candy_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000740.png",
+    "bytes": 83834
+  },
+  {
+    "id": 2000741,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e8/Lava_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000741.png",
+    "bytes": 76091
+  },
+  {
+    "id": 2000742,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4b/Galaxy_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000742.png",
+    "bytes": 77533
+  },
+  {
+    "id": 2000743,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3d/Yin_Yang_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000743.png",
+    "bytes": 70010
+  },
+  {
+    "id": 2000744,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/28/Radioactive_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000744.png",
+    "bytes": 82796
+  },
+  {
+    "id": 2000745,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/ff/Cursed_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000745.png",
+    "bytes": 70936
+  },
+  {
+    "id": 2000746,
+    "baseId": 23,
+    "baseName": "Cash or Card",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ac/Divine_Cash_or_Card.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000746.png",
+    "bytes": 81904
+  },
+  {
+    "id": 2000833,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4f/Gold_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000833.png",
+    "bytes": 152110
+  },
+  {
+    "id": 2000834,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a4/Diamond_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000834.png",
+    "bytes": 173913
+  },
+  {
+    "id": 2000835,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/ff/Rainbow_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000835.png",
+    "bytes": 161082
+  },
+  {
+    "id": 2000836,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d0/Candy_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000836.png",
+    "bytes": 144777
+  },
+  {
+    "id": 2000837,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4d/Lava_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000837.png",
+    "bytes": 132570
+  },
+  {
+    "id": 2000838,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/78/Galaxy_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000838.png",
+    "bytes": 161344
+  },
+  {
+    "id": 2000839,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/65/Yin_Yang_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000839.png",
+    "bytes": 149290
+  },
+  {
+    "id": 2000840,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/33/Radioactive_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000840.png",
+    "bytes": 196093
+  },
+  {
+    "id": 2000841,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4f/Cursed_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000841.png",
+    "bytes": 182019
+  },
+  {
+    "id": 2000842,
+    "baseId": 26,
+    "baseName": "Burguro And Fryuro",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2e/Divine_Burguro_And_Fryuro.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000842.png",
+    "bytes": 165522
+  },
+  {
+    "id": 2000993,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5c/Gold_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000993.png",
+    "bytes": 122920
+  },
+  {
+    "id": 2000994,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e3/Diamond_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000994.png",
+    "bytes": 112891
+  },
+  {
+    "id": 2000995,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4b/Rainbow_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000995.png",
+    "bytes": 97394
+  },
+  {
+    "id": 2000996,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/63/Candy_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000996.png",
+    "bytes": 114283
+  },
+  {
+    "id": 2000997,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/12/Lava_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000997.png",
+    "bytes": 93506
+  },
+  {
+    "id": 2000998,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/67/Galaxy_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000998.png",
+    "bytes": 115170
+  },
+  {
+    "id": 2000999,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0f/Yin_Yang_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2000999.png",
+    "bytes": 112664
+  },
+  {
+    "id": 2001000,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b3/Radioactive_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001000.png",
+    "bytes": 117575
+  },
+  {
+    "id": 2001001,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/48/Cursed_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001001.png",
+    "bytes": 86586
+  },
+  {
+    "id": 2001002,
+    "baseId": 31,
+    "baseName": "Popcuru and Fizzuru",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6c/Divine_Popcuru_and_Fizzuru.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001002.png",
+    "bytes": 105857
+  },
+  {
+    "id": 2001025,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/aa/Gold_Celestial_Pegasus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001025.png",
+    "bytes": 49332
+  },
+  {
+    "id": 2001026,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b5/Diamond_Celestial_Pegasus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001026.png",
+    "bytes": 56657
+  },
+  {
+    "id": 2001027,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "rainbow",
+    "missing": true
+  },
+  {
+    "id": 2001028,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "candy",
+    "missing": true
+  },
+  {
+    "id": 2001029,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/44/Lava_Celestial_Pegasus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001029.png",
+    "bytes": 53219,
+    "mime": "image/png"
+  },
+  {
+    "id": 2001030,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "galaxy",
+    "missing": true
+  },
+  {
+    "id": 2001031,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "yin-yang",
+    "missing": true
+  },
+  {
+    "id": 2001032,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "radioactive",
+    "missing": true
+  },
+  {
+    "id": 2001033,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "cursed",
+    "missing": true
+  },
+  {
+    "id": 2001034,
+    "baseId": 32,
+    "baseName": "Celestial Pegasus",
+    "mutation": "divine",
+    "missing": true
+  },
+  {
+    "id": 2001089,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b5/Gold_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001089.png",
+    "bytes": 141173
+  },
+  {
+    "id": 2001090,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/06/Diamond_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001090.png",
+    "bytes": 156711
+  },
+  {
+    "id": 2001091,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/14/Rainbow_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001091.png",
+    "bytes": 140442
+  },
+  {
+    "id": 2001092,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c4/Candy_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001092.png",
+    "bytes": 131667
+  },
+  {
+    "id": 2001093,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/01/Lava_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001093.png",
+    "bytes": 133104
+  },
+  {
+    "id": 2001094,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cf/Galaxy_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001094.png",
+    "bytes": 134501
+  },
+  {
+    "id": 2001095,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/84/Yin_Yang_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001095.png",
+    "bytes": 103344
+  },
+  {
+    "id": 2001096,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/73/Radioactive_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001096.png",
+    "bytes": 151380
+  },
+  {
+    "id": 2001097,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/06/Cursed_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001097.png",
+    "bytes": 135869
+  },
+  {
+    "id": 2001098,
+    "baseId": 34,
+    "baseName": "Cerberus",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/ce/Divine_Cerberus.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001098.png",
+    "bytes": 135385
+  },
+  {
+    "id": 2001121,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/46/Gold_Boppin_Bunny.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001121.png",
+    "bytes": 65783
+  },
+  {
+    "id": 2001122,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "diamond",
+    "missing": true
+  },
+  {
+    "id": 2001123,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "rainbow",
+    "missing": true
+  },
+  {
+    "id": 2001124,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "candy",
+    "missing": true
+  },
+  {
+    "id": 2001125,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c7/Lava_Boppin_Bunny.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001125.png",
+    "bytes": 57558
+  },
+  {
+    "id": 2001126,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "galaxy",
+    "missing": true
+  },
+  {
+    "id": 2001127,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "yin-yang",
+    "missing": true
+  },
+  {
+    "id": 2001128,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "radioactive",
+    "missing": true
+  },
+  {
+    "id": 2001129,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "cursed",
+    "missing": true
+  },
+  {
+    "id": 2001130,
+    "baseId": 35,
+    "baseName": "Boppin Bunny",
+    "mutation": "divine",
+    "missing": true
+  },
+  {
+    "id": 2001185,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e7/Gold_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001185.png",
+    "bytes": 74947
+  },
+  {
+    "id": 2001186,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6d/Diamond_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001186.png",
+    "bytes": 59820
+  },
+  {
+    "id": 2001187,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/68/Rainbow_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001187.png",
+    "bytes": 51661
+  },
+  {
+    "id": 2001188,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/80/Candy_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001188.png",
+    "bytes": 60404
+  },
+  {
+    "id": 2001189,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/10/Lava_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001189.png",
+    "bytes": 61871
+  },
+  {
+    "id": 2001190,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/18/Galaxy_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001190.png",
+    "bytes": 68675
+  },
+  {
+    "id": 2001191,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fb/Yin_Yang_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001191.png",
+    "bytes": 56298
+  },
+  {
+    "id": 2001192,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d4/Radioactive_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001192.png",
+    "bytes": 83171
+  },
+  {
+    "id": 2001193,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7c/Cursed_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001193.png",
+    "bytes": 65490
+  },
+  {
+    "id": 2001194,
+    "baseId": 37,
+    "baseName": "Cooki and Milki",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7e/Divine_Cooki_and_Milki.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001194.png",
+    "bytes": 68954
+  },
+  {
+    "id": 2001217,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d3/Gold_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001217.png",
+    "bytes": 105414
+  },
+  {
+    "id": 2001218,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cf/Diamond_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001218.png",
+    "bytes": 107484
+  },
+  {
+    "id": 2001219,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/32/Rainbow_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001219.png",
+    "bytes": 89228
+  },
+  {
+    "id": 2001220,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a6/Candy_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001220.png",
+    "bytes": 105427
+  },
+  {
+    "id": 2001221,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c1/Lava_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001221.png",
+    "bytes": 109370
+  },
+  {
+    "id": 2001222,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b9/Galaxy_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001222.png",
+    "bytes": 112041
+  },
+  {
+    "id": 2001223,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/47/Yin_Yang_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001223.png",
+    "bytes": 101762
+  },
+  {
+    "id": 2001224,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/45/Radioactive_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001224.png",
+    "bytes": 122221
+  },
+  {
+    "id": 2001225,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/61/Cursed_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001225.png",
+    "bytes": 102032
+  },
+  {
+    "id": 2001226,
+    "baseId": 38,
+    "baseName": "Spooky and Pumpky",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c7/Divine_Spooky_and_Pumpky.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001226.png",
+    "bytes": 97936
+  },
+  {
+    "id": 2001441,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0d/Gold_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001441.png",
+    "bytes": 90853
+  },
+  {
+    "id": 2001442,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f0/Diamond_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001442.png",
+    "bytes": 83440
+  },
+  {
+    "id": 2001443,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f4/Rainbow_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001443.png",
+    "bytes": 62334
+  },
+  {
+    "id": 2001444,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c6/Candy_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001444.png",
+    "bytes": 81943
+  },
+  {
+    "id": 2001445,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/20/Lava_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001445.png",
+    "bytes": 72671
+  },
+  {
+    "id": 2001446,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b1/Galaxy_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001446.png",
+    "bytes": 82084
+  },
+  {
+    "id": 2001447,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6c/Yin_Yang_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001447.png",
+    "bytes": 70703
+  },
+  {
+    "id": 2001448,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9a/Radioactive_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001448.png",
+    "bytes": 96579
+  },
+  {
+    "id": 2001449,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3e/Cursed_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001449.png",
+    "bytes": 81455
+  },
+  {
+    "id": 2001450,
+    "baseId": 45,
+    "baseName": "Rico Dinero",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3a/Divine_Rico_Dinero.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001450.png",
+    "bytes": 87437
+  },
+  {
+    "id": 2001473,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/62/Gold_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001473.png",
+    "bytes": 107735
+  },
+  {
+    "id": 2001474,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d7/Diamond_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001474.png",
+    "bytes": 108884
+  },
+  {
+    "id": 2001475,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f8/Rainbow_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001475.png",
+    "bytes": 91573
+  },
+  {
+    "id": 2001476,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7b/Candy_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001476.png",
+    "bytes": 111890
+  },
+  {
+    "id": 2001477,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/69/Lava_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001477.png",
+    "bytes": 97503
+  },
+  {
+    "id": 2001478,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9b/Galaxy_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001478.png",
+    "bytes": 110029
+  },
+  {
+    "id": 2001479,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1d/Yin_Yang_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001479.png",
+    "bytes": 106340
+  },
+  {
+    "id": 2001480,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8c/Radioactive_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001480.png",
+    "bytes": 117736
+  },
+  {
+    "id": 2001481,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/dc/Cursed_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001481.png",
+    "bytes": 99637
+  },
+  {
+    "id": 2001482,
+    "baseId": 46,
+    "baseName": "Foxini Lanternini",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a6/Divine_Foxini_Lanternini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001482.png",
+    "bytes": 124568
+  },
+  {
+    "id": 2001505,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/15/Gold_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001505.png",
+    "bytes": 111399
+  },
+  {
+    "id": 2001506,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/29/Diamond_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001506.png",
+    "bytes": 115340
+  },
+  {
+    "id": 2001507,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/42/Rainbow_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001507.png",
+    "bytes": 79894
+  },
+  {
+    "id": 2001508,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c9/Candy_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001508.png",
+    "bytes": 117670
+  },
+  {
+    "id": 2001509,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2e/Lava_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001509.png",
+    "bytes": 86935
+  },
+  {
+    "id": 2001510,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/10/Galaxy_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001510.png",
+    "bytes": 99480
+  },
+  {
+    "id": 2001511,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/db/Yin_Yang_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001511.png",
+    "bytes": 105148
+  },
+  {
+    "id": 2001512,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/88/Radioactive_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001512.png",
+    "bytes": 113308
+  },
+  {
+    "id": 2001513,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a8/Cursed_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001513.png",
+    "bytes": 95922
+  },
+  {
+    "id": 2001514,
+    "baseId": 47,
+    "baseName": "Venuspino",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b3/Divine_Venuspino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001514.png",
+    "bytes": 103434
+  },
+  {
+    "id": 2001601,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/89/Gold_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001601.png",
+    "bytes": 114157
+  },
+  {
+    "id": 2001602,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a6/Diamond_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001602.png",
+    "bytes": 121702
+  },
+  {
+    "id": 2001603,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/09/Rainbow_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001603.png",
+    "bytes": 90992
+  },
+  {
+    "id": 2001604,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/69/Candy_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001604.png",
+    "bytes": 129576
+  },
+  {
+    "id": 2001605,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/36/Lava_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001605.png",
+    "bytes": 113867
+  },
+  {
+    "id": 2001606,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b2/Galaxy_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001606.png",
+    "bytes": 128121
+  },
+  {
+    "id": 2001607,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e4/Yin_Yang_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001607.png",
+    "bytes": 108592
+  },
+  {
+    "id": 2001608,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/de/Radioactive_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001608.png",
+    "bytes": 145404
+  },
+  {
+    "id": 2001609,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7b/Cursed_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001609.png",
+    "bytes": 118551
+  },
+  {
+    "id": 2001610,
+    "baseId": 50,
+    "baseName": "Rosey and Teddy",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8f/Divine_Rosey_and_Teddy.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001610.png",
+    "bytes": 126645
+  },
+  {
+    "id": 2001633,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e2/Gold_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001633.png",
+    "bytes": 180842
+  },
+  {
+    "id": 2001634,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/70/Diamond_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001634.png",
+    "bytes": 163585
+  },
+  {
+    "id": 2001635,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/97/Rainbow_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001635.png",
+    "bytes": 154860
+  },
+  {
+    "id": 2001636,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/41/Candy_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001636.png",
+    "bytes": 167503
+  },
+  {
+    "id": 2001637,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f8/Lava_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001637.png",
+    "bytes": 157589
+  },
+  {
+    "id": 2001638,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d8/Galaxy_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001638.png",
+    "bytes": 143234
+  },
+  {
+    "id": 2001639,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0a/Yin_Yang_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001639.png",
+    "bytes": 156019
+  },
+  {
+    "id": 2001640,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/58/Radioactive_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001640.png",
+    "bytes": 176710
+  },
+  {
+    "id": 2001641,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/81/Cursed_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001641.png",
+    "bytes": 115437
+  },
+  {
+    "id": 2001642,
+    "baseId": 51,
+    "baseName": "La Casa Boo",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2d/Divine_La_Casa_Boo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001642.png",
+    "bytes": 97858
+  },
+  {
+    "id": 2001665,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "gold",
+    "missing": true
+  },
+  {
+    "id": 2001666,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "diamond",
+    "missing": true
+  },
+  {
+    "id": 2001667,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "rainbow",
+    "missing": true
+  },
+  {
+    "id": 2001668,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "candy",
+    "missing": true
+  },
+  {
+    "id": 2001669,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f9/Lava_Dug_dug_dug.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001669.png",
+    "bytes": 83425
+  },
+  {
+    "id": 2001670,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/86/Galaxy_Dug_dug_dug.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001670.png",
+    "bytes": 90650
+  },
+  {
+    "id": 2001671,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6c/Yin_Yang_Dug_dug_dug.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001671.png",
+    "bytes": 76143
+  },
+  {
+    "id": 2001672,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f6/Radioactive_Dug_dug_dug.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001672.png",
+    "bytes": 90041
+  },
+  {
+    "id": 2001673,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/86/Cursed_Dug_dug_dug.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001673.png",
+    "bytes": 75788
+  },
+  {
+    "id": 2001674,
+    "baseId": 52,
+    "baseName": "Dug dug dug",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/40/Divine_Dug_dug_dug.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001674.png",
+    "bytes": 94878
+  },
+  {
+    "id": 2001729,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Gold_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001729.png",
+    "bytes": 124534
+  },
+  {
+    "id": 2001730,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ae/Diamond_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001730.png",
+    "bytes": 126082
+  },
+  {
+    "id": 2001731,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2c/Rainbow_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001731.png",
+    "bytes": 110726
+  },
+  {
+    "id": 2001732,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/32/Candy_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001732.png",
+    "bytes": 124999
+  },
+  {
+    "id": 2001733,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/51/Lava_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001733.png",
+    "bytes": 112091
+  },
+  {
+    "id": 2001734,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/59/Galaxy_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001734.png",
+    "bytes": 117019
+  },
+  {
+    "id": 2001735,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/53/Yin_Yang_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001735.png",
+    "bytes": 110413
+  },
+  {
+    "id": 2001736,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a3/Radioactive_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001736.png",
+    "bytes": 117005
+  },
+  {
+    "id": 2001737,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9c/Cursed_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001737.png",
+    "bytes": 98819
+  },
+  {
+    "id": 2001738,
+    "baseId": 54,
+    "baseName": "Ketupat Bros",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3e/Divine_Ketupat_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001738.png",
+    "bytes": 106540
+  },
+  {
+    "id": 2001761,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e2/Gold_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001761.png",
+    "bytes": 86776
+  },
+  {
+    "id": 2001762,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/54/Diamond_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001762.png",
+    "bytes": 66474
+  },
+  {
+    "id": 2001763,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5e/Rainbow_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001763.png",
+    "bytes": 68095
+  },
+  {
+    "id": 2001764,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f9/Candy_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001764.png",
+    "bytes": 73064
+  },
+  {
+    "id": 2001765,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7a/Lava_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001765.png",
+    "bytes": 51408
+  },
+  {
+    "id": 2001766,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cd/Galaxy_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001766.png",
+    "bytes": 48561
+  },
+  {
+    "id": 2001767,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8d/Yin_Yang_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001767.png",
+    "bytes": 72609
+  },
+  {
+    "id": 2001768,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4c/Radioactive_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001768.png",
+    "bytes": 83978
+  },
+  {
+    "id": 2001769,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3b/Cursed_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001769.png",
+    "bytes": 78364
+  },
+  {
+    "id": 2001770,
+    "baseId": 55,
+    "baseName": "Dragon Cannelloni",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/34/Divine_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001770.png",
+    "bytes": 91787
+  },
+  {
+    "id": 2001857,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/83/Gold_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001857.png",
+    "bytes": 93371
+  },
+  {
+    "id": 2001858,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/eb/Diamond_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001858.png",
+    "bytes": 95490
+  },
+  {
+    "id": 2001859,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2c/Rainbow_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001859.png",
+    "bytes": 90921
+  },
+  {
+    "id": 2001860,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f6/Candy_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001860.png",
+    "bytes": 91956
+  },
+  {
+    "id": 2001861,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9b/Lava_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001861.png",
+    "bytes": 64697
+  },
+  {
+    "id": 2001862,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/33/Galaxy_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001862.png",
+    "bytes": 68010
+  },
+  {
+    "id": 2001863,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/ec/Yin_Yang_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001863.png",
+    "bytes": 79319
+  },
+  {
+    "id": 2001864,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/ee/Radioactive_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001864.png",
+    "bytes": 106770
+  },
+  {
+    "id": 2001865,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/45/Cursed_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001865.png",
+    "bytes": 101436
+  },
+  {
+    "id": 2001866,
+    "baseId": 58,
+    "baseName": "Hydra Dragon Cannelloni",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Divine_Hydra_Dragon_Cannelloni.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001866.png",
+    "bytes": 90348
+  },
+  {
+    "id": 2001985,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/46/Gold_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001985.png",
+    "bytes": 95488
+  },
+  {
+    "id": 2001986,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4a/Diamond_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001986.png",
+    "bytes": 88674
+  },
+  {
+    "id": 2001987,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/51/Rainbow_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001987.png",
+    "bytes": 82428
+  },
+  {
+    "id": 2001988,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/04/Candy_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001988.png",
+    "bytes": 90477
+  },
+  {
+    "id": 2001989,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/df/Lava_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001989.png",
+    "bytes": 93600
+  },
+  {
+    "id": 2001990,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/50/Galaxy_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001990.png",
+    "bytes": 94189
+  },
+  {
+    "id": 2001991,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b8/Yin_Yang_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001991.png",
+    "bytes": 89951
+  },
+  {
+    "id": 2001992,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f0/Radioactive_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001992.png",
+    "bytes": 85511
+  },
+  {
+    "id": 2001993,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/20/Cursed_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001993.png",
+    "bytes": 92549
+  },
+  {
+    "id": 2001994,
+    "baseId": 62,
+    "baseName": "Tirilikalika Tirilikalako",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7e/Divine_Tirilikalika_Tirilikalako.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2001994.png",
+    "bytes": 91931
+  },
+  {
+    "id": 2002049,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/71/Gold_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002049.png",
+    "bytes": 86159
+  },
+  {
+    "id": 2002050,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2e/Diamond_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002050.png",
+    "bytes": 84082
+  },
+  {
+    "id": 2002051,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a5/Rainbow_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002051.png",
+    "bytes": 80365
+  },
+  {
+    "id": 2002052,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/38/Candy_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002052.png",
+    "bytes": 88425
+  },
+  {
+    "id": 2002053,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7b/Lava_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002053.png",
+    "bytes": 71578
+  },
+  {
+    "id": 2002054,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cd/Galaxy_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002054.png",
+    "bytes": 78997
+  },
+  {
+    "id": 2002055,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d3/Yin_Yang_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002055.png",
+    "bytes": 85317
+  },
+  {
+    "id": 2002056,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c4/Radioactive_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002056.png",
+    "bytes": 87780
+  },
+  {
+    "id": 2002057,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/57/Cursed_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002057.png",
+    "bytes": 81163
+  },
+  {
+    "id": 2002058,
+    "baseId": 64,
+    "baseName": "La Supreme Combinasion",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/83/Divine_La_Supreme_Combinasion.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002058.png",
+    "bytes": 86602
+  },
+  {
+    "id": 2002145,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a8/Gold_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002145.png",
+    "bytes": 84675
+  },
+  {
+    "id": 2002146,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/37/Diamond_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002146.png",
+    "bytes": 85576
+  },
+  {
+    "id": 2002147,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b1/Rainbow_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002147.png",
+    "bytes": 73715
+  },
+  {
+    "id": 2002148,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/51/Candy_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002148.png",
+    "bytes": 86184
+  },
+  {
+    "id": 2002149,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/31/Lava_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002149.png",
+    "bytes": 54348
+  },
+  {
+    "id": 2002150,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3d/Galaxy_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002150.png",
+    "bytes": 82586
+  },
+  {
+    "id": 2002151,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/14/Yin_Yang_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002151.png",
+    "bytes": 91814
+  },
+  {
+    "id": 2002152,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d0/Radioactive_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002152.png",
+    "bytes": 59645
+  },
+  {
+    "id": 2002153,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/db/Cursed_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002153.png",
+    "bytes": 89852
+  },
+  {
+    "id": 2002154,
+    "baseId": 67,
+    "baseName": "Digi Narwhal",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3c/Divine_Digi_Narwhal.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002154.png",
+    "bytes": 91132
+  },
+  {
+    "id": 2002177,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/36/Gold_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002177.png",
+    "bytes": 79966
+  },
+  {
+    "id": 2002178,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/db/Diamond_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002178.png",
+    "bytes": 77757
+  },
+  {
+    "id": 2002179,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/41/Rainbow_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002179.png",
+    "bytes": 67536
+  },
+  {
+    "id": 2002180,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1d/Candy_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002180.png",
+    "bytes": 82059
+  },
+  {
+    "id": 2002181,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/35/Lava_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002181.png",
+    "bytes": 67467
+  },
+  {
+    "id": 2002182,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cf/Galaxy_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002182.png",
+    "bytes": 72049
+  },
+  {
+    "id": 2002183,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fe/Yin_Yang_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002183.png",
+    "bytes": 82778
+  },
+  {
+    "id": 2002184,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b8/Radioactive_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002184.png",
+    "bytes": 83042
+  },
+  {
+    "id": 2002185,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/71/Cursed_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002185.png",
+    "bytes": 78404
+  },
+  {
+    "id": 2002186,
+    "baseId": 68,
+    "baseName": "Fishino Clownino",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fb/Divine_Fishino_Clownino.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002186.png",
+    "bytes": 71195
+  },
+  {
+    "id": 2002209,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8a/Gold_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002209.png",
+    "bytes": 113907
+  },
+  {
+    "id": 2002210,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/dd/Diamond_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002210.png",
+    "bytes": 110412
+  },
+  {
+    "id": 2002211,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fb/Rainbow_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002211.png",
+    "bytes": 96132
+  },
+  {
+    "id": 2002212,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0d/Candy_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002212.png",
+    "bytes": 102863
+  },
+  {
+    "id": 2002213,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/85/Lava_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002213.png",
+    "bytes": 101523
+  },
+  {
+    "id": 2002214,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7a/Galaxy_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002214.png",
+    "bytes": 100534
+  },
+  {
+    "id": 2002215,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/52/Yin_Yang_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002215.png",
+    "bytes": 95497
+  },
+  {
+    "id": 2002216,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e5/Radioactive_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002216.png",
+    "bytes": 117776
+  },
+  {
+    "id": 2002217,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fc/Cursed_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002217.png",
+    "bytes": 109448
+  },
+  {
+    "id": 2002218,
+    "baseId": 69,
+    "baseName": "Kalika Bros",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/30/Divine_Kalika_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002218.png",
+    "bytes": 125082
+  },
+  {
+    "id": 2002241,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a8/Gold_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002241.png",
+    "bytes": 63837
+  },
+  {
+    "id": 2002242,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/19/Diamond_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002242.png",
+    "bytes": 78291
+  },
+  {
+    "id": 2002243,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ac/Rainbow_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002243.png",
+    "bytes": 78581
+  },
+  {
+    "id": 2002244,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c0/Candy_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002244.png",
+    "bytes": 102902
+  },
+  {
+    "id": 2002245,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/10/Lava_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002245.png",
+    "bytes": 85624
+  },
+  {
+    "id": 2002246,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/dc/Galaxy_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002246.png",
+    "bytes": 87124
+  },
+  {
+    "id": 2002247,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Yin_Yang_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002247.png",
+    "bytes": 62274
+  },
+  {
+    "id": 2002248,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d7/Radioactive_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002248.png",
+    "bytes": 57667
+  },
+  {
+    "id": 2002249,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/dc/Cursed_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002249.png",
+    "bytes": 53441
+  },
+  {
+    "id": 2002250,
+    "baseId": 70,
+    "baseName": "Griffin",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/66/Divine_Griffin.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002250.png",
+    "bytes": 78885
+  },
+  {
+    "id": 2002273,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1c/Gold_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002273.png",
+    "bytes": 132100
+  },
+  {
+    "id": 2002274,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7b/Diamond_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002274.png",
+    "bytes": 153533
+  },
+  {
+    "id": 2002275,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1c/Rainbow_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002275.png",
+    "bytes": 112669
+  },
+  {
+    "id": 2002276,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/73/Candy_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002276.png",
+    "bytes": 133194
+  },
+  {
+    "id": 2002277,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9c/Lava_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002277.png",
+    "bytes": 126081
+  },
+  {
+    "id": 2002278,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/94/Galaxy_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002278.png",
+    "bytes": 177965
+  },
+  {
+    "id": 2002279,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/09/Yin_Yang_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002279.png",
+    "bytes": 151129
+  },
+  {
+    "id": 2002280,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2e/Radioactive_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002280.png",
+    "bytes": 181273
+  },
+  {
+    "id": 2002281,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c6/Cursed_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002281.png",
+    "bytes": 137626
+  },
+  {
+    "id": 2002282,
+    "baseId": 71,
+    "baseName": "Orchidox",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c1/Divine_Orchidox.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002282.png",
+    "bytes": 177966
+  },
+  {
+    "id": 2002337,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f0/Gold_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002337.png",
+    "bytes": 98933
+  },
+  {
+    "id": 2002338,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/19/Diamond_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002338.png",
+    "bytes": 98890
+  },
+  {
+    "id": 2002339,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b2/Rainbow_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002339.png",
+    "bytes": 84924
+  },
+  {
+    "id": 2002340,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c0/Candy_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002340.png",
+    "bytes": 96246
+  },
+  {
+    "id": 2002341,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/76/Lava_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002341.png",
+    "bytes": 90505
+  },
+  {
+    "id": 2002342,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0d/Galaxy_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002342.png",
+    "bytes": 89076
+  },
+  {
+    "id": 2002343,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/67/Yin_Yang_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002343.png",
+    "bytes": 98507
+  },
+  {
+    "id": 2002344,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Radioactive_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002344.png",
+    "bytes": 96003
+  },
+  {
+    "id": 2002345,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8f/Cursed_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002345.png",
+    "bytes": 85590
+  },
+  {
+    "id": 2002346,
+    "baseId": 73,
+    "baseName": "Arcadragon",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/40/Divine_Arcadragon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002346.png",
+    "bytes": 93496
+  },
+  {
+    "id": 2002369,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1c/Gold_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002369.png",
+    "bytes": 75916
+  },
+  {
+    "id": 2002370,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c4/Diamond_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002370.png",
+    "bytes": 76362
+  },
+  {
+    "id": 2002371,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/44/Rainbow_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002371.png",
+    "bytes": 62178
+  },
+  {
+    "id": 2002372,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8c/Candy_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002372.png",
+    "bytes": 85921
+  },
+  {
+    "id": 2002373,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/54/Lava_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002373.png",
+    "bytes": 73030
+  },
+  {
+    "id": 2002374,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2e/Galaxy_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002374.png",
+    "bytes": 93169
+  },
+  {
+    "id": 2002375,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/08/Yin_Yang_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002375.png",
+    "bytes": 77804
+  },
+  {
+    "id": 2002376,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/15/Radioactive_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002376.png",
+    "bytes": 67392
+  },
+  {
+    "id": 2002377,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/30/Cursed_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002377.png",
+    "bytes": 46894
+  },
+  {
+    "id": 2002378,
+    "baseId": 74,
+    "baseName": "Elefanto Frigo",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/89/Divine_Elefanto_Frigo.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002378.png",
+    "bytes": 103013
+  },
+  {
+    "id": 2002401,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e1/Gold_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002401.png",
+    "bytes": 147439
+  },
+  {
+    "id": 2002402,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cb/Diamond_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002402.png",
+    "bytes": 167303
+  },
+  {
+    "id": 2002403,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ab/Rainbow_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002403.png",
+    "bytes": 64835
+  },
+  {
+    "id": 2002404,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7a/Candy_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002404.png",
+    "bytes": 130691
+  },
+  {
+    "id": 2002405,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/99/Lava_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002405.png",
+    "bytes": 167415
+  },
+  {
+    "id": 2002406,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9b/Galaxy_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002406.png",
+    "bytes": 144445
+  },
+  {
+    "id": 2002407,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fd/Yin_Yang_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002407.png",
+    "bytes": 131177
+  },
+  {
+    "id": 2002408,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/61/Radioactive_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002408.png",
+    "bytes": 202107
+  },
+  {
+    "id": 2002409,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fa/Cursed_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002409.png",
+    "bytes": 124688
+  },
+  {
+    "id": 2002410,
+    "baseId": 75,
+    "baseName": "Skibidi Toilet",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0d/Divine_Skibidi_Toilet.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002410.png",
+    "bytes": 74475
+  },
+  {
+    "id": 2002433,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/48/Gold_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002433.png",
+    "bytes": 96936
+  },
+  {
+    "id": 2002434,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8c/Diamond_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002434.png",
+    "bytes": 101143
+  },
+  {
+    "id": 2002435,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6e/Rainbow_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002435.png",
+    "bytes": 84404
+  },
+  {
+    "id": 2002436,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b5/Candy_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002436.png",
+    "bytes": 103085
+  },
+  {
+    "id": 2002437,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e2/Lava_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002437.png",
+    "bytes": 79882
+  },
+  {
+    "id": 2002438,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/da/Galaxy_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002438.png",
+    "bytes": 86150
+  },
+  {
+    "id": 2002439,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/90/Yin_Yang_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002439.png",
+    "bytes": 91770
+  },
+  {
+    "id": 2002440,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/70/Radioactive_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002440.png",
+    "bytes": 108811
+  },
+  {
+    "id": 2002441,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/ea/Cursed_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002441.png",
+    "bytes": 93558
+  },
+  {
+    "id": 2002442,
+    "baseId": 76,
+    "baseName": "John Pork",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5a/Divine_John_Pork.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002442.png",
+    "bytes": 104234
+  },
+  {
+    "id": 2002465,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5b/Gold_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002465.png",
+    "bytes": 65417
+  },
+  {
+    "id": 2002466,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a1/Diamond_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002466.png",
+    "bytes": 70306
+  },
+  {
+    "id": 2002467,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b1/Rainbow_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002467.png",
+    "bytes": 63266
+  },
+  {
+    "id": 2002468,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c6/Candy_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002468.png",
+    "bytes": 69097
+  },
+  {
+    "id": 2002469,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c9/Lava_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002469.png",
+    "bytes": 67310
+  },
+  {
+    "id": 2002470,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/28/Galaxy_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002470.png",
+    "bytes": 77863
+  },
+  {
+    "id": 2002471,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7a/Yin_Yang_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002471.png",
+    "bytes": 71876
+  },
+  {
+    "id": 2002472,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cf/Radioactive_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002472.png",
+    "bytes": 83721
+  },
+  {
+    "id": 2002473,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d4/Cursed_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002473.png",
+    "bytes": 70961
+  },
+  {
+    "id": 2002474,
+    "baseId": 77,
+    "baseName": "Meowl",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d9/Divine_Meowl.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002474.png",
+    "bytes": 63049
+  },
+  {
+    "id": 2002497,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3e/Gold_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002497.png",
+    "bytes": 135298
+  },
+  {
+    "id": 2002498,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5c/Diamond_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002498.png",
+    "bytes": 160420
+  },
+  {
+    "id": 2002499,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7a/Rainbow_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002499.png",
+    "bytes": 100851
+  },
+  {
+    "id": 2002500,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/39/Candy_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002500.png",
+    "bytes": 144097
+  },
+  {
+    "id": 2002501,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/bb/Lava_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002501.png",
+    "bytes": 149548
+  },
+  {
+    "id": 2002502,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/14/Galaxy_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002502.png",
+    "bytes": 147074
+  },
+  {
+    "id": 2002503,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f9/Yin_Yang_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002503.png",
+    "bytes": 139880
+  },
+  {
+    "id": 2002504,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7d/Radioactive_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002504.png",
+    "bytes": 187156
+  },
+  {
+    "id": 2002505,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e3/Cursed_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002505.png",
+    "bytes": 184185
+  },
+  {
+    "id": 2002506,
+    "baseId": 78,
+    "baseName": "Strawberry Elephant",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e9/Divine_Strawberry_Elephant.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002506.png",
+    "bytes": 171846
+  },
+  {
+    "id": 2002561,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/9a/Gold_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002561.png",
+    "bytes": 96434
+  },
+  {
+    "id": 2002562,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/20/Diamond_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002562.png",
+    "bytes": 95820
+  },
+  {
+    "id": 2002563,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4f/Rainbow_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002563.png",
+    "bytes": 75947
+  },
+  {
+    "id": 2002564,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7b/Candy_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002564.png",
+    "bytes": 99778
+  },
+  {
+    "id": 2002565,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7f/Lava_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002565.png",
+    "bytes": 88911
+  },
+  {
+    "id": 2002566,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/99/Galaxy_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002566.png",
+    "bytes": 95415
+  },
+  {
+    "id": 2002567,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4a/Yin_Yang_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002567.png",
+    "bytes": 89502
+  },
+  {
+    "id": 2002568,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5c/Radioactive_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002568.png",
+    "bytes": 93695
+  },
+  {
+    "id": 2002569,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f4/Cursed_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002569.png",
+    "bytes": 72155
+  },
+  {
+    "id": 2002570,
+    "baseId": 80,
+    "baseName": "Duggy Bros",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Divine_Duggy_Bros.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002570.png",
+    "bytes": 84519
+  },
+  {
+    "id": 2002689,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/40/Gold_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002689.png",
+    "bytes": 147080
+  },
+  {
+    "id": 2002690,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/28/Diamond_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002690.png",
+    "bytes": 147292
+  },
+  {
+    "id": 2002691,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "rainbow",
+    "missing": true
+  },
+  {
+    "id": 2002692,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/55/Candy_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002692.png",
+    "bytes": 145848
+  },
+  {
+    "id": 2002693,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/3c/Lava_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002693.png",
+    "bytes": 124886
+  },
+  {
+    "id": 2002694,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/48/Galaxy_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002694.png",
+    "bytes": 142318
+  },
+  {
+    "id": 2002695,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e1/Yin_Yang_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002695.png",
+    "bytes": 142025
+  },
+  {
+    "id": 2002696,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "radioactive",
+    "missing": true
+  },
+  {
+    "id": 2002697,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/19/Cursed_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002697.png",
+    "bytes": 128539
+  },
+  {
+    "id": 2002698,
+    "baseId": 84,
+    "baseName": "Sammyni Trackini",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ae/Divine_Sammyni_Truckini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002698.png",
+    "bytes": 120117
+  },
+  {
+    "id": 2002849,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/93/Gold_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002849.png",
+    "bytes": 72343
+  },
+  {
+    "id": 2002850,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/93/Diamond_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002850.png",
+    "bytes": 66177
+  },
+  {
+    "id": 2002851,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4a/Rainbow_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002851.png",
+    "bytes": 67763
+  },
+  {
+    "id": 2002852,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/7d/Candy_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002852.png",
+    "bytes": 69693
+  },
+  {
+    "id": 2002853,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/26/Lava_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002853.png",
+    "bytes": 50050
+  },
+  {
+    "id": 2002854,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/62/Galaxy_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002854.png",
+    "bytes": 58128
+  },
+  {
+    "id": 2002855,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/36/Yin_Yang_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002855.png",
+    "bytes": 66765
+  },
+  {
+    "id": 2002856,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/61/Radioactive_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002856.png",
+    "bytes": 69581
+  },
+  {
+    "id": 2002857,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c6/Cursed_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002857.png",
+    "bytes": 70660
+  },
+  {
+    "id": 2002858,
+    "baseId": 89,
+    "baseName": "Dragon Aquanini",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/19/Divine_Dragon_Aquanini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002858.png",
+    "bytes": 65421
+  },
+  {
+    "id": 2002913,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a4/Gold_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002913.png",
+    "bytes": 65878
+  },
+  {
+    "id": 2002914,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6e/Diamond_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002914.png",
+    "bytes": 61326
+  },
+  {
+    "id": 2002915,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/61/Rainbow_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002915.png",
+    "bytes": 58300
+  },
+  {
+    "id": 2002916,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6b/Candy_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002916.png",
+    "bytes": 63325
+  },
+  {
+    "id": 2002917,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c5/Lava_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002917.png",
+    "bytes": 58215
+  },
+  {
+    "id": 2002918,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/12/Galaxy_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002918.png",
+    "bytes": 61327
+  },
+  {
+    "id": 2002919,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f4/Yin_Yang_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002919.png",
+    "bytes": 52124
+  },
+  {
+    "id": 2002920,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f4/Radioactive_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002920.png",
+    "bytes": 74502
+  },
+  {
+    "id": 2002921,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b3/Cursed_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002921.png",
+    "bytes": 67958
+  },
+  {
+    "id": 2002922,
+    "baseId": 91,
+    "baseName": "Antonio",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1e/Divine_Antonio.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002922.png",
+    "bytes": 67141
+  },
+  {
+    "id": 2002977,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/35/Gold_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002977.png",
+    "bytes": 85176
+  },
+  {
+    "id": 2002978,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/61/Diamond_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002978.png",
+    "bytes": 90424
+  },
+  {
+    "id": 2002979,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c0/Rainbow_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002979.png",
+    "bytes": 84756
+  },
+  {
+    "id": 2002980,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a0/Candy_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002980.png",
+    "bytes": 86601
+  },
+  {
+    "id": 2002981,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d7/Lava_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002981.png",
+    "bytes": 79342
+  },
+  {
+    "id": 2002982,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/4f/Galaxy_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002982.png",
+    "bytes": 89868
+  },
+  {
+    "id": 2002983,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a8/Yin_Yang_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002983.png",
+    "bytes": 64775
+  },
+  {
+    "id": 2002984,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d9/Radioactive_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002984.png",
+    "bytes": 88409
+  },
+  {
+    "id": 2002985,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/58/Cursed_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002985.png",
+    "bytes": 76445
+  },
+  {
+    "id": 2002986,
+    "baseId": 93,
+    "baseName": "Signore Carapace",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8d/Divine_Signore_Carapace.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2002986.png",
+    "bytes": 77848
+  },
+  {
+    "id": 2003681,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "gold",
+    "missing": true
+  },
+  {
+    "id": 2003682,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "diamond",
+    "missing": true
+  },
+  {
+    "id": 2003683,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "rainbow",
+    "missing": true
+  },
+  {
+    "id": 2003684,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "candy",
+    "missing": true
+  },
+  {
+    "id": 2003685,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "lava",
+    "missing": true
+  },
+  {
+    "id": 2003686,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "galaxy",
+    "missing": true
+  },
+  {
+    "id": 2003687,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "yin-yang",
+    "missing": true
+  },
+  {
+    "id": 2003688,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "radioactive",
+    "missing": true
+  },
+  {
+    "id": 2003689,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "cursed",
+    "missing": true
+  },
+  {
+    "id": 2003690,
+    "baseId": 115,
+    "baseName": "Fragrama and Chocrama",
+    "mutation": "divine",
+    "missing": true
+  },
+  {
+    "id": 2003713,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/41/Gold_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003713.png",
+    "bytes": 74936
+  },
+  {
+    "id": 2003714,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/50/Diamond_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003714.png",
+    "bytes": 78536
+  },
+  {
+    "id": 2003715,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Rainbow_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003715.png",
+    "bytes": 64446
+  },
+  {
+    "id": 2003716,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0c/Candy_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003716.png",
+    "bytes": 76463
+  },
+  {
+    "id": 2003717,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f7/Lava_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003717.png",
+    "bytes": 68469
+  },
+  {
+    "id": 2003718,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d0/Galaxy_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003718.png",
+    "bytes": 64695
+  },
+  {
+    "id": 2003719,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/1c/Yin_Yang_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003719.png",
+    "bytes": 79780
+  },
+  {
+    "id": 2003720,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/51/Radioactive_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003720.png",
+    "bytes": 84092
+  },
+  {
+    "id": 2003721,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/57/Cursed_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003721.png",
+    "bytes": 73297
+  },
+  {
+    "id": 2003722,
+    "baseId": 116,
+    "baseName": "Los Sekolahs",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/36/Divine_Los_Sekolahs.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003722.png",
+    "bytes": 72764
+  },
+  {
+    "id": 2003745,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/12/Gold_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003745.png",
+    "bytes": 99189
+  },
+  {
+    "id": 2003746,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/53/Diamond_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003746.png",
+    "bytes": 106169
+  },
+  {
+    "id": 2003747,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/50/Rainbow_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003747.png",
+    "bytes": 90760
+  },
+  {
+    "id": 2003748,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/91/Candy_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003748.png",
+    "bytes": 109501
+  },
+  {
+    "id": 2003749,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/95/Lava_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003749.png",
+    "bytes": 97978
+  },
+  {
+    "id": 2003750,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Galaxy_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003750.png",
+    "bytes": 109208
+  },
+  {
+    "id": 2003751,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a2/Yin_Yang_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003751.png",
+    "bytes": 101634
+  },
+  {
+    "id": 2003752,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/4/46/Radioactive_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003752.png",
+    "bytes": 131198
+  },
+  {
+    "id": 2003753,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b3/Cursed_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003753.png",
+    "bytes": 125196
+  },
+  {
+    "id": 2003754,
+    "baseId": 117,
+    "baseName": "Headless Horseman",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/81/Divine_Headless_Horseman.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003754.png",
+    "bytes": 124834
+  },
+  {
+    "id": 2003809,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/60/Gold_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003809.png",
+    "bytes": 111361
+  },
+  {
+    "id": 2003810,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a6/Diamond_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003810.png",
+    "bytes": 111920
+  },
+  {
+    "id": 2003811,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/6/6f/Rainbow_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003811.png",
+    "bytes": 150328
+  },
+  {
+    "id": 2003812,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/24/Candy_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003812.png",
+    "bytes": 181309
+  },
+  {
+    "id": 2003813,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/51/Lava_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003813.png",
+    "bytes": 173175
+  },
+  {
+    "id": 2003814,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/cf/Galaxy_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003814.png",
+    "bytes": 122322
+  },
+  {
+    "id": 2003815,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5f/Yin_Yang_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003815.png",
+    "bytes": 97674
+  },
+  {
+    "id": 2003816,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b6/Radioactive_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003816.png",
+    "bytes": 132420
+  },
+  {
+    "id": 2003817,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/dc/Cursed_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003817.png",
+    "bytes": 125534
+  },
+  {
+    "id": 2003818,
+    "baseId": 119,
+    "baseName": "Sammyni Fattini",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/56/Divine_Sammyni_Fattini.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003818.png",
+    "bytes": 194537
+  },
+  {
+    "id": 2003841,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/39/Gold_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003841.png",
+    "bytes": 128688
+  },
+  {
+    "id": 2003842,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/06/Diamond_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003842.png",
+    "bytes": 124832
+  },
+  {
+    "id": 2003843,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/00/Rainbow_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003843.png",
+    "bytes": 115016
+  },
+  {
+    "id": 2003844,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/84/Candy_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003844.png",
+    "bytes": 120895
+  },
+  {
+    "id": 2003845,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/5d/Lava_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003845.png",
+    "bytes": 123551
+  },
+  {
+    "id": 2003846,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ab/Galaxy_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003846.png",
+    "bytes": 125061
+  },
+  {
+    "id": 2003847,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a6/Yin_Yang_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003847.png",
+    "bytes": 108950
+  },
+  {
+    "id": 2003848,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d0/Radioactive_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003848.png",
+    "bytes": 131524
+  },
+  {
+    "id": 2003849,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/32/Cursed_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003849.png",
+    "bytes": 131225
+  },
+  {
+    "id": 2003850,
+    "baseId": 120,
+    "baseName": "Capitano Americano",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c1/Divine_Capitano_Americano.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003850.png",
+    "bytes": 119858
+  },
+  {
+    "id": 2003873,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/a5/Gold_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003873.png",
+    "bytes": 83549
+  },
+  {
+    "id": 2003874,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e6/Diamond_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003874.png",
+    "bytes": 83659
+  },
+  {
+    "id": 2003875,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/05/Rainbow_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003875.png",
+    "bytes": 68500
+  },
+  {
+    "id": 2003876,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/11/Candy_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003876.png",
+    "bytes": 83180
+  },
+  {
+    "id": 2003877,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "lava",
+    "missing": true
+  },
+  {
+    "id": 2003878,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/7/75/Galaxy_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003878.png",
+    "bytes": 68040
+  },
+  {
+    "id": 2003879,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/0/0d/Yin_Yang_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003879.png",
+    "bytes": 80057
+  },
+  {
+    "id": 2003880,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e3/Radioactive_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003880.png",
+    "bytes": 113118
+  },
+  {
+    "id": 2003881,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c3/Cursed_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003881.png",
+    "bytes": 93348
+  },
+  {
+    "id": 2003882,
+    "baseId": 121,
+    "baseName": "Tralaledon",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/31/Divine_Tralaledon.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003882.png",
+    "bytes": 81016
+  },
+  {
+    "id": 2003905,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/97/Gold_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003905.png",
+    "bytes": 128849
+  },
+  {
+    "id": 2003906,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2a/Diamond_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003906.png",
+    "bytes": 110141
+  },
+  {
+    "id": 2003907,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8f/Rainbow_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003907.png",
+    "bytes": 109206
+  },
+  {
+    "id": 2003908,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b7/Candy_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003908.png",
+    "bytes": 105604
+  },
+  {
+    "id": 2003909,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/1/19/Lava_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003909.png",
+    "bytes": 101024
+  },
+  {
+    "id": 2003910,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/59/Galaxy_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003910.png",
+    "bytes": 91121
+  },
+  {
+    "id": 2003911,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/f0/Yin_Yang_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003911.png",
+    "bytes": 105238
+  },
+  {
+    "id": 2003912,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/b/b5/Radioactive_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003912.png",
+    "bytes": 144767
+  },
+  {
+    "id": 2003913,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/38/Cursed_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003913.png",
+    "bytes": 125742
+  },
+  {
+    "id": 2003914,
+    "baseId": 122,
+    "baseName": "La Fuse Machine",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/e/e3/Divine_La_Fuse_Machine.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003914.png",
+    "bytes": 118389
+  },
+  {
+    "id": 2003937,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "gold",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/50/Gold_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003937.png",
+    "bytes": 61494
+  },
+  {
+    "id": 2003938,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "diamond",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/f/fd/Diamond_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003938.png",
+    "bytes": 60634
+  },
+  {
+    "id": 2003939,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "rainbow",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/c/c9/Rainbow_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003939.png",
+    "bytes": 53840
+  },
+  {
+    "id": 2003940,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "candy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/9/92/Candy_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003940.png",
+    "bytes": 98511
+  },
+  {
+    "id": 2003941,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "lava",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/3/30/Lava_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003941.png",
+    "bytes": 82606
+  },
+  {
+    "id": 2003942,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "galaxy",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/d/d3/Galaxy_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003942.png",
+    "bytes": 83316
+  },
+  {
+    "id": 2003943,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "yin-yang",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/2/2c/Yin_Yang_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003943.png",
+    "bytes": 72980
+  },
+  {
+    "id": 2003944,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "radioactive",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/8/8c/Radioactive_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003944.png",
+    "bytes": 72725
+  },
+  {
+    "id": 2003945,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "cursed",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/5/58/Cursed_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003945.png",
+    "bytes": 59738
+  },
+  {
+    "id": 2003946,
+    "baseId": 123,
+    "baseName": "Los Admins",
+    "mutation": "divine",
+    "imageSource": "https://static.wikia.nocookie.net/stealabr/images/a/ad/Divine_Los_Admins.png/revision/latest/scale-to-width-down/320?format=original",
+    "imageFile": "images/2003946.png",
+    "bytes": 68576
+  }
+]

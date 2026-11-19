@@ -1,0 +1,1 @@
+Edited from the user-provided blue pixel workshop image with the built-in image editor. Prompt: preserve blue cabinet, green control panel, three ventilation stacks and gray shutter; remove all lettering and streaked backdrop; transparent game sprite, no smoke. Steam, roller door and prize emerge are animated in CSS with stepped frames.

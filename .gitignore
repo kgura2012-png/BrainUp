@@ -1,0 +1,20 @@
+node_modules/
+.wrangler/
+.cloudflare-local/
+dist-cloudflare/
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+!.env.example
+backups/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+
+# Generated hosting output and local service metadata
+dist/
+.openai/
+.sites-runtime/
+.sites-checkout/

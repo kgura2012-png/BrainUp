@@ -1,0 +1,19 @@
+# Bot notification delivery
+
+UAH creation writes `notifyOwner: true` into the authoritative application in the existing CAS/receipt write. Only after that succeeds does the Worker start the durable outbox dispatcher with `waitUntil`. A delivery error cannot roll back the application. Future dispatcher runs discover the pending flag, so a transient failure after the original response is retryable.
+
+Owner notifications use the existing verified owner chat (1116312381) and include application number, player, requested UAH and resulting BU. The receiving card number is never included. No payment is confirmed by sending a message.
+
+Internal appointment reminders become due at `booking.at - 300000`. The dispatcher sends only to the booking's own `tg:` identity, checks the booking again before sending and skips cancelled, past or banned-user records. The message shows the actual remaining minutes, Kyiv date/window and nickname and asks the user to open BrainUp. It states that no external item transfer is provided. Notification delivery never changes balances or inventories.
+
+`app_notification_jobs` has a unique event ID, an atomic claim lease, retry backoff, attempt limit and persisted status/message ID. Normal concurrent calls and receipt retries produce one delivery. As with any external API without an idempotency key, a network failure after Telegram accepted a message but before persistence can have an ambiguous delivery outcome.
+
+The unattended writer is POST `/internal/notifications/tick`. It accepts only a server-only random 256-bit bearer capability stored in `app_notification_control` (id 1). The capability is never returned by browser endpoints or stored in source, prompts or command arguments. Only the Site owner can retrieve the control row through the native Sites database tools. Public unauthenticated requests return 401. Schema initialization creates no messages. During read-only maintenance the writer returns 503.
+
+A cloud task can use owner-authorized Sites database tools to read that exact control row and pass `cron_key` as `{ "key": ... }` through hidden stdin to `scripts/notification-runner.mjs`. If source is absent, open this linked Site's current source repository with the supported Sites helper first. The runner is pinned to this Site origin, prints only delivery counts, and never logs the capability. Read back `last_tick_at`/`last_result` to verify delivery processing. Routine runs do not modify source or publish a version.
+
+The linked Site schedule must poll every 5 minutes to match the appointment grid. Scheduled cloud runs can start later than their nominal time; the message reflects actual remaining time and never sends after the window begins. For standalone Cloudflare deployment, `wrangler.jsonc` also configures a one-minute Cron Trigger and the Worker exports `scheduled`. Hosted scheduling must be verified separately from having this handler in source. Telegram must permit messages to the recipient.
+
+The bot’s Partnership button is a Telegram Web App link to `/?screen=partnership`. After verified account loading, the Mini App opens the referrals/application section once. Existing bot messages keep their old inline keyboard; `/start` provides the updated one.
+
+Hosted scheduling status: an every-five-minutes Sites schedule was attempted, but the service rejected it because tasks may run at most once per hour. No hourly substitute was created. Authenticated live-feed traffic provides a throttled once-per-minute opportunistic dispatcher while the Site is active; this does not guarantee delivery when no one is visiting. The protected unattended endpoint was exercised successfully on the published Site and its tick persisted. Standalone Cloudflare's one-minute Cron Trigger is prepared in source, but it is not a configured trigger on Sites hosting.

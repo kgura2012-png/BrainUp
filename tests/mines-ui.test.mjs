@@ -1,0 +1,24 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import vm from 'node:vm';
+import {beginRequestFeedback} from '../client/ui-feedback.mjs';
+const html=await fs.readFile(new URL('../site.html',import.meta.url),'utf8');
+const a=html.indexOf('mCellHtml=function(i,b,live)'),b=html.indexOf('\n};',a)+3;
+const context=vm.createContext({MN:{last:24},mMult:()=>1.2,r2:n=>n,rewardFor:()=>({id:7,name:'Brainrot'}),I:()=>null,C:[],av:i=>'https://image.test/'+i.id,esc:s=>s});vm.runInContext(html.slice(a,b),context);
+const board={mines:[2,24],open:[1],imgs:[],hit:24,stake:10,n:2};
+test('both revealed mines show a brainrot with no corner bomb overlay',()=>{for(const i of board.mines){const cell=context.mCellHtml(i,board,false);assert.match(cell,/<img /);assert.match(cell,/alt="Brainrot"/);assert(!cell.includes('<svg'));assert(!cell.includes('bu-bomb'));assert.match(cell,/aria-label="Mine"/)}assert.match(context.mCellHtml(24,board,false),/m hit/);assert.doesNotMatch(context.mCellHtml(2,board,false),/m hit/)});
+test('active hidden mines do not disclose an image or location',()=>{const hidden=context.mCellHtml(2,board,true);assert(!hidden.includes('<img'));assert(!hidden.includes('aria-label="Mine"'));assert(hidden.includes('Closed cell'));assert(context.mCellHtml(1,board,true).includes('<img'))});
+test('pending request feedback restores prior busy and disabled state',()=>{const attrs=new Map([['aria-busy','true']]);const button={isConnected:true,disabled:false,getAttribute:k=>attrs.get(k)??null,setAttribute:(k,v)=>attrs.set(k,v),removeAttribute:k=>attrs.delete(k)};const finish=beginRequestFeedback(button,'Processing');assert.equal(button.disabled,true);assert.equal(attrs.get('data-request-pending'),'Processing');finish();assert.equal(button.disabled,false);assert.equal(attrs.get('aria-busy'),'true');assert(!attrs.has('data-request-pending'))});
+test('opening one safe cell replaces one grid node instead of all 25',()=>{
+ const a=html.indexOf('function mRender(){'),b=html.indexOf('\nfunction mPlay()',a);
+ const board={mines:[],open:[],imgs:[],stake:10,n:2};let replacements=0;
+ const grid={children:[],appendChild(node){this.children.push(node)}};
+ const node=()=>({replaceWith(next){const i=grid.children.indexOf(this);grid.children[i]=next;replacements++}});
+ for(let i=0;i<25;i++)grid.children.push(node());
+ const panel={querySelector:()=>null,innerHTML:''};
+ context.U={sec:'mines'};context.MN.last=-1;context.mG=()=>board;context.mPanelHtml=()=>'';context.mFollow=()=>{};context.$=s=>s==='#bu-mgrid'?grid:s==='#bu-mpanel'?panel:null;
+ context.document={createElement:()=>({content:{},set innerHTML(v){this.content.firstElementChild=node()}})};
+ vm.runInContext(html.slice(a,b),context);context.mRender();assert.equal(replacements,25);
+ replacements=0;board.open.push(1);context.MN.last=1;context.mRender();assert.equal(replacements,1);
+});
