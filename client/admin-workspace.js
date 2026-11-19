@@ -55,3 +55,178 @@ document.addEventListener('click',async function(event){var button=event.target.
 },true);
 
 var adminTopupItemsBeforeNormalOnly=tbItems;tbItems=function(){return adminTopupItemsBeforeNormalOnly.apply(this,arguments).filter(function(item){return !item.mutation})};
+
+// Keep search and inventory tools alongside the existing player balance controls.
+var adminPlayerSearch = '';
+var adminInventory = {userId: '', data: null, error: '', saving: false};
+
+function adminPlayerKey(value) {
+  return String(value || '').trim().replace(/^@/, '').normalize('NFKC').toLocaleLowerCase('ru');
+}
+
+function filterAdminPlayerRows(list) {
+  var query = adminPlayerKey(adminPlayerSearch);
+  var players = new Map(NET.players.map(function (player) { return [player.id, player]; }));
+  var visible = 0;
+  list.querySelectorAll('.net-player-row').forEach(function (row) {
+    var player = players.get(row.dataset.inventoryPlayer);
+    if (!player) return;
+    var match = !query || [player.name, player.telegramName, player.username, player.id].some(function (value) {
+      return adminPlayerKey(value).includes(query);
+    });
+    if (match) {
+      row.style.removeProperty('display');
+      visible++;
+    } else {
+      row.style.setProperty('display', 'none', 'important');
+    }
+  });
+  list.querySelector('[data-admin-player-count]').textContent = visible
+    ? 'Найдено: ' + visible
+    : 'Игроки не найдены';
+}
+
+function renderAdminInventory(list) {
+  list.querySelectorAll('[data-admin-inventory-panel]').forEach(function (panel) { panel.remove(); });
+  var row = Array.from(list.querySelectorAll('.net-player-row')).find(function (candidate) {
+    return candidate.dataset.inventoryPlayer === adminInventory.userId;
+  });
+  if (!row) return;
+  var data = adminInventory.data;
+  var panel = document.createElement('div');
+  panel.dataset.adminInventoryPanel = '';
+  panel.style.gridColumn = '1 / -1';
+  panel.innerHTML = '<p><b>Инвентарь</b> <button type="button" data-admin-inventory-close>Закрыть</button></p>';
+  if (adminInventory.error) {
+    panel.insertAdjacentHTML('beforeend', '<p role="status">' + esc(adminInventory.error) + '</p>');
+  } else if (!data) {
+    panel.insertAdjacentHTML('beforeend', '<p role="status">Загружаем инвентарь…</p>');
+  } else if (!data.total) {
+    panel.insertAdjacentHTML('beforeend', '<p>Инвентарь пуст.</p>');
+  } else {
+    var options = data.groups.map(function (group) {
+      return '<option value="' + esc(String(group.id)) + '">' + esc(group.name) + ' · ' + group.count + ' шт.</option>';
+    }).join('');
+    panel.insertAdjacentHTML('beforeend',
+      '<p>Всего предметов: ' + data.total + '</p><div class="r">'
+      + '<select aria-label="Предмет" data-admin-inventory-item>' + options + '</select>'
+      + '<input aria-label="Количество" data-admin-inventory-quantity type="number" min="1" step="1" value="1" max="' + data.groups[0].count + '">'
+      + '<button type="button" data-admin-inventory-remove="quantity">Списать по количеству</button>'
+      + '<button type="button" class="dg" data-admin-inventory-remove="all">Списать весь инвентарь</button></div>');
+  }
+  row.append(panel);
+}
+
+function mountAdminPlayerTools() {
+  var list = ad.querySelector('.admin-player-list');
+  if (!list || !hosted || !NET.admin || !isOwner() || U.atab !== 'players') return;
+  var heading = list.querySelector('h4');
+  if (heading && !list.querySelector('[data-admin-player-search]')) {
+    heading.insertAdjacentHTML('afterend',
+      '<div class="r"><input type="search" aria-label="Поиск игрока" data-admin-player-search '
+      + 'placeholder="Имя или @username в Telegram" maxlength="256"></div><p role="status" data-admin-player-count></p>');
+    list.querySelector('[data-admin-player-search]').value = adminPlayerSearch;
+    list.querySelectorAll('.net-player-row').forEach(function (row) {
+      var control = row.querySelector('[data-admin-balance][data-user-id]');
+      if (!control) return;
+      row.dataset.inventoryPlayer = control.dataset.userId;
+      control.parentElement.insertAdjacentHTML('beforeend', '<button type="button" data-admin-inventory-open>Инвентарь</button>');
+    });
+  }
+  filterAdminPlayerRows(list);
+  renderAdminInventory(list);
+}
+
+var adminBeforePlayerTools = admin;
+admin = function () {
+  var result = adminBeforePlayerTools.apply(this, arguments);
+  mountAdminPlayerTools();
+  return result;
+};
+
+var adminRefreshBeforePlayerTools = adminRefreshWouldDiscardInput;
+adminRefreshWouldDiscardInput = function () {
+  return adminRefreshBeforePlayerTools.apply(this, arguments)
+    || (U.atab === 'players' && !!adminInventory.userId);
+};
+
+ad.addEventListener('input', function (event) {
+  if (!event.target.matches('[data-admin-player-search]')) return;
+  adminPlayerSearch = event.target.value;
+  filterAdminPlayerRows(event.target.closest('.admin-player-list'));
+});
+
+ad.addEventListener('change', function (event) {
+  if (!event.target.matches('[data-admin-inventory-item]') || !adminInventory.data) return;
+  var group = adminInventory.data.groups.find(function (entry) { return entry.id === Number(event.target.value); });
+  if (!group) return;
+  var quantity = event.target.closest('[data-admin-inventory-panel]').querySelector('[data-admin-inventory-quantity]');
+  quantity.max = group.count;
+  quantity.value = 1;
+});
+
+async function loadAdminInventory(userId) {
+  adminInventory.userId = userId;
+  adminInventory.data = null;
+  adminInventory.error = '';
+  var list = ad.querySelector('.admin-player-list');
+  if (list) renderAdminInventory(list);
+  try {
+    var reply = await NET.request('admin-inventory-view', {userId:userId});
+    if (!reply.ok || !reply.inventory) throw Error(reply.error || 'Не удалось загрузить инвентарь');
+    if (adminInventory.userId === userId) adminInventory.data = reply.inventory;
+  } catch (error) {
+    if (adminInventory.userId === userId) adminInventory.error = error.message;
+  }
+  list = ad.querySelector('.admin-player-list');
+  if (list && adminInventory.userId === userId) renderAdminInventory(list);
+}
+
+ad.addEventListener('click', async function (event) {
+  var button = event.target.closest('[data-admin-inventory-open],[data-admin-inventory-close],[data-admin-inventory-remove]');
+  if (!button || !NET.admin || !isOwner() || adminInventory.saving) return;
+  var row = button.closest('[data-inventory-player]');
+  var userId = row.dataset.inventoryPlayer;
+  if (button.hasAttribute('data-admin-inventory-open')) {
+    await loadAdminInventory(userId);
+    return;
+  }
+  if (button.hasAttribute('data-admin-inventory-close')) {
+    adminInventory.userId = '';
+    renderAdminInventory(row.closest('.admin-player-list'));
+    return;
+  }
+  var data = adminInventory.data;
+  if (!data || adminInventory.userId !== userId || NET.busy || U.busy) return;
+  var player = NET.players.find(function (entry) { return entry.id === userId; });
+  if (!player) return toast('Игрок не найден');
+  var mode = button.dataset.adminInventoryRemove;
+  var body = {userId:userId, version:data.version, mode:mode};
+  var description = 'весь инвентарь (' + data.total + ' шт.)';
+  if (mode === 'quantity') {
+    var itemId = Number(row.querySelector('[data-admin-inventory-item]').value);
+    var quantity = Number(row.querySelector('[data-admin-inventory-quantity]').value);
+    var group = data.groups.find(function (entry) { return entry.id === itemId; });
+    if (!group || !Number.isSafeInteger(quantity) || quantity < 1 || quantity > group.count) {
+      return toast('Укажи целое количество из наличия');
+    }
+    body.itemId = itemId;
+    body.quantity = quantity;
+    description = group.name + ' × ' + quantity;
+  }
+  if (!window.confirm('Списать у игрока ' + playerIdentityLabel(player) + ': ' + description + '?')) return;
+  adminInventory.saving = true;
+  button.disabled = true;
+  try {
+    var reply = await NET.request('admin-inventory-remove', body);
+    NET.adopt(reply);
+    render();
+    admin();
+    toast('Списано предметов: ' + reply.result.removed);
+  } catch (error) {
+    toast(error.message);
+  } finally {
+    await loadAdminInventory(userId);
+    adminInventory.saving = false;
+  }
+});

@@ -473,6 +473,34 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
     assert(user,'Игрок не найден. Укажите ID или username вошедшего игрока');assert(user.id!==s.owner,'Нельзя заблокировать владельца');
     assert(typeof b.banned==='boolean','Укажите бан или разбан');user.banned=b.banned;return {userId:user.id,name:user.me,username:user.telegramUsername||'',banned:user.banned};
   }
+  if (action === 'admin-inventory-remove') {
+    own(s, id);
+    assert(typeof b.userId === 'string' && Object.hasOwn(s.users, b.userId), 'Игрок не найден');
+    const target = s.users[b.userId];
+    const before = target.inv.length;
+    assert(before > 0, 'Инвентарь пуст');
+    assert(b.mode === 'all' || b.mode === 'quantity', 'Укажите способ списания');
+    let itemId = null;
+    if (b.mode === 'all') {
+      target.inv = [];
+    } else {
+      itemId = b.itemId;
+      assert(Number.isSafeInteger(itemId), 'Выберите предмет');
+      assert(Number.isSafeInteger(b.quantity) && b.quantity > 0, 'Укажите целое количество предметов');
+      const matching = target.inv.filter(entry => entry.id === itemId);
+      assert(b.quantity <= matching.length, 'В инвентаре меньше предметов, чем указано');
+      const selected = new Set(matching.slice(0, b.quantity));
+      target.inv = target.inv.filter(entry => !selected.has(entry));
+    }
+    const removed = before - target.inv.length;
+    const item = itemId === null ? null : [...seed.items, ...s.config.custom].find(entry => entry.id === itemId);
+    const detail = itemId === null ? 'Весь инвентарь · ' + removed : (item?.name || 'Предмет №' + itemId) + ' × ' + removed;
+    target.activity = [
+      {id:crypto.randomUUID(), ts:now, title:'Списание инвентаря администратором', detail},
+      ...(target.activity || [])
+    ].slice(0, 50);
+    return {userId:target.id, removed, remaining:target.inv.length};
+  }
   if(action==='admin-balance'){
     own(s,id);const amount=money(Number(b.amount));assert(Number.isFinite(amount)&&(b.mode==='set'?amount>=0:amount>0)&&amount<=1e9,'Проверьте сумму (до 1 000 000 000)');
     assert(['add','subtract','set'].includes(b.mode),'Неизвестная операция');

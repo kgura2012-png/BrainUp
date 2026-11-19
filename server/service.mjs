@@ -4,7 +4,23 @@ import {isFiftyFiftyCase} from '../shared/case-odds.mjs';
 import seed from './seed.json' with { type: 'json' };
 import {migrationBackup} from './migration-backup.mjs';
 import {publicPlayerProfile,telegramReferralUrl} from './player-profile.mjs';
-export function adminPlayerList(state){return Object.values(state.users).map(u=>({id:u.id,username:u.telegramUsername||'',name:u.me,balance:u.balance,inventoryCount:u.inv.length,banned:!!u.banned}));}
+export function adminPlayerList(state){return Object.values(state.users).map(u=>({id:u.id,username:u.telegramUsername||'',telegramName:u.telegramName||'',name:u.me,balance:u.balance,inventoryCount:u.inv.length,banned:!!u.banned}));}
+async function adminInventoryVersion(entries) {
+  const source = JSON.stringify(entries.map(({uid, id}) => [uid, id]));
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(source));
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function adminInventoryGroups(state, entries) {
+  const names = new Map([...seed.items, ...(state.config.custom || [])].map(item => [item.id, item.name]));
+  const groups = new Map();
+  for (const {id} of entries) {
+    if (!groups.has(id)) groups.set(id, {id, name: names.get(id) || 'Предмет №' + id, count: 0});
+    groups.get(id).count++;
+  }
+  return [...groups.values()].sort((a, b) => a.name.localeCompare(b.name, 'ru') || a.id - b.id);
+}
+
 export async function readFeed(request,db,identity){
   if(!identity?.id)return Response.json({ok:false,error:'Войдите в аккаунт'},{status:401});
   if(request.method!=='GET')return new Response('Method not allowed',{status:405});
@@ -33,6 +49,24 @@ export async function handle(request, db, identity, options={}) {
   if(request.method==='POST'){try{const raw=await request.text();if(raw.length>5_000_000)return json({ok:false,error:'Запрос слишком большой'},413);body=JSON.parse(raw);}catch{return json({ok:false,error:'Некорректный запрос'},400);}}
   if(!/^[a-z-]{1,40}$/.test(body.action||'')||!/^[-a-zA-Z0-9]{8,80}$/.test(body.requestId||''))return json({ok:false,error:'Некорректное действие'},400);
   if(body.action==='admin-backup')return migrationBackup(db,identity);
+  if(body.action==='admin-inventory-view'){
+    const row = await db.prepare('SELECT data FROM site_state WHERE id = 1').first();
+    const state = row && JSON.parse(row.data);
+    if (!state || state.owner !== identity.id) return json({ok:false,error:'Доступ только владельцу'},403);
+    const userId = body.data?.userId;
+    if (typeof userId !== 'string' || !Object.hasOwn(state.users, userId)) {
+      return json({ok:false,error:'Игрок не найден'},404);
+    }
+    const entries = state.users[userId].inv;
+    return json({ok:true, inventory:{
+      total: entries.length,
+      version: await adminInventoryVersion(entries),
+      groups: adminInventoryGroups(state, entries)
+    }});
+  }
+  if (options.migrationReadOnly && body.action === 'admin-inventory-remove') {
+    return json({ok:false,error:'Идёт перенос. Изменение инвентаря временно недоступно.'},503);
+  }
   if(['player-profile','referral-info'].includes(body.action)){
     const row=await db.prepare('SELECT data FROM site_state WHERE id = 1').first(),state=row?JSON.parse(row.data):null;
     if(!state)return json({ok:false,error:'Игрок не найден'},404);
@@ -108,6 +142,16 @@ export async function handle(request, db, identity, options={}) {
     if(tagName!==undefined){user.telegramName=tagName;user.telegramNameVerifiedAt=Date.now()}
     const key=identity.id+':'+body.requestId;let result=state.receipts[key];
     if(result){if(body.action==='mines-open'&&!result.end)return json(minePatchView(state,identity.id,result));const answer={...view(state,identity.id,seed,Date.now(),{compact}),result};if(answer.admin&&!compact)answer.players=adminPlayerList(state);return json(answer);}
+    if (body.action === 'admin-inventory-remove') {
+      if (state.owner !== identity.id) return json({ok:false,error:'Доступ только владельцу'},403);
+      const userId = body.data?.userId;
+      if (typeof userId !== 'string' || !Object.hasOwn(state.users, userId)) {
+        return json({ok:false,error:'Игрок не найден'},404);
+      }
+      if (body.data.version !== await adminInventoryVersion(state.users[userId].inv)) {
+        return json({ok:false,error:'Инвентарь изменился. Проверьте список перед повторным списанием.'},409);
+      }
+    }
     try { result=execute(state,identity.id,seed,body.action,body.data||{},body.action==='rocket-cash'?receivedAt:Date.now()); }
     catch(e){return json({ok:false,error:e.message},400);}
     state.receipts[key]=result;
