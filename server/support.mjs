@@ -1,3 +1,4 @@
+import {readBrainupState, saveBrainupState} from './state-storage.mjs';
 import {recordPartnerDeposit} from './partner-accounting.mjs';
 const TOPUP_PREFIX = 'topup:';
 const BU_CENTS_PER_STAR = 125;
@@ -5,7 +6,7 @@ const BU_CENTS_PER_STAR = 125;
 async function applyStarsBalance(db, order, refunded) {
  const userKey = 'tg:' + order.user_id;
  for (let attempt = 0; attempt < 12; attempt++) {
-  const row = await db.prepare('SELECT revision, data FROM site_state WHERE id = 1').first();
+  const row = await readBrainupState(db);
   const state = row && JSON.parse(row.data);
   const user = state?.users[userKey];
   if (!user) throw Error('Payment account unavailable');
@@ -19,8 +20,7 @@ async function applyStarsBalance(db, order, refunded) {
   if(!refunded){const code=recordPartnerDeposit(state,user,cents/100);if(code)partnerEntries[order.id]={code,amount:cents/100};}
   else if(previous==='paid'&&partnerEntries[order.id]){const entry=partnerEntries[order.id];recordPartnerDeposit(state,user,-entry.amount,entry.code);entry.refunded=true;}
   entries[order.id] = refunded ? 'refunded' : 'paid';
-  const result = await db.prepare('UPDATE site_state SET revision = revision + 1, data = ? WHERE id = 1 AND revision = ?')
-   .bind(JSON.stringify(state), row.revision).run();
+  const result = await saveBrainupState(db, row.revision, state);
   if (result.meta.changes === 1) return;
  }
  throw Error('Payment balance update must be retried');
@@ -33,7 +33,7 @@ export async function supportSchema(db){
  await db.prepare('CREATE TABLE IF NOT EXISTS support_receipts (charge_id TEXT PRIMARY KEY, payment_id TEXT NOT NULL, user_id INTEGER NOT NULL, stars INTEGER NOT NULL, paid_at INTEGER NOT NULL, refunded_at INTEGER)').run();
 }
 async function supportApi(env,method,body){if(!env.TELEGRAM_BOT_TOKEN)throw Error('Оплата пока недоступна');const response=await fetch('https://api.telegram.org/bot'+env.TELEGRAM_BOT_TOKEN+'/'+method,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(7000)}),data=await response.json();if(!response.ok||!data.ok)throw Error('Telegram не ответил. Повторите позже.');return data.result;}
-async function supportAllowed(db,id){const row=await db.prepare('SELECT data FROM site_state WHERE id = 1').first(),state=row?JSON.parse(row.data):null;return !state?.config.topupsClosed&&!state?.config.topupsStarsClosed&&!state?.users['tg:'+id]?.banned;}
+async function supportAllowed(db,id){const row=await readBrainupState(db),state=row?JSON.parse(row.data):null;return !state?.config.topupsClosed&&!state?.config.topupsStarsClosed&&!state?.users['tg:'+id]?.banned;}
 export async function handleSupport(request,env,identity){
  const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
  if(!identity?.id?.startsWith('tg:'))return json({ok:false,error:'Откройте оплату в Telegram'},401);
@@ -54,7 +54,7 @@ export async function handleSupport(request,env,identity){
  let body;try{const raw=await request.text();if(raw.length>1024)throw Error();body=JSON.parse(raw)}catch{return json({ok:false,error:'Некорректный запрос'},400)}
  if(!/^[a-f0-9-]{36}$/i.test(body.id||'')||!Number.isSafeInteger(body.stars)||body.stars<1||body.stars>10000)return json({ok:false,error:'Укажите целое число от 1 до 10 000 Stars'},400);
  if(!await supportAllowed(env.DB,userId))return json({ok:false,error:'Пополнения временно закрыты'},403);
- const stateRow=await env.DB.prepare('SELECT data FROM site_state WHERE id = 1').first();
+ const stateRow=await readBrainupState(env.DB);
  if(!stateRow||!JSON.parse(stateRow.data).users[identity.id])return json({ok:false,error:'Сначала войдите в аккаунт BrainUp'},409);
  const orderId=TOPUP_PREFIX+body.id;
  const now=Date.now();await env.DB.prepare('INSERT OR IGNORE INTO support_payments(id,user_id,stars,created_at,expires_at,bu_rate) VALUES (?,?,?,?,?,?)').bind(orderId,userId,body.stars,now,now+1800000,BU_CENTS_PER_STAR).run();

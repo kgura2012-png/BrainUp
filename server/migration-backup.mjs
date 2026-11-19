@@ -1,9 +1,10 @@
+import {readBrainupState} from './state-storage.mjs';
 const BACKUP_TABLES={
   support_payments:['id','user_id','stars','status','invoice_url','checkout_query','created_at','expires_at'],
   support_receipts:['charge_id','payment_id','user_id','stars','paid_at','refunded_at']
 };
 export async function migrationBackup(db, identity) {
-  const row=await db.prepare('SELECT id, revision, data FROM site_state WHERE id = 1').first();
+  const row=await readBrainupState(db);
   if (!row || !identity?.id || JSON.parse(row.data).owner !== identity.id) {
     return Response.json({ok:false,error:'Доступ запрещён'},{status:403,headers:{'Cache-Control':'no-store'}});
   }

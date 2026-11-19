@@ -1,3 +1,4 @@
+import {readBrainupState} from './state-storage.mjs';
 // Durable bot outbox. The cron capability is server-only and never appears in browser responses.
 export async function notificationSchema(db){
  await db.prepare('CREATE TABLE IF NOT EXISTS app_notification_control (id INTEGER PRIMARY KEY CHECK(id=1), cron_key TEXT NOT NULL, last_tick_at INTEGER, last_result TEXT)').run();
@@ -6,7 +7,7 @@ export async function notificationSchema(db){
  await db.prepare("CREATE TABLE IF NOT EXISTS app_notification_jobs (id TEXT PRIMARY KEY, kind TEXT NOT NULL, record_id TEXT NOT NULL, recipient TEXT NOT NULL, due_at INTEGER NOT NULL, expires_at INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'pending', attempts INTEGER NOT NULL DEFAULT 0, retry_at INTEGER NOT NULL DEFAULT 0, lease_token TEXT, lease_until INTEGER, sent_at INTEGER, message_id INTEGER, error TEXT)").run();
  await db.prepare('CREATE INDEX IF NOT EXISTS app_notification_due ON app_notification_jobs(status,retry_at,due_at)').run();
 }
-async function notificationState(db){const row=await db.prepare('SELECT data FROM site_state WHERE id=1').first();return row?JSON.parse(row.data):null}
+async function notificationState(db){const row=await readBrainupState(db);return row?JSON.parse(row.data):null}
 function notificationRecord(state,job,now){
  const records=job.kind==='uah'?(state?.uahTopups||[]):(state?.simulationBookings||[]),record=records.find(entry=>entry.id===job.record_id);
  if(job.kind==='uah')return record?.notifyOwner&&record.st==='new'&&record.expiresAt>now?record:null;

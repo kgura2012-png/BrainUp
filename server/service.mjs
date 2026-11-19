@@ -1,3 +1,4 @@
+import {readBrainupState, saveBrainupState} from './state-storage.mjs';
 import {uahTopupView} from './uah-topups.mjs';
 import { account, execute, fresh, view, publicFeed, topupStatus, simulationTopupView, minePatchView } from './model.mjs';
 import {isFiftyFiftyCase} from '../shared/case-odds.mjs';
@@ -24,7 +25,7 @@ function adminInventoryGroups(state, entries) {
 export async function readFeed(request,db,identity){
   if(!identity?.id)return Response.json({ok:false,error:'Войдите в аккаунт'},{status:401});
   if(request.method!=='GET')return new Response('Method not allowed',{status:405});
-  const row=await db.prepare('SELECT revision, data FROM site_state WHERE id = 1').first();
+  const row=await readBrainupState(db);
   const snapshot=row?JSON.parse(row.data):null;
   if(snapshot?.users[identity.id]?.banned)return Response.json({ok:false,error:'Доступ заблокирован'},{status:403});
   return Response.json({ok:true,...(snapshot?publicFeed(snapshot):{drops:[],topDrop:null})},{headers:{'Cache-Control':'no-store'}});
@@ -32,7 +33,7 @@ export async function readFeed(request,db,identity){
 export async function readTopups(request,db,identity){
  if(!identity?.id)return Response.json({ok:false,error:'Войдите в аккаунт'},{status:401});
  if(request.method!=='GET')return new Response('Method not allowed',{status:405});
- const row=await db.prepare('SELECT revision, data FROM site_state WHERE id = 1').first(),state=row?JSON.parse(row.data):null,user=state?.users[identity.id];
+ const row=await readBrainupState(db),state=row?JSON.parse(row.data):null,user=state?.users[identity.id];
  if(user?.banned)return Response.json({ok:false,error:'Доступ заблокирован'},{status:403});
  const now=Date.now();return Response.json({ok:true,now,topupsClosed:!!state?.config.topupsClosed,topupsStarsClosed:!!(state?.config.topupsClosed||state?.config.topupsStarsClosed),topupsItemsClosed:!!(state?.config.topupsClosed||state?.config.topupsItemsClosed),topupsGearsClosed:!!(state?.config.topupsClosed||state?.config.topupsGearsClosed),topupsUahClosed:!!(state?.config.topupsClosed||state?.config.topupsUahClosed),uahConfigured:!!state?.config.uahCard,uahTopups:(state?.uahTopups||[]).filter(x=>x.userId===identity.id).map(x=>uahTopupView(x,now)),balance:user?.balance||0,topups:(state?.simulationTopups||[]).filter(x=>x.userId===identity.id).map(x=>simulationTopupView(state,x,now))},{headers:{'Cache-Control':'no-store'}});
 }
@@ -50,7 +51,7 @@ export async function handle(request, db, identity, options={}) {
   if(!/^[a-z-]{1,40}$/.test(body.action||'')||!/^[-a-zA-Z0-9]{8,80}$/.test(body.requestId||''))return json({ok:false,error:'Некорректное действие'},400);
   if(body.action==='admin-backup')return migrationBackup(db,identity);
   if(body.action==='admin-inventory-view'){
-    const row = await db.prepare('SELECT data FROM site_state WHERE id = 1').first();
+    const row = await readBrainupState(db);
     const state = row && JSON.parse(row.data);
     if (!state || state.owner !== identity.id) return json({ok:false,error:'Доступ только владельцу'},403);
     const userId = body.data?.userId;
@@ -68,7 +69,7 @@ export async function handle(request, db, identity, options={}) {
     return json({ok:false,error:'Идёт перенос. Изменение инвентаря временно недоступно.'},503);
   }
   if(['player-profile','referral-info'].includes(body.action)){
-    const row=await db.prepare('SELECT data FROM site_state WHERE id = 1').first(),state=row?JSON.parse(row.data):null;
+    const row=await readBrainupState(db),state=row?JSON.parse(row.data):null;
     if(!state)return json({ok:false,error:'Игрок не найден'},404);
     if(state.users[identity.id]?.banned)return json({ok:false,error:'Доступ заблокирован'},403);
     try{
@@ -101,10 +102,10 @@ export async function handle(request, db, identity, options={}) {
   }
   const compact=['mines-start','mines-open','mines-cash','dice','upgrade','fuse','fuse-hit','rocket-place','rocket-cancel','rocket-status','rocket-cash'].includes(body.action);
   for(let attempt=0;attempt<12;attempt++){
-    let row=await db.prepare('SELECT revision, data FROM site_state WHERE id = 1').first();
+    let row=await readBrainupState(db);
     if(!row){
       await db.prepare('INSERT OR IGNORE INTO site_state (id, revision, data) VALUES (1, 0, ?)').bind(JSON.stringify(fresh(seed,'telegram-admin-pending'))).run();
-      row=await db.prepare('SELECT revision, data FROM site_state WHERE id = 1').first();
+      row=await readBrainupState(db);
     }
     const state=JSON.parse(row.data);
     const initializedAutoPromo=!Number.isSafeInteger(state.config.autoPromoSeed);
@@ -156,7 +157,7 @@ export async function handle(request, db, identity, options={}) {
     catch(e){return json({ok:false,error:e.message},400);}
     state.receipts[key]=result;
     const keys=Object.keys(state.receipts);if(keys.length>5000)for(const k of keys.slice(0,keys.length-5000))delete state.receipts[k];
-    const update=await db.prepare('UPDATE site_state SET revision = revision + 1, data = ? WHERE id = 1 AND revision = ?').bind(JSON.stringify(state),row.revision).run();
+    const update=await saveBrainupState(db, row.revision, state);
     if(update.meta.changes){if(['collaboration-review','collaboration-notify-retry'].includes(body.action)&&options.onCollaborationDecision){const notification=await deliverCollaborationDecision(db,result.application.id,options.onCollaborationDecision);result.application.notification=notification;const app=state.collaborationApplications?.find(x=>x.id===result.application.id);if(app)app.notification=notification;}if(body.action==='uah-topup'&&result.topup?.type==='uah'&&options.onUahTopupCreated)try{const work=options.onUahTopupCreated(result.topup);if(work?.catch)work.catch(()=>{})}catch{}if(body.action==='simulation-topup'&&result.topup?.simulation===true&&result.topup.free===true&&options.onSimulationTopupCreated)try{const notification=options.onSimulationTopupCreated(result.topup);if(notification?.catch)notification.catch(()=>{})}catch{}if(body.action==='mines-open'&&!result.end)return json(minePatchView(state,identity.id,result));const answer={...view(state,identity.id,seed,Date.now(),{compact}),result};if(answer.admin&&!compact)answer.players=adminPlayerList(state);return json(answer);}
   }
   return json({ok:false,error:'Слишком много одновременных операций. Повторите запрос.'},409);
@@ -166,7 +167,7 @@ export async function handle(request, db, identity, options={}) {
 export async function readRocket(request,db,identity,now=Date.now()){
  if(!identity?.id)return Response.json({ok:false,error:'Войдите в аккаунт'},{status:401});
  if(request.method!=='GET')return new Response('Method not allowed',{status:405});
- const row=await db.prepare('SELECT revision, data FROM site_state WHERE id = 1').first(),state=row?JSON.parse(row.data):null,u=state?.users[identity.id];
+ const row=await readBrainupState(db),state=row?JSON.parse(row.data):null,u=state?.users[identity.id];
  if(u?.banned)return Response.json({ok:false,error:'Доступ заблокирован'},{status:403});
  const g=u?.rocket;let phase='done',mult=1;
  if(g){const end=g.start+Math.log(g.crash)/.00012,autoEnd=g.auto>=1.01&&g.auto<g.crash?g.start+Math.log(g.auto)/.00012:Infinity;phase=now>=Math.min(end,autoEnd)?'settle':now<g.start?'wait':'fly';if(phase==='fly')mult=Math.exp(.00012*(now-g.start))}
@@ -176,7 +177,7 @@ export async function readRocket(request,db,identity,now=Date.now()){
 // A short persisted lease prevents concurrent retries from sending twice.
 export async function deliverCollaborationDecision(db,applicationId,send){
  const claim=crypto.randomUUID();let application;
- async function update(change){for(let attempt=0;attempt<12;attempt++){const row=await db.prepare('SELECT revision, data FROM site_state WHERE id = 1').first();if(!row)return null;const state=JSON.parse(row.data),record=(state.collaborationApplications||[]).find(x=>x.id===applicationId);if(!record)return null;const result=change(record);if(result===false)return record.notification||{state:'unavailable'};const saved=await db.prepare('UPDATE site_state SET revision = revision + 1, data = ? WHERE id = 1 AND revision = ?').bind(JSON.stringify(state),row.revision).run();if(saved.meta.changes){application=structuredClone(record);return record.notification}}throw Error('Не удалось сохранить статус уведомления');}
+ async function update(change){for(let attempt=0;attempt<12;attempt++){const row=await readBrainupState(db);if(!row)return null;const state=JSON.parse(row.data),record=(state.collaborationApplications||[]).find(x=>x.id===applicationId);if(!record)return null;const result=change(record);if(result===false)return record.notification||{state:'unavailable'};const saved=await saveBrainupState(db, row.revision, state);if(saved.meta.changes){application=structuredClone(record);return record.notification}}throw Error('Не удалось сохранить статус уведомления');}
  const current=await update(record=>{const note=record.notification||{};if(note.state==='sent'||note.state==='sending'&&note.leaseUntil>Date.now())return false;record.notification={state:'sending',attempts:(note.attempts||0)+1,claim,leaseUntil:Date.now()+15000};});
  if(!application||current?.claim!==claim)return current;
  let outcome;

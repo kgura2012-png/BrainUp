@@ -101,14 +101,15 @@ const service=(await fs.readFile(path.join(root,'server/service.mjs'),'utf8')).r
 const telegram=(await fs.readFile(path.join(root,'server/telegram.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'');
 const browserAuthSource=await fs.readFile(path.join(root,'server/browser-telegram.mjs'),'utf8');
 const identitySource=(await fs.readFile(path.join(root,'server/request-identity.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'');
-const migrationSource=await fs.readFile(path.join(root,'server/migration-backup.mjs'),'utf8');
+const stateStorageSource=await fs.readFile(path.join(root,'server/state-storage.mjs'),'utf8');
+const migrationSource=(await fs.readFile(path.join(root,'server/migration-backup.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'');
 const support=(await fs.readFile(path.join(root,'server/support.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'');
 const mutationAssetsSource=(await fs.readFile(path.join(root,'server/mutation-assets.mjs'),'utf8')).replace(/^export /gm,'');
 const welcomePhoto=(await fs.readFile(path.join(root,'assets/bot/welcome.jpg'))).toString('base64');
 const htmlGzip=cloudflare?null:gzipSync(Buffer.from(html),{level:9});
 if(htmlGzip&&gunzipSync(htmlGzip).toString()!==html)throw Error('HTML compression round trip failed');
 const cloudflareMigrationPage = "<!doctype html><html lang=\"ru\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>BrainUp — перенос сайта</title><style>\n*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:#10131c;color:#f4f6fc;font:16px/1.55 system-ui,sans-serif}main{width:min(100%,440px);padding:32px;background:#181d29;border:1px solid #303747;border-radius:24px}img{width:150px;max-width:100%;height:auto;display:block}h1{font-size:28px;line-height:1.2;margin:24px 0 12px}p{color:#bdc7da;margin:0 0 24px}a{display:inline-block;background:#c9dbff;color:#121a2b;border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none}a:focus-visible{outline:3px solid #fff;outline-offset:4px}\n</style><main><img src=\"/assets/brainup-wordmark.webp\" alt=\"BrainUp\"><h1>BrainUp переезжает</h1><p>Новый сервер доступен. Вход, баланс и инвентарь появятся после переноса базы. Пока можно открыть действующий BrainUp.</p><a href=\"https://brainup-mobile-nov26.regalpeach22.chatgpt.site/\">Открыть действующий BrainUp</a></main></html>";
-const worker=`${notificationJobsSource}\n${partnerAccountingSource}\n${uahTopupsSource}\n${support}\n${telegram}\n${browserAuthSource}\n${identitySource}\n${migrationSource}\n${mutationAssetsSource}\n${mutationMaterialSource}\n${catalogArtworkSource}\nconst catalogArtwork=${JSON.stringify(catalogArtwork)};\nconst mutationMaterialManifest=${JSON.stringify(mutationMaterialManifest)};\nconst mutationModels=${JSON.stringify(mutationModels)};\nconst mutationOriginalAssets=${JSON.stringify(mutationOriginalAssets)};\nconst mutationAssetManifest=${JSON.stringify(mutationAssetManifest)};\nconst mutationIcons=${JSON.stringify(mutationIcons)};\nconst standaloneCloudflare=${cloudflare};\nconst brandWordmark=${JSON.stringify(cloudflare?null:wordmarkBytes.toString('base64'))};\nconst htmlGzip=${JSON.stringify(htmlGzip?.toString('base64')||null)};\nfunction htmlResponseBody(){return new Blob([Uint8Array.from(atob(htmlGzip),ch=>ch.charCodeAt(0))]).stream().pipeThrough(new DecompressionStream('gzip'))}\nconst welcomePhoto=${JSON.stringify(cloudflare?null:welcomePhoto)};\nconst seed=${seed};\n${playerProfiles}\n${caseSectionsSource}\n${caseOddsSource}\n${buffsSource}\n${upgradeChanceShared}\n${model}\n${service}\n`+`
+const worker=`${stateStorageSource}\n${notificationJobsSource.replace(/^import .*?;\r?\n/gm,'')}\n${partnerAccountingSource}\n${uahTopupsSource}\n${support}\n${telegram}\n${browserAuthSource}\n${identitySource}\n${migrationSource}\n${mutationAssetsSource}\n${mutationMaterialSource}\n${catalogArtworkSource}\nconst catalogArtwork=${JSON.stringify(catalogArtwork)};\nconst mutationMaterialManifest=${JSON.stringify(mutationMaterialManifest)};\nconst mutationModels=${JSON.stringify(mutationModels)};\nconst mutationOriginalAssets=${JSON.stringify(mutationOriginalAssets)};\nconst mutationAssetManifest=${JSON.stringify(mutationAssetManifest)};\nconst mutationIcons=${JSON.stringify(mutationIcons)};\nconst standaloneCloudflare=${cloudflare};\nconst brandWordmark=${JSON.stringify(cloudflare?null:wordmarkBytes.toString('base64'))};\nconst htmlGzip=${JSON.stringify(htmlGzip?.toString('base64')||null)};\nfunction htmlResponseBody(){return new Blob([Uint8Array.from(atob(htmlGzip),ch=>ch.charCodeAt(0))]).stream().pipeThrough(new DecompressionStream('gzip'))}\nconst welcomePhoto=${JSON.stringify(cloudflare?null:welcomePhoto)};\nconst seed=${seed};\n${playerProfiles}\n${caseSectionsSource}\n${caseOddsSource}\n${buffsSource}\n${upgradeChanceShared}\n${model}\n${service}\n`+`
 export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url);
@@ -125,6 +126,7 @@ export default {
         status:503, headers:{'Cache-Control':'no-store', 'Retry-After':'300'}
       });
     }
+    if(standaloneCloudflare)enableBrainupSegments(env.DB);
     if(url.pathname==='/internal/notifications/tick')return handleNotificationTick(request,env);
     if(url.pathname.startsWith('/assets/catalog/'))return handleCatalogArtwork(request,env,catalogArtwork);
     if(url.pathname==='/assets/brainup-wordmark.webp'){
@@ -163,7 +165,7 @@ export default {
     if(standaloneCloudflare){const asset=await env.ASSETS.fetch(new Request(new URL('/index.html',request.url),request));const headers=new Headers(asset.headers);headers.set('Cache-Control','no-store');headers.set('X-Content-Type-Options','nosniff');headers.set('Referrer-Policy','same-origin');return new Response(asset.body,{status:asset.status,headers})}
     return new Response(htmlResponseBody(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin'}});
   },
-  async scheduled(event,env,ctx){if(standaloneCloudflare&&env.BRAINUP_MIGRATION_PENDING==='true')return;ctx.waitUntil(processNotificationJobs(env,env.APP_ORIGIN||'https://brainup-mobile-nov26.regalpeach22.chatgpt.site'))}
+  async scheduled(event,env,ctx){if(standaloneCloudflare&&env.BRAINUP_MIGRATION_PENDING==='true')return;if(standaloneCloudflare)enableBrainupSegments(env.DB);ctx.waitUntil(processNotificationJobs(env,env.APP_ORIGIN||'https://brainup-mobile-nov26.regalpeach22.chatgpt.site'))}
 };`;
 const out=path.join(root,cloudflare?'dist-cloudflare':'dist');
 if(cloudflare)await fs.rm(out,{recursive:true,force:true});

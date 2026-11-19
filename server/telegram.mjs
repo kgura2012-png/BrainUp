@@ -1,3 +1,4 @@
+import {readBrainupState} from './state-storage.mjs';
 import {supportTelegramUpdate} from './support.mjs';
 import {handle} from './service.mjs';
 import {browserLoginTelegramUpdate} from './browser-telegram.mjs';
@@ -43,7 +44,7 @@ export async function telegramWebhook(request, env, defaultStartPhoto) {
     if(await supportTelegramUpdate(update,env,api))return new Response('OK');
     if(m?.chat?.type==='private'&&/^\/paysupport(?:@\w+)?$/.test(String(m.text||'').trim())){await api('sendMessage',{chat_id:m.chat.id,text:'По вопросам оплаты напишите в поддержку: https://t.me/BrainUpOfficialSupport_bot. Приложите квитанцию Telegram и дату платежа.'});return new Response('OK');}
     const actor=m?.from||q?.from;
-    if(actor&&env.DB){const row=await env.DB.prepare('SELECT revision, data FROM site_state WHERE id = 1').first();if(row&&JSON.parse(row.data).users['tg:'+actor.id]?.banned){if(q)await api('answerCallbackQuery',{callback_query_id:q.id,text:'Доступ заблокирован',show_alert:true});else if(m.chat?.type==='private')await api('sendMessage',{chat_id:m.chat.id,text:'Доступ к BrainUp заблокирован.'});return new Response('OK');}}
+    if(actor&&env.DB){const row=await readBrainupState(env.DB);if(row&&JSON.parse(row.data).users['tg:'+actor.id]?.banned){if(q)await api('answerCallbackQuery',{callback_query_id:q.id,text:'Доступ заблокирован',show_alert:true});else if(m.chat?.type==='private')await api('sendMessage',{chat_id:m.chat.id,text:'Доступ к BrainUp заблокирован.'});return new Response('OK');}}
     if(await browserLoginTelegramUpdate(update,env,api,origin))return new Response('OK');
     if(q?.data==='bonus_code'&&q.message?.chat?.type==='private'&&q.message.chat.id===q.from?.id){
       await api('answerCallbackQuery',{callback_query_id:q.id});await ask(q.from.id);return new Response('OK');
