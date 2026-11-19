@@ -16,7 +16,7 @@
     {
       "binding": "DB",
       "database_name": "brainup-production",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "a906f74a-ce02-4b50-9b0d-ec7358825398",
       "migrations_dir": "cloudflare/migrations"
     }
   ],
