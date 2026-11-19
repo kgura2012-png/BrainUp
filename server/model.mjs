@@ -4,7 +4,7 @@ import {withCatalogPrice} from '../shared/catalog-prices.mjs';
 import {buffTopupQuote} from '../shared/buffs.mjs';
 import {executeUahTopup,uahTopupView} from './uah-topups.mjs';
 import {capturePartnerGame,settlePartnerGame,recordPartnerDeposit} from './partner-accounting.mjs';
-import {isFiftyFiftyCase,pickCaseItem,FREE_CASE_ODDS} from '../shared/case-odds.mjs';
+import {activationCaseRewardPool, customCaseRewardPool, drawCustomCaseReward, isFiftyFiftyCase, pickCaseItem, validCaseRewardOdds, FREE_CASE_ODDS} from '../shared/case-odds.mjs';
 import {dropPlayerId} from './player-profile.mjs';
 import {caseSectionList,caseSectionFor} from '../shared/case-sections.mjs';
 // All amounts use two decimal places. Client state is never accepted as money.
@@ -77,6 +77,18 @@ export function account(state, id, name) {
 }
 const catalog = (s, seed) => [...seed.items,...s.config.custom].filter(item=>!item.hidden).map(item=>withCatalogPrice(item,s.config.itemPrices));
 const own = (s,id) => assert(s.owner === id, 'Доступ только владельцу');
+function caseDropItems(s, seed, c) {
+  const available = new Map(catalog(s, seed).map(item => [item.id, item]));
+  return c.drops.map(id => available.get(Number(id))).filter(Boolean);
+}
+function caseRewards(c, drops) {
+  return c.bonus && ['sub', 'nick'].includes(c.bonusKey) ? activationCaseRewardPool(drops) : drops;
+}
+function discardOutdatedCaseOdds(s, seed, c) {
+  if (c.rewardOdds && !validCaseRewardOdds(c.rewardOdds, caseRewards(c, caseDropItems(s, seed, c)))) {
+    delete c.rewardOdds;
+  }
+}
 const itemBy = (s,seed,id,allowHidden=false) => { const it=[...seed.items,...s.config.custom].find(x=>x.id===Number(id));assert(it&&(allowHidden||!it.hidden),'Предмет не найден');return withCatalogPrice(it,s.config.itemPrices); };
 function debit(u, value) { assert(Number.isFinite(value) && value > 0 && u.balance >= value, 'Недостаточно монет');u.balance=money(u.balance-value); }
 function take(u, ids) {
@@ -293,12 +305,22 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
   if(action==='case'){
     const c=s.config.cases.find(c=>c.id===Number(b.id));assert(c,'Кейс не найден');if(c.bonusKey==='nick')assert(id.startsWith('tg:')&&/(?:^|[^a-z0-9_])@BrainUpOfficial_bot(?![a-z0-9_])/i.test(u.telegramName||''),'Добавьте @BrainUpOfficial_bot в имя Telegram');const n=b.free?1:Number(b.n);assert([1,2,3,4,5].includes(n),'От 1 до 5 кейсов');
     assert(!c.bonus||b.free,'Бонусные кейсы доступны только за выполнение условий');
-    const activeIds=new Set(catalog(s,seed).map(item=>item.id)),drops=c.drops.filter(id=>activeIds.has(Number(id))).map(id=>itemBy(s,seed,id));assert(drops.length,'Кейс пуст');
-    const fifty=isFiftyFiftyCase(c);if(fifty)assert(drops.length===2&&drops.some(item=>item.id===55)&&drops.some(item=>item.id===95),'В кейсе должны быть ровно два предмета: Dragon Canelonni (36%) и Noobini Pizzanini (64%)');
+    const drops=caseDropItems(s,seed,c);assert(drops.length,'Кейс пуст');
+    const customPool=c.rewardOdds?customCaseRewardPool(c,caseRewards(c,drops)):null;
+    const fifty=isFiftyFiftyCase(c);if(fifty)assert(drops.length===2&&drops.some(item=>item.id===55)&&drops.some(item=>item.id===95),'В кейсе должны быть ровно два предмета: Dragon Canelonni и Noobini Pizzanini');
     if(b.free){assert(u.fc[c.id]>0,'Нет бесплатного открытия');u.fc[c.id]--;}else {debit(u,money(c.price*n));u.bn.sp=money(u.bn.sp+c.price*n);}
     const wins=[];
     for(let i=0;i<n;i++){
-      if(c.bonus&&['sub','nick'].includes(c.bonusKey)){
+      if (customPool) {
+        const {rewardWeight, ...w} = drawCustomCaseReward(customPool, rng);
+        if (w.rewardKind === 'coins') {
+          w.id = null;
+          u.balance = money(u.balance + w.price);
+          wins.push({w, uid:null, coins:w.price});
+        } else {
+          wins.push({w, uid:add(u, w.id).uid});
+        }
+      } else if(c.bonus&&['sub','nick'].includes(c.bonusKey)){
         const roll=rng();if(roll<FREE_CASE_ODDS.coins){const amount=roll<FREE_CASE_ODDS.coins2?2:5,w={id:null,name:amount===2?'2 монеты':'5 монет',price:amount,rewardKind:'coins'};u.balance=money(u.balance+amount);wins.push({w,uid:null,coins:amount});}
         else{const w=pickCaseItem(c,drops,rng);wins.push({w,uid:add(u,w.id).uid});}
       }else{const w=pickCaseItem(c,drops,rng);wins.push({w,uid:add(u,w.id).uid});}
@@ -557,13 +579,29 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
     assert(image.length<=1500000&&/^data:image\/(?:png|webp|jpeg);base64,[A-Za-z0-9+/]+={0,2}$/.test(image),'Неверное изображение или слишком большой файл');
     c.img=image;c.imageOverride=true;return {caseId:c.id};
   }
+  if(action==='admin-case-odds'){
+    own(s,id);
+    const c = s.config.cases.find(entry => entry.id === Number(b.id));
+    assert(c, 'Кейс не найден');
+    if (b.odds === null) {
+      delete c.rewardOdds;
+    } else {
+      const drops = caseDropItems(s, seed, c);
+      assert(drops.length, 'В кейсе нет доступных предметов');
+      const rewards = caseRewards(c, drops);
+      assert(validCaseRewardOdds(b.odds, rewards), 'Проверьте состав кейса и проценты. Сумма должна быть ровно 100%');
+      c.rewardOdds = Object.fromEntries(rewards.map(reward => [String(reward.id), b.odds[reward.id]]));
+    }
+    return {caseId:c.id};
+  }
   if(action==='admin-case-edit'){
     own(s,id);const c=s.config.cases.find(c=>c.id===Number(b.id));assert(c,'Кейс не найден');
     const name=String(b.name||'').trim(),price=money(Number(b.price));assert(name.length>0&&name.length<=80&&price>0&&price<=1e9&&Number.isFinite(price),'Проверьте название и цену');
     assert(Array.isArray(b.drops)&&b.drops.length>0&&b.drops.length<=2000&&new Set(b.drops).size===b.drops.length,'Выберите предметы без повторов');
     for(const itemId of b.drops)itemBy(s,seed,itemId);
     if(b.sectionId!=null||b.sectionName!=null)c.sectionId=resolveCaseSectionInput(s.config,b);
-    c.name=name;if(!c.bonus)c.price=price;c.drops=b.drops.map(Number);return {caseId:c.id};
+    c.name=name;if(!c.bonus)c.price=price;c.drops=b.drops.map(Number);
+    discardOutdatedCaseOdds(s, seed, c);return {caseId:c.id};
   }
   if(action==='admin-case-section-save'){
     own(s,id);const sections=caseSectionList(s.config),name=String(b.name||'').trim().replace(/\s+/g,' ');
@@ -611,7 +649,15 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
     const items=[...seed.items,...c.custom];assert(items.every(x=>Number.isFinite(x.price)&&x.price>0&&x.price<=1e9&&String(x.name).length<=80),'Неверные предметы');assert(new Set(items.map(x=>x.id)).size===items.length,'Повтор ID');
     assert(c.cases.every(x=>x.price>0&&Number.isFinite(x.price)&&Number.isSafeInteger(x.id)&&String(x.name||'').trim().length>0&&String(x.name).length<=80&&Array.isArray(x.drops)&&x.drops.length&&x.drops.every(id=>items.some(i=>i.id===id))),'Неверные кейсы');
     const deleted=[...new Set([...(s.config.delp||[]),...(c.delp||[])])];
-    for(const k of ['custom','cases','imgs','tpc','nid','cnid'])if(c[k]!=null)s.config[k]=c[k];s.config.delp=deleted;s.config.cases=s.config.cases.filter(x=>!deleted.includes(x.id));return {};
+    const savedOdds = new Map(s.config.cases.filter(entry => entry.rewardOdds).map(entry => [entry.id, entry.rewardOdds]));
+    for(const k of ['custom','cases','imgs','tpc','nid','cnid'])if(c[k]!=null)s.config[k]=c[k];
+    s.config.delp=deleted;s.config.cases=s.config.cases.filter(x=>!deleted.includes(x.id));
+    for (const entry of s.config.cases) {
+      if (savedOdds.has(entry.id)) entry.rewardOdds = savedOdds.get(entry.id);
+      else delete entry.rewardOdds;
+      discardOutdatedCaseOdds(s, seed, entry);
+    }
+    return {};
   }
   throw new Error('Действие не поддерживается');
 }

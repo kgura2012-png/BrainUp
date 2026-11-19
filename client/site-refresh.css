@@ -108,3 +108,11 @@ html body .cw .brainup-cinematic .cw-ri.win{animation:case-prize-settle .5s ease
 @keyframes case-chest-lift{0%{transform:translateY(0);filter:brightness(1)}55%{transform:translateY(-22px);filter:brightness(1.35)}100%{transform:translateY(0);filter:brightness(1)}}
 @keyframes case-prize-settle{0%{filter:brightness(1.5)}100%{filter:brightness(1)}}
 @media(prefers-reduced-motion:reduce){.case-lifting,.brainup-cinematic .cw-ri.win{animation:none!important}.brainup-cinematic{transition:none}}
+
+.case-odds-list{max-height:min(45vh,380px);overflow-y:auto;overscroll-behavior:contain;padding-inline-end:4px}
+.case-odds-row{display:grid;grid-template-columns:32px minmax(0,1fr) 90px;align-items:center;gap:8px;padding:6px 0}
+.case-odds-row img{width:32px;height:32px;object-fit:contain}
+.case-odds-row>span:first-of-type{overflow-wrap:anywhere}
+.case-odds-percent{display:flex;align-items:center;gap:4px;min-width:0}
+.case-odds-percent .bu-in{width:100%;min-width:0;text-align:right;padding:6px 4px}
+.case-odds-actions{display:grid;gap:8px}

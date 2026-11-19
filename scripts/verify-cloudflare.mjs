@@ -19,7 +19,10 @@ export async function verifyCloudflareBuild(worker, out) {
   const page = await worker.fetch(new Request('https://brainup.test/'), {ASSETS});
   assert.equal(page.status, 200);
   assert.equal(page.headers.get('Cache-Control'), 'no-store');
-  assert.match(await page.text(), /brainup-mobile/);
+  const html = await page.text();
+  assert.match(html, /brainup-mobile/);
+  assert.match(html, /data-admin-case-odds/);
+  assert.match(html, /data-admin-player-search/);
   const audio = await worker.fetch(new Request('https://brainup.test/assets/last-christmas.mp3', {headers:{range:'bytes=0-99'}}), {ASSETS});
   assert.equal(audio.status, 404);
   const photo = await worker.fetch(new Request('https://brainup.test/assets/telegram-welcome.jpg'), {ASSETS});
@@ -42,14 +45,19 @@ export async function verifyCloudflareBuild(worker, out) {
     db.sqlite.exec(await readFile(new URL('../cloudflare/migrations/0003_site_state_parts.sql', import.meta.url), 'utf8'));
     const state=fresh(seed,'tg:1116312381');
     state.migrationCheck = 'Ж'.repeat(1_100_000) + '🚀';
-    const user=account(state,'tg:123','Migration test');user.balance=321;
+    const user=account(state,'tg:123','Ник игрока');user.balance=321;user.fc[200001]=1;
     const token='local-build-verification';
-    const params=new URLSearchParams({auth_date:String(Math.floor(Date.now()/1000)),user:JSON.stringify({id:123,first_name:'Migration test'})});
     const secret=createHmac('sha256','WebAppData').update(token).digest();
-    params.set('hash',createHmac('sha256',secret).update([...params.entries()].sort().map(([k,v])=>k+'='+v).join('\n')).digest('hex'));
+    function signedTelegram(user) {
+      const params=new URLSearchParams({auth_date:String(Math.floor(Date.now()/1000)),user:JSON.stringify(user)});
+      params.set('hash',createHmac('sha256',secret).update([...params.entries()].sort().map(([k,v])=>k+'='+v).join('\n')).digest('hex'));
+      return {'X-Telegram-Init-Data':params.toString()};
+    }
+    const playerHeaders=signedTelegram({id:123,first_name:'Migration test',username:'migration_check'});
+    const ownerHeaders=signedTelegram({id:1116312381,first_name:'Owner'});
     const env={DB:db,ASSETS,TELEGRAM_BOT_TOKEN:token,TELEGRAM_WEBHOOK_SECRET:'test-secret'};
     assert.equal((await worker.fetch(new Request('https://brainup.test/healthz'),env)).status,200);
-    const headers={...forged,'X-Telegram-Init-Data':params.toString()};
+    const headers={...forged,...playerHeaders};
     const initial=await worker.fetch(new Request('https://brainup.test/api/action',{headers}),env);
     assert.equal(initial.status,200);
     const initialData=await initial.json();
@@ -69,8 +77,38 @@ export async function verifyCloudflareBuild(worker, out) {
     assert.match(stored.data, /^brainup-segments:/);
     const saved = db.sqlite.prepare('SELECT data FROM site_state_parts ORDER BY ordinal').all().map(part => part.data).join('');
     assert.equal(JSON.parse(saved).migrationCheck, state.migrationCheck);
-    const reloaded = await worker.fetch(new Request('https://brainup.test/api/action', {headers:{'X-Telegram-Init-Data':params.toString()}}), env);
+    const reloaded = await worker.fetch(new Request('https://brainup.test/api/action', {headers:playerHeaders}), env);
     assert.equal((await reloaded.json()).user.balance,321);
+
+    async function action(headers, action, data) {
+      const response=await worker.fetch(new Request('https://brainup.test/api/action',{
+        method:'POST',headers:{...headers,'Content-Type':'application/json'},
+        body:JSON.stringify({action,data,requestId:crypto.randomUUID()})
+      }),env);
+      return {status:response.status,data:await response.json()};
+    }
+    const paid=seed.cases.find(entry=>entry.id===100001);
+    const chosen=paid.drops.at(-1);
+    const odds=Object.fromEntries(paid.drops.map(id=>[id,id===chosen?10000:0]));
+    assert.equal((await action(playerHeaders,'admin-case-odds',{id:paid.id,odds})).status,400);
+    assert.equal((await action(ownerHeaders,'admin-case-odds',{id:paid.id,odds:{[chosen]:10000}})).status,400);
+    const savedOdds=await action(ownerHeaders,'admin-case-odds',{id:paid.id,odds});
+    assert.equal(savedOdds.status,200);
+    assert.deepEqual(savedOdds.data.config.cases.find(entry=>entry.id===paid.id).rewardOdds,odds);
+    const searchRecord=savedOdds.data.players.find(player=>player.id==='tg:123');
+    assert.equal(searchRecord.username,'migration_check');
+    assert.equal(searchRecord.name,'Ник игрока');
+    const purchase=await action(playerHeaders,'case',{id:paid.id,n:1});
+    assert.equal(purchase.status,200);
+    assert.equal(purchase.data.result.wins[0].w.id,chosen);
+
+    const free=seed.cases.find(entry=>entry.id===200001);
+    const freeOdds=Object.fromEntries(free.drops.map(id=>[id,0]));
+    Object.assign(freeOdds,{'token-2':0,'token-5':10000});
+    assert.equal((await action(ownerHeaders,'admin-case-odds',{id:free.id,odds:freeOdds})).status,200);
+    const won=await action(playerHeaders,'case',{id:free.id,free:true});
+    assert.equal(won.status,200);
+    assert.equal(won.data.result.wins[0].coins,5);
     assert.equal((await worker.fetch(new Request('https://brainup.test/healthz'),env)).status,200);
     assert.equal((await worker.fetch(new Request('https://brainup.test/telegram/webhook',{method:'POST',body:'{}'}),env)).status,403);
   } finally {db.sqlite.close();}

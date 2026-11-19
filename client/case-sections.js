@@ -18,7 +18,11 @@ var caseEditorBeforeSections=caseEditor;
 caseEditor=function(id,edit){
  caseEditorBeforeSections.apply(this,arguments);if(!edit||!isOwner())return;
  var c=cById(id),fields=document.querySelector('.case-edit-fields');
- if(c&&isFiftyFiftyCase(c)){var note=document.querySelector('.case-edit-fields+p');if(note)note.textContent='Фиксированный состав: Dragon Canelonni — 36%, Noobini Pizzanini — 64%. Выбери только эти два предмета.'}
+ if(c&&isFiftyFiftyCase(c)){var note=document.querySelector('.case-edit-fields+p');if(note)note.textContent='Фиксированный состав: Dragon Canelonni и Noobini Pizzanini. Шансы каждого предмета можно изменить кнопкой «Проценты».'}
+ if(c&&fields&&!isFiftyFiftyCase(c)){
+  var oddsNote=document.querySelector('.case-edit-fields+p');
+  if(oddsNote)oddsNote.textContent='Отметьте предметы, которые могут выпасть. Настройка шансов доступна по кнопке «Проценты».';
+ }
  if(c&&fields)fields.insertAdjacentHTML('beforeend','<label>Раздел'+caseSectionNameInput('case-edit-section',caseSectionFor(c,caseSectionList(A)))+'<small>Можно вписать новый раздел</small></label>');
 };
 function caseSectionsDraft(){

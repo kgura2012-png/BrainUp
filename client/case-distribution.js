@@ -1,6 +1,14 @@
 // Odds shown in the catalog use the same weights as authoritative case draws.
 var dropsBeforeCaseDistribution=cDrops;
-cDrops=function(c){var items=dropsBeforeCaseDistribution(c);return c&&!(c.bonus&&['sub','nick'].includes(c.bonusKey))?items.map(function(item){return Object.assign({},item,{rewardWeight:caseItemWeight(c,item)})}):items};
+cDrops=function(c){
+ var items=dropsBeforeCaseDistribution(c);
+ if(!c)return items;
+ var configured=c.rewardOdds&&customCaseRewardPool(c,items);
+ if(configured)return configured;
+ return c.bonus&&['sub','nick'].includes(c.bonusKey)?items:items.map(function(item){
+  return Object.assign({},item,{rewardWeight:caseItemWeight(c,item)});
+ });
+};
 // The idle strip is a visual catalog sample, never the source of a winning result.
 function freeCasePreviewItems(items,count){
  var coins=items.filter(function(item){return item.rewardKind==='coins'}),prizes=items.filter(function(item){return item.rewardKind!=='coins'}),result=[];
@@ -14,7 +22,15 @@ cwRender=function(){
  var pool=cDrops(c),bonus=c.bonus&&['sub','nick'].includes(c.bonusKey),idle=box.querySelector('.cw-idle'),heading=box.querySelector('.cw-ph');
  if(bonus&&idle){var preview=freeCasePreviewItems(pool,Math.max(16,pool.length*2));idle.innerHTML=preview.concat(preview).map(riHtml).join('')}
  box.querySelectorAll('.case-distribution-note').forEach(function(node){node.remove()});
- if(heading&&bonus)heading.insertAdjacentHTML('afterend','<p class="case-distribution-note">Монеты — 91% · предметы — 9%</p>');
+ if(heading&&bonus){
+  var note='Монеты — 91% · предметы — 9%';
+  if(c.rewardOdds&&validCaseRewardOdds(c.rewardOdds,pool)){
+   var coinWeight=pool.reduce(function(total,item){return total+(item.rewardKind==='coins'?c.rewardOdds[item.id]:0)},0);
+   var percent=new Intl.NumberFormat('ru',{maximumFractionDigits:2});
+   note='Монеты — '+percent.format(coinWeight/100)+'% · предметы — '+percent.format((CASE_ODDS_TOTAL-coinWeight)/100)+'%';
+  }
+  heading.insertAdjacentHTML('afterend','<p class="case-distribution-note">'+note+'</p>');
+ }
  return result;
 };
 // Filler cards remain varied during the spin; the winning slot is untouched.

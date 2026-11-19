@@ -61,7 +61,7 @@ var adminPlayerSearch = '';
 var adminInventory = {userId: '', data: null, error: '', saving: false};
 
 function adminPlayerKey(value) {
-  return String(value || '').trim().replace(/^@/, '').normalize('NFKC').toLocaleLowerCase('ru');
+  return String(value ?? '').normalize('NFKC').trim().replace(/^@/, '').replace(/\s+/g, ' ').toLocaleLowerCase('ru');
 }
 
 function filterAdminPlayerRows(list) {
@@ -70,8 +70,8 @@ function filterAdminPlayerRows(list) {
   var visible = 0;
   list.querySelectorAll('.net-player-row').forEach(function (row) {
     var player = players.get(row.dataset.inventoryPlayer);
-    if (!player) return;
-    var match = !query || [player.name, player.telegramName, player.username, player.id].some(function (value) {
+    var keys = player ? [player.name, player.telegramName, player.username, player.id] : [row.textContent];
+    var match = !query || keys.some(function (value) {
       return adminPlayerKey(value).includes(query);
     });
     if (match) {
@@ -81,9 +81,8 @@ function filterAdminPlayerRows(list) {
       row.style.setProperty('display', 'none', 'important');
     }
   });
-  list.querySelector('[data-admin-player-count]').textContent = visible
-    ? 'Найдено: ' + visible
-    : 'Игроки не найдены';
+  var count = list.querySelector('[data-admin-player-count]');
+  if (count) count.textContent = visible ? 'Найдено: ' + visible : 'Игроки не найдены';
 }
 
 function renderAdminInventory(list) {
@@ -121,10 +120,10 @@ function mountAdminPlayerTools() {
   var list = ad.querySelector('.admin-player-list');
   if (!list || !hosted || !NET.admin || !isOwner() || U.atab !== 'players') return;
   var heading = list.querySelector('h4');
-  if (heading && !list.querySelector('[data-admin-player-search]')) {
-    heading.insertAdjacentHTML('afterend',
+  if (!list.querySelector('[data-admin-player-search]')) {
+    (heading || list).insertAdjacentHTML(heading ? 'afterend' : 'afterbegin',
       '<div class="r"><input type="search" aria-label="Поиск игрока" data-admin-player-search '
-      + 'placeholder="Имя или @username в Telegram" maxlength="256"></div><p role="status" data-admin-player-count></p>');
+      + 'placeholder="Ник игрока или @username" maxlength="256"></div><p role="status" data-admin-player-count></p>');
     list.querySelector('[data-admin-player-search]').value = adminPlayerSearch;
     list.querySelectorAll('.net-player-row').forEach(function (row) {
       var control = row.querySelector('[data-admin-balance][data-user-id]');
@@ -147,7 +146,7 @@ admin = function () {
 var adminRefreshBeforePlayerTools = adminRefreshWouldDiscardInput;
 adminRefreshWouldDiscardInput = function () {
   return adminRefreshBeforePlayerTools.apply(this, arguments)
-    || (U.atab === 'players' && !!adminInventory.userId);
+    || (U.atab === 'players' && (!!adminInventory.userId || document.activeElement?.matches?.('[data-admin-player-search]')));
 };
 
 ad.addEventListener('input', function (event) {
