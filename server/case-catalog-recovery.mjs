@@ -67,21 +67,3 @@ export async function restoreBrainupCaseCatalog(db, recovery, seed) {
   }
   throw Error('Не удалось применить восстановление каталога BrainUp.');
 }
-
-export async function handleCaseCatalogRecovery(request, env, recovery, seed) {
-  if (request.method !== 'POST') return new Response('Method not allowed', {status:405});
-  if (!env.DB || !env.TELEGRAM_BOT_TOKEN || env.MIGRATION_READ_ONLY === 'true') {
-    return new Response('Unavailable', {status:503});
-  }
-  const proof = /^([0-9]{10})\.([a-f0-9]{64})$/.exec(request.headers.get('X-BrainUp-Catalog-Proof') || '');
-  if (!proof || Math.abs(Date.now() / 1000 - Number(proof[1])) > 60) return new Response('Forbidden', {status:403});
-  const encoder = new TextEncoder();
-  const key = await crypto.subtle.importKey('raw', encoder.encode(env.TELEGRAM_BOT_TOKEN),
-    {name:'HMAC',hash:'SHA-256'}, false, ['verify']);
-  const signature = Uint8Array.from(proof[2].match(/../g), byte => parseInt(byte,16));
-  const message = encoder.encode('brainup-case-catalog:' + recovery.revision + ':' + proof[1]);
-  if (!await crypto.subtle.verify('HMAC', key, signature, message)) return new Response('Forbidden', {status:403});
-
-  await restoreBrainupCaseCatalog(env.DB, recovery, seed);
-  return Response.json({ok:true, revision:recovery.revision}, {headers:{'Cache-Control':'no-store'}});
-}

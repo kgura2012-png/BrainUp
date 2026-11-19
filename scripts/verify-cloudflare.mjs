@@ -59,6 +59,7 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
     assert.equal(bytes.toString('ascii',8,12),'WEBP');
   }
   assert.equal((await worker.fetch(new Request('https://brainup.test/.env'), {ASSETS})).status,404);
+  assert.equal((await worker.fetch(new Request('https://brainup.test/internal/database-transfer'), {})).status,403);
   const forged = {'oai-authenticated-user-id':'tg:1116312381','oai-authenticated-user-full-name':'Owner'};
   for (const endpoint of ['action','feed','topups','support']) {
     const response = await worker.fetch(new Request('https://brainup.test/api/'+endpoint, {headers:forged}), {});
@@ -99,14 +100,6 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
     assert.equal(db.sqlite.prepare('SELECT COUNT(*) AS count FROM site_state').get().count,1);
 
     db.sqlite.prepare('UPDATE site_state SET revision = 7, data = ? WHERE id = 1').run(JSON.stringify(state));
-    const recoveryUrl='https://brainup.test/internal/case-catalog-recovery';
-    assert.equal((await worker.fetch(new Request(recoveryUrl,{method:'POST'}),env)).status,403);
-    const stamp=String(Math.floor(Date.now()/1000));
-    const proof=createHmac('sha256',token).update('brainup-case-catalog:' + caseCatalogRecovery.revision + ':' + stamp).digest('hex');
-    const savedCatalog=await worker.fetch(new Request(recoveryUrl,{method:'POST',
-      headers:{'X-BrainUp-Catalog-Proof':stamp+'.'+proof}}),env);
-    assert.equal(savedCatalog.status,200);
-    assert.equal((await savedCatalog.json()).revision,caseCatalogRecovery.revision);
     const response=await worker.fetch(new Request('https://brainup.test/api/action',{headers}),env);
     assert.equal(response.status,200);
     const data=await response.json();
