@@ -6,7 +6,7 @@ import {localDatabase} from '../server/sqlite-adapter.mjs';
 import {fresh, account} from '../server/model.mjs';
 import seed from '../server/seed.json' with {type:'json'};
 
-export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity, buildBotKeyboard) {
+export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity, buildBotKeyboard, caseCatalogRecovery) {
   const appOrigin = 'https://brainup.brainupofficial.workers.dev/';
   const keyboard = buildBotKeyboard('https://brainup-mobile-nov26.regalpeach22.chatgpt.site/', {APP_ORIGIN:appOrigin});
   assert.deepEqual(keyboard.inline_keyboard.flat().flatMap(button => button.web_app ? [button.web_app.url] : []),
@@ -34,7 +34,7 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
   const ASSETS = {async fetch(request) {
     const pathname = new URL(request.url).pathname;
     const files = {'/index.html':['index.html','text/html'], '/assets/telegram-welcome.jpg':['assets/telegram-welcome.jpg','image/jpeg']};
-    const file = files[pathname];
+    const file = files[pathname] || (/^\/assets\/restored-cases\/\d+\.webp$/.test(pathname) ? [pathname.slice(1),'image/webp'] : null);
     if (!file) return new Response(null, {status:404});
     const data = await readFile(path.join(out, 'public', file[0]));
     if (request.headers.get('range') === 'bytes=0-99') return new Response(data.subarray(0,100), {status:206});
@@ -52,6 +52,12 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
   assert.equal(audio.status, 404);
   const photo = await worker.fetch(new Request('https://brainup.test/assets/telegram-welcome.jpg'), {ASSETS});
   assert.equal(photo.headers.get('Content-Type'), 'image/jpeg');
+  for (const entry of caseCatalogRecovery.cases) {
+    const artwork = await worker.fetch(new Request('https://brainup.test'+entry.img), {ASSETS});
+    assert.equal(artwork.status,200);
+    const bytes = Buffer.from(await artwork.arrayBuffer());
+    assert.equal(bytes.toString('ascii',8,12),'WEBP');
+  }
   assert.equal((await worker.fetch(new Request('https://brainup.test/.env'), {ASSETS})).status,404);
   const forged = {'oai-authenticated-user-id':'tg:1116312381','oai-authenticated-user-full-name':'Owner'};
   for (const endpoint of ['action','feed','topups','support']) {
@@ -70,6 +76,7 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
     db.sqlite.exec(await readFile(new URL('../cloudflare/migrations/0003_site_state_parts.sql', import.meta.url), 'utf8'));
     const state=fresh(seed,'tg:1116312381');
     state.migrationCheck = 'Ж'.repeat(1_100_000) + '🚀';
+    state.config.cases.push({id:200020,name:'Current custom case',price:77,drops:[0],grp:'',sectionId:'other'});
     const user=account(state,'tg:123','Ник игрока');user.balance=321;user.fc[200001]=1;
     const token='local-build-verification';
     const secret=createHmac('sha256','WebAppData').update(token).digest();
@@ -98,6 +105,16 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
     assert.equal(data.userId,'tg:123');
     assert.equal(data.user.balance,321);
     assert.equal(data.admin,false);
+    assert.equal(data.config.caseCatalogRecoveryRevision, caseCatalogRecovery.revision);
+    assert.equal(data.config.cases.find(entry=>entry.id===200020).name,'Current custom case');
+    assert.equal(data.config.cases.filter(entry=>entry.name===caseCatalogRecovery.cases[0].name).length,1);
+    assert.equal(data.config.cases.find(entry=>entry.id===100001),undefined);
+    for (const entry of caseCatalogRecovery.cases) {
+      const recovered = data.config.cases.find(candidate=>candidate.name===entry.name);
+      assert.equal(recovered?.img,entry.img);
+      assert.equal(recovered.price,entry.price);
+      assert.deepEqual(recovered.drops,entry.drops);
+    }
     const stored = db.sqlite.prepare('SELECT data FROM site_state WHERE id = 1').get();
     assert.match(stored.data, /^brainup-segments:/);
     const saved = db.sqlite.prepare('SELECT data FROM site_state_parts ORDER BY ordinal').all().map(part => part.data).join('');
@@ -112,7 +129,7 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
       }),env);
       return {status:response.status,data:await response.json()};
     }
-    const paid=seed.cases.find(entry=>entry.id===100001);
+    const paid=data.config.cases.find(entry=>entry.name===caseCatalogRecovery.cases[0].name);
     const chosen=paid.drops.at(-1);
     const odds=Object.fromEntries(paid.drops.map(id=>[id,id===chosen?10000:0]));
     assert.equal((await action(playerHeaders,'admin-case-odds',{id:paid.id,odds})).status,400);
@@ -147,7 +164,7 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
       Date.now=actualNow;
     }
 
-    const free=seed.cases.find(entry=>entry.id===200001);
+    const free=caseCatalogRecovery.cases.find(entry=>entry.id===200001);
     const freeOdds=Object.fromEntries(free.drops.map(id=>[id,0]));
     Object.assign(freeOdds,{'token-2':0,'token-5':10000});
     assert.equal((await action(ownerHeaders,'admin-case-odds',{id:free.id,odds:freeOdds})).status,200);

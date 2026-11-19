@@ -12,6 +12,7 @@ const cloudflare=process.argv.includes('--target=cloudflare');
 await synchronizeMutations(root);
 let html=await fs.readFile(path.join(root,'site.html'),'utf8');
 const seed=await fs.readFile(path.join(root,'server/seed.json'),'utf8');
+const caseCatalogRecovery=cloudflare?JSON.parse(await fs.readFile(path.join(root,'server/restored-cases.json'),'utf8')):null;
 const catalogSeed=JSON.parse(seed);
 // One catalog supplies both the browser and the authoritative server prices.
 const catalogBlock='/* catalog-base:start */\nvar BASE='+JSON.stringify(catalogSeed.items)+';\n/* catalog-base:end */';
@@ -109,7 +110,8 @@ const welcomePhoto=(await fs.readFile(path.join(root,'assets/bot/welcome.jpg')))
 const htmlGzip=cloudflare?null:gzipSync(Buffer.from(html),{level:9});
 if(htmlGzip&&gunzipSync(htmlGzip).toString()!==html)throw Error('HTML compression round trip failed');
 const cloudflareMigrationPage = "<!doctype html><html lang=\"ru\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>BrainUp — перенос сайта</title><style>\n*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:#10131c;color:#f4f6fc;font:16px/1.55 system-ui,sans-serif}main{width:min(100%,440px);padding:32px;background:#181d29;border:1px solid #303747;border-radius:24px}img{width:150px;max-width:100%;height:auto;display:block}h1{font-size:28px;line-height:1.2;margin:24px 0 12px}p{color:#bdc7da;margin:0 0 24px}a{display:inline-block;background:#c9dbff;color:#121a2b;border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none}a:focus-visible{outline:3px solid #fff;outline-offset:4px}\n</style><main><img src=\"/assets/brainup-wordmark.webp\" alt=\"BrainUp\"><h1>BrainUp переезжает</h1><p>Новый сервер доступен. Вход, баланс и инвентарь появятся после переноса базы. Пока можно открыть действующий BrainUp.</p><a href=\"https://brainup-mobile-nov26.regalpeach22.chatgpt.site/\">Открыть действующий BrainUp</a></main></html>";
-const worker=`${stateStorageSource}\n${notificationJobsSource.replace(/^import .*?;\r?\n/gm,'')}\n${partnerAccountingSource}\n${uahTopupsSource}\n${support}\n${telegram}\n${browserAuthSource}\n${identitySource}\n${migrationSource}\n${mutationAssetsSource}\n${mutationMaterialSource}\n${catalogArtworkSource}\nconst catalogArtwork=${JSON.stringify(catalogArtwork)};\nconst mutationMaterialManifest=${JSON.stringify(mutationMaterialManifest)};\nconst mutationModels=${JSON.stringify(mutationModels)};\nconst mutationOriginalAssets=${JSON.stringify(mutationOriginalAssets)};\nconst mutationAssetManifest=${JSON.stringify(mutationAssetManifest)};\nconst mutationIcons=${JSON.stringify(mutationIcons)};\nconst standaloneCloudflare=${cloudflare};\nconst brandWordmark=${JSON.stringify(cloudflare?null:wordmarkBytes.toString('base64'))};\nconst htmlGzip=${JSON.stringify(htmlGzip?.toString('base64')||null)};\nfunction htmlResponseBody(){return new Blob([Uint8Array.from(atob(htmlGzip),ch=>ch.charCodeAt(0))]).stream().pipeThrough(new DecompressionStream('gzip'))}\nconst welcomePhoto=${JSON.stringify(cloudflare?null:welcomePhoto)};\nconst seed=${seed};\n${playerProfiles}\n${caseSectionsSource}\n${caseOddsSource}\n${buffsSource}\n${upgradeChanceShared}\n${model}\n${service}\n`+`
+const caseCatalogRecoverySource=(await fs.readFile(path.join(root,'server/case-catalog-recovery.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'');
+const worker=`${stateStorageSource}\n${caseCatalogRecoverySource}\nconst caseCatalogRecovery=${JSON.stringify(caseCatalogRecovery)};\n${notificationJobsSource.replace(/^import .*?;\r?\n/gm,'')}\n${partnerAccountingSource}\n${uahTopupsSource}\n${support}\n${telegram}\n${browserAuthSource}\n${identitySource}\n${migrationSource}\n${mutationAssetsSource}\n${mutationMaterialSource}\n${catalogArtworkSource}\nconst catalogArtwork=${JSON.stringify(catalogArtwork)};\nconst mutationMaterialManifest=${JSON.stringify(mutationMaterialManifest)};\nconst mutationModels=${JSON.stringify(mutationModels)};\nconst mutationOriginalAssets=${JSON.stringify(mutationOriginalAssets)};\nconst mutationAssetManifest=${JSON.stringify(mutationAssetManifest)};\nconst mutationIcons=${JSON.stringify(mutationIcons)};\nconst standaloneCloudflare=${cloudflare};\nconst brandWordmark=${JSON.stringify(cloudflare?null:wordmarkBytes.toString('base64'))};\nconst htmlGzip=${JSON.stringify(htmlGzip?.toString('base64')||null)};\nfunction htmlResponseBody(){return new Blob([Uint8Array.from(atob(htmlGzip),ch=>ch.charCodeAt(0))]).stream().pipeThrough(new DecompressionStream('gzip'))}\nconst welcomePhoto=${JSON.stringify(cloudflare?null:welcomePhoto)};\nconst seed=${seed};\n${playerProfiles}\n${caseSectionsSource}\n${caseOddsSource}\n${buffsSource}\n${upgradeChanceShared}\n${model}\n${service}\n`+`
 export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url);
@@ -146,6 +148,7 @@ export default {
     if(standaloneCloudflare&&url.pathname==='/healthz'){
       try{if(!env.DB||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_WEBHOOK_SECRET)throw Error('Not configured');await env.DB.prepare('SELECT id FROM site_state LIMIT 1').first();return Response.json({ok:true},{headers:{'Cache-Control':'no-store'}})}catch{return Response.json({ok:false},{status:503,headers:{'Cache-Control':'no-store'}})}
     }
+    if(standaloneCloudflare&&/^\\/assets\\/restored-cases\\/\\d+\\.webp$/.test(url.pathname))return env.ASSETS.fetch(request);
     if(standaloneCloudflare&&url.pathname==='/assets/telegram-welcome.jpg')return env.ASSETS.fetch(request);
     const welcomePath='/assets/telegram-welcome.jpg';
     if(url.pathname===welcomePath&&request.method==='GET') {
@@ -158,14 +161,23 @@ export default {
       let identity;
       try{identity=await requestIdentity(request,env,false)}catch(e){return Response.json({ok:false,error:e.message},{status:401,headers:{'Cache-Control':'no-store'}})}
       if(!identity)return Response.json({ok:false,error:'Войдите через Telegram',telegramLogin:true},{status:401,headers:{'Cache-Control':'no-store'}});
-      try{if(url.pathname==='/api/support')return await handleSupport(request,env,identity);if(url.pathname==='/api/rocket')return Response.json({ok:false,error:'Режим удалён'},{status:410});if(url.pathname==='/api/topups')return await readTopups(request,env.DB,identity);if(url.pathname==='/api/feed'){const response=await readFeed(request,env.DB,identity);if(response.ok)processNotificationsFromTraffic(env,url.origin,ctx);return response;}return await handle(request,env.DB,identity,{migrationReadOnly:env.MIGRATION_READ_ONLY==='true',getBotUsername:()=>browserBotUsername(env),getTelegramName:userId=>getBonusTelegramName(env,userId),prepareBonusShare:userId=>prepareBonusInvitation(env,userId,new URL(welcomePath,url).href),checkSubscription:userId=>checkBonusSubscription(env,userId),onCollaborationDecision:application=>notifyCollaborationDecision(env,application),onUahTopupCreated:record=>{const work=processNotificationJobs(env,url.origin).catch(()=>console.error('UAH notification remains queued'));if(ctx?.waitUntil)ctx.waitUntil(work);return work},onSimulationTopupCreated:record=>{const work=notifySimulationTopupCreated(env,record).catch(()=>console.error('Free-request notification was not delivered'));if(ctx?.waitUntil)ctx.waitUntil(work);return work}});}
+      try{if(url.pathname==='/api/support')return await handleSupport(request,env,identity);if(url.pathname==='/api/rocket')return Response.json({ok:false,error:'Режим удалён'},{status:410});if(url.pathname==='/api/topups')return await readTopups(request,env.DB,identity);if(url.pathname==='/api/feed'){const response=await readFeed(request,env.DB,identity);if(response.ok)processNotificationsFromTraffic(env,url.origin,ctx);return response;}return await handle(request,env.DB,identity,{caseCatalogRecovery,migrationReadOnly:env.MIGRATION_READ_ONLY==='true',getBotUsername:()=>browserBotUsername(env),getTelegramName:userId=>getBonusTelegramName(env,userId),prepareBonusShare:userId=>prepareBonusInvitation(env,userId,new URL(welcomePath,url).href),checkSubscription:userId=>checkBonusSubscription(env,userId),onCollaborationDecision:application=>notifyCollaborationDecision(env,application),onUahTopupCreated:record=>{const work=processNotificationJobs(env,url.origin).catch(()=>console.error('UAH notification remains queued'));if(ctx?.waitUntil)ctx.waitUntil(work);return work},onSimulationTopupCreated:record=>{const work=notifySimulationTopupCreated(env,record).catch(()=>console.error('Free-request notification was not delivered'));if(ctx?.waitUntil)ctx.waitUntil(work);return work}});}
       catch(error){console.error('Database operation failed',error);return Response.json({ok:false,error:'Ошибка базы данных. Попробуйте позже.'},{status:503});}
     }
     if(url.pathname!=='/'&&url.pathname!=='/index.html')return new Response('Not found',{status:404});
     if(standaloneCloudflare){const asset=await env.ASSETS.fetch(new Request(new URL('/index.html',request.url),request));const headers=new Headers(asset.headers);headers.set('Cache-Control','no-store');headers.set('X-Content-Type-Options','nosniff');headers.set('Referrer-Policy','same-origin');return new Response(asset.body,{status:asset.status,headers})}
     return new Response(htmlResponseBody(),{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin'}});
   },
-  async scheduled(event,env,ctx){if(standaloneCloudflare&&env.BRAINUP_MIGRATION_PENDING==='true')return;if(standaloneCloudflare)enableBrainupSegments(env.DB);ctx.waitUntil(processNotificationJobs(env,env.APP_ORIGIN||'https://brainup-mobile-nov26.regalpeach22.chatgpt.site'))}
+  async scheduled(event,env,ctx){
+    if(standaloneCloudflare&&env.BRAINUP_MIGRATION_PENDING==='true')return;
+    if(standaloneCloudflare)enableBrainupSegments(env.DB);
+    ctx.waitUntil((async()=>{
+      if(caseCatalogRecovery&&env.MIGRATION_READ_ONLY!=='true'){
+        try{await restoreBrainupCaseCatalog(env.DB,caseCatalogRecovery,seed)}catch{console.error('Case catalog restoration will retry')}
+      }
+      await processNotificationJobs(env,env.APP_ORIGIN||'https://brainup-mobile-nov26.regalpeach22.chatgpt.site');
+    })());
+  }
 };`;
 const out=path.join(root,cloudflare?'dist-cloudflare':'dist');
 if(cloudflare)await fs.rm(out,{recursive:true,force:true});
@@ -178,6 +190,7 @@ if(cloudflare){
   await fs.copyFile(path.join(root,'assets/brand/brainup-wordmark.webp'),path.join(out,'public/assets/brainup-wordmark.webp'));
   await fs.cp(path.join(root,'assets/mutations/images'),path.join(out,'public/assets/mutations'),{recursive:true});
   await fs.cp(path.join(root,'assets/mutations/icons'),path.join(out,'public/assets/mutation-icons'),{recursive:true});
+  await fs.cp(path.join(root,'assets/restored-cases'),path.join(out,'public/assets/restored-cases'),{recursive:true});
 }else{
   await fs.mkdir(path.join(out,'.openai'),{recursive:true});
   await fs.copyFile(path.join(root,'.openai/hosting.json'),path.join(out,'.openai/hosting.json'));
@@ -191,7 +204,7 @@ if(anonymous.status!==401||(await anonymous.json()).telegramLogin!==true)throw E
 if((await mod.default.fetch(new Request('https://brainup.test/auth/telegram/start'),{})).status!==405)throw Error('Telegram website auth route missing');
 if(cloudflare){
   const {verifyCloudflareBuild}=await import('../scripts/verify-cloudflare.mjs');
-  await verifyCloudflareBuild(mod.default,out,mod.telegramIdentity,mod.buildBotKeyboard);
+  await verifyCloudflareBuild(mod.default,out,mod.telegramIdentity,mod.buildBotKeyboard,caseCatalogRecovery);
   console.log('Built and verified standalone Cloudflare Worker and static assets.');
   process.exit(0);
 }

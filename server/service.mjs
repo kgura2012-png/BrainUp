@@ -1,3 +1,4 @@
+import {applyCaseCatalogRecovery} from './case-catalog-recovery.mjs';
 import {readBrainupState, saveBrainupState} from './state-storage.mjs';
 import {uahTopupView} from './uah-topups.mjs';
 import { account, execute, fresh, view, publicFeed, topupStatus, simulationTopupView, minePatchView } from './model.mjs';
@@ -108,6 +109,7 @@ export async function handle(request, db, identity, options={}) {
       row=await readBrainupState(db);
     }
     const state=JSON.parse(row.data);
+    const recoveredCases=applyCaseCatalogRecovery(state.config, options.caseCatalogRecovery, seed);
     const initializedAutoPromo=!Number.isSafeInteger(state.config.autoPromoSeed);
     if(initializedAutoPromo)state.config.autoPromoSeed=crypto.getRandomValues(new Uint32Array(1))[0];
     const refreshedCaseOdds=!state.config.caseOddsV146;
@@ -132,7 +134,7 @@ export async function handle(request, db, identity, options={}) {
     const current=state.users[identity.id],verifiedUsername=identity.id.startsWith('tg:')?(identity.telegramProfile?.username??identity.telegramUsername):undefined;
     const verifiedName=identity.telegramProfile?[identity.telegramProfile.first_name,identity.telegramProfile.last_name].filter(Boolean).join(' '):undefined;
     const usernameChanged=(verifiedUsername!==undefined&&current?.telegramUsername!==verifiedUsername)||(verifiedName!==undefined&&current?.telegramName!==verifiedName);
-    if(body.action==='state'&&current&&!current.rocket&&!usernameChanged&&!retiredRocket&&!restoredActivationCases&&!refreshedCaseOdds&&!initializedAutoPromo){
+    if(body.action==='state'&&current&&!current.rocket&&!usernameChanged&&!retiredRocket&&!restoredActivationCases&&!refreshedCaseOdds&&!initializedAutoPromo&&!recoveredCases){
       const answer=view(state,identity.id,seed);
       if(answer.admin)answer.players=adminPlayerList(state);
       return json(answer);
