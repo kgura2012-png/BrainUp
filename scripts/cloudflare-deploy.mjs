@@ -24,7 +24,12 @@ const output = run(['d1', 'execute', 'DB', '--remote', '--json', '--command',
   'SELECT COUNT(*) AS state_count FROM site_state WHERE id = 1 AND json_valid(data) AND json_type(data, \'$.users\') = \'object\''], true);
 let result;
 try { result = JSON.parse(output); } catch { throw Error('Не удалось проверить перенесённую базу D1.'); }
-if (result?.[0]?.results?.[0]?.state_count !== 1) {
-  throw Error('В D1 нет перенесённого состояния сайта. Импортируйте полный production-бэкап перед публикацией.');
+const stateCount = result?.[0]?.results?.[0]?.state_count;
+if (stateCount !== 0 && stateCount !== 1) {
+  throw Error('Не удалось подтвердить состояние базы D1.');
 }
-run(['deploy']);
+const waitingForImport = stateCount === 0;
+if (waitingForImport) {
+  console.log('База пуста. Публикуем только страницу переноса.');
+}
+run(['deploy', '--var', 'BRAINUP_MIGRATION_PENDING:' + waitingForImport]);
