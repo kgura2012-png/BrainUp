@@ -81,6 +81,19 @@ export async function telegramWebhook(request, env, defaultStartPhoto) {
     if(m?.chat?.type!=='private'||!Number.isSafeInteger(m.from?.id))return new Response('OK');
     const text=String(m.text||'').trim();
     if(/^\/start(?:@\w+)?(?:\s|$)/.test(text)){
+      const keyboard = {chat_id:m.chat.id,reply_markup:buildBotKeyboard(origin,env)};
+      const oldWelcome = m.reply_to_message;
+      const botId = Number(env.TELEGRAM_BOT_TOKEN.split(':')[0]);
+      if (/^\/start(?:@\w+)?$/.test(text) && oldWelcome?.from?.id === botId &&
+          oldWelcome.chat?.id === m.chat.id && Number.isSafeInteger(oldWelcome.message_id) &&
+          (oldWelcome.caption || oldWelcome.text || '').startsWith('👋 Добро пожаловать в BrainUp!')) {
+        try {
+          await api('editMessageReplyMarkup',{...keyboard,message_id:oldWelcome.message_id});
+          return new Response('OK');
+        } catch {
+          // Telegram may no longer allow the edit. Send the current welcome in that case.
+        }
+      }
       let referralNote='';
       const referral=/^\/start(?:@\w+)?\s+ref_([A-Za-z0-9_-]{3,20})$/.exec(text);
       if(referral&&env.DB){
@@ -93,7 +106,6 @@ export async function telegramWebhook(request, env, defaultStartPhoto) {
       // Enable callbacks for the new keyboard when an existing user opens the bot.
       await api('setWebhook',{url:new URL('/telegram/webhook',origin).href,secret_token:env.TELEGRAM_WEBHOOK_SECRET,allowed_updates:['message','callback_query','pre_checkout_query']});
       const welcome = '👋 Добро пожаловать в BrainUp!\n\nСобирай брейнротов и играй.\nНажми «🚀 Играть», чтобы открыть приложение.'+referralNote;
-      const keyboard = {chat_id:m.chat.id,reply_markup:buildBotKeyboard(origin,env)};
       const photo = env.TELEGRAM_START_PHOTO?.trim() || defaultStartPhoto;
       if (photo) {
         await api('sendPhoto',{...keyboard,photo,caption:welcome});

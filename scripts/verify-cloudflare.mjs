@@ -135,5 +135,32 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
     assert.equal(won.data.result.wins[0].coins,5);
     assert.equal((await worker.fetch(new Request('https://brainup.test/healthz'),env)).status,200);
     assert.equal((await worker.fetch(new Request('https://brainup.test/telegram/webhook',{method:'POST',body:'{}'}),env)).status,403);
+    const originalFetch=globalThis.fetch;
+    const calls=[];
+    globalThis.fetch=async(url, options)=>{
+      calls.push({method:new URL(url).pathname.split('/').at(-1),body:JSON.parse(options.body)});
+      return Response.json({ok:true,result:true});
+    };
+    try {
+      const webhookEnv={...env,APP_ORIGIN:appOrigin,TELEGRAM_BOT_TOKEN:'9239395916:local-test'};
+      async function start(reply) {
+        const chat={id:123,type:'private'},from={id:123};
+        return worker.fetch(new Request('https://brainup.test/telegram/webhook',{
+          method:'POST',headers:{'X-Telegram-Bot-Api-Secret-Token':'test-secret'},
+          body:JSON.stringify({message:{chat,from,text:'/start',reply_to_message:reply}})
+        }),webhookEnv);
+      }
+      assert.equal((await start({from:{id:9239395916},chat:{id:123},message_id:56,
+        caption:'👋 Добро пожаловать в BrainUp!'})).status,200);
+      assert.deepEqual(calls.map(call=>call.method),['editMessageReplyMarkup']);
+      assert.equal(calls[0].body.message_id,56);
+      assert.equal(calls[0].body.reply_markup.inline_keyboard[0][0].web_app.url,appOrigin);
+      calls.length=0;
+      assert.equal((await start()).status,200);
+      assert.equal(calls.at(-1).method,'sendPhoto');
+      assert.equal(calls.at(-1).body.reply_markup.inline_keyboard[0][0].web_app.url,appOrigin);
+    } finally {
+      globalThis.fetch=originalFetch;
+    }
   } finally {db.sqlite.close();}
 }
