@@ -22,7 +22,7 @@ test('public profiles expose grouped inventory and game stats without private wa
 
 test('new drops stay attached to the correct player after renames; ambiguous legacy names never pick a random player',()=>{
  const s=fixture();s.users[partner].balance=10000;execute(s,partner,seed,'case',{id:seed.cases[0].id,n:1},Date.now(),()=>0);const drop=s.drops[0];assert.equal(drop.userId,partner);
- s.users[partner].me='Renamed';assert.equal(publicPlayerProfile(s,seed,{dropId:drop.id}).id,partner);assert.equal(publicFeed(s).drops[0].userId,partner);
+ s.users[partner].me='Renamed';assert.equal(publicPlayerProfile(s,seed,{dropId:drop.id}).id,partner);assert.equal(publicFeed(s,drop.ts+5000).drops[0].userId,partner);
  assert.equal(dropPlayerId(s,{user:'Player'}),viewer);s.users[partner].me='Player';assert.equal(dropPlayerId(s,{user:'Player'}),null);
 });
 

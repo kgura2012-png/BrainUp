@@ -45,6 +45,7 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
   assert.equal(page.headers.get('Cache-Control'), 'no-store');
   const html = await page.text();
   assert.match(html, /brainup-mobile/);
+  assert.match(html, /--brainup-glow-soft/);
   assert.match(html, /data-admin-case-odds/);
   assert.match(html, /data-admin-player-search/);
   const audio = await worker.fetch(new Request('https://brainup.test/assets/last-christmas.mp3', {headers:{range:'bytes=0-99'}}), {ASSETS});
@@ -122,9 +123,29 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
     const searchRecord=savedOdds.data.players.find(player=>player.id==='tg:123');
     assert.equal(searchRecord.username,'migration_check');
     assert.equal(searchRecord.name,'Ник игрока');
-    const purchase=await action(playerHeaders,'case',{id:paid.id,n:1});
-    assert.equal(purchase.status,200);
-    assert.equal(purchase.data.result.wins[0].w.id,chosen);
+    const actualNow=Date.now, openedAt=actualNow();
+    try {
+      Date.now=()=>openedAt;
+      const purchase=await action(playerHeaders,'case',{id:paid.id,n:1});
+      assert.equal(purchase.status,200);
+      assert.equal(purchase.data.result.wins[0].w.id,chosen);
+      assert.deepEqual(purchase.data.drops,[]);
+      assert.equal(purchase.data.topDrop,null);
+
+      async function getLiveDrop() {
+        const response=await worker.fetch(new Request('https://brainup.test/api/feed',{headers:playerHeaders}),env);
+        assert.equal(response.status,200);
+        return response.json();
+      }
+      Date.now=()=>openedAt+4999;
+      assert.deepEqual((await getLiveDrop()).drops,[]);
+      Date.now=()=>openedAt+5000;
+      const published=await getLiveDrop();
+      assert.equal(published.drops[0].itemId,chosen);
+      assert.equal(published.topDrop.itemId,chosen);
+    } finally {
+      Date.now=actualNow;
+    }
 
     const free=seed.cases.find(entry=>entry.id===200001);
     const freeOdds=Object.fromEntries(free.drops.map(id=>[id,0]));

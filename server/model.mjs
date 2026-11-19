@@ -141,10 +141,16 @@ export function simulationTopupView(s,record,now=Date.now()){
 }
 export function minePatchView(s,id,result){const g=s.users[id].mine;return {ok:true,admin:s.owner===id,userId:id,minePatch:g?{n:g.n,stake:g.stake,open:g.open,imgs:g.imgs,mines:[]}:null,result};}
 export function isBrainrotDrop(drop){return !!drop&&drop.itemId!=null&&drop.rewardKind!=='coins';}
+const LIVE_DROP_DELAY_MS = 5_000;
+function isPublishedDrop(drop, now) {
+  return isBrainrotDrop(drop) && (!Number.isFinite(drop.ts) || drop.ts <= now - LIVE_DROP_DELAY_MS);
+}
 export function publicFeed(s,now=Date.now()) {
-  const drops=(s.drops||[]).filter(isBrainrotDrop),today=feedDay(now);
-  let topDrop=isBrainrotDrop(s.topDrop)&&feedDay(s.topDrop.ts)===today?s.topDrop:null;
-  for(const drop of drops)if(feedDay(drop.ts)===today&&(!topDrop||drop.price>topDrop.price))topDrop=drop;
+  const drops=(s.drops||[]).filter(drop=>isPublishedDrop(drop,now)),today=feedDay(now);
+  let topDrop=null;
+  for(const drop of [s.topDrop,...(s.previousTopDrops||[]),...drops]){
+    if(isPublishedDrop(drop,now)&&Number.isFinite(drop.ts)&&feedDay(drop.ts)===today&&(!topDrop||drop.price>topDrop.price))topDrop=drop;
+  }
   const withPlayer=drop=>{const userId=dropPlayerId(s,drop);return userId?{...drop,userId}:drop};
   return {drops:drops.slice(0,60).map(withPlayer),topDrop:topDrop?withPlayer(topDrop):null,feedRevision:s.feedRevision||0};
 }
@@ -543,7 +549,7 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
     for(const user of Object.values(s.users))if(user.bound===code)user.bound='';return {deleted:code};
   }
   if(action==='admin-feed-clear'){
-    own(s,id);const removed=(s.drops||[]).length;s.drops=[];s.topDrop=null;s.feedRevision=(s.feedRevision||0)+1;s.feedClearedAt=now;return {removed,feedRevision:s.feedRevision};
+    own(s,id);const removed=(s.drops||[]).length;s.drops=[];s.topDrop=null;delete s.previousTopDrops;s.feedRevision=(s.feedRevision||0)+1;s.feedClearedAt=now;return {removed,feedRevision:s.feedRevision};
   }
   if(action==='admin-partner-edit'){own(s,id);const p=s.partners[norm(b.code)];assert(p,'Партнёр не найден');if(b.disable)p.disabled=true;else {const pct=Number(b.pct),bonus=Number(b.bonus);assert(pct>=0&&pct<=100&&bonus>=0&&bonus<=100,'Процент от 0 до 100');p.pct=pct;p.bonus=bonus;}return {};}
   if(action==='admin-topup'){
@@ -671,7 +677,17 @@ export function execute(s,id,seed,action,b={},now=Date.now(),rng=random){
     const d={id:crypto.randomUUID(),game,userId:id,user:s.users[id].me,itemId:itemId??null,price:money(price),ts:now,...extra};
     s.drops=[d,...(s.drops||[])].slice(0,200);
     if(itemId!=null&&(!s.users[id].bestDrop||d.price>s.users[id].bestDrop.price))s.users[id].bestDrop={...d,itemName:catalog(s,seed).find(x=>x.id===itemId)?.name||''};
-    if(!isBrainrotDrop(s.topDrop)||feedDay(s.topDrop.ts)!==feedDay(now)||d.price>s.topDrop.price)s.topDrop=d;
+    const today=feedDay(now),currentTop=s.topDrop;
+    if(!isBrainrotDrop(currentTop)||!Number.isFinite(currentTop.ts)||feedDay(currentTop.ts)!==today){
+      s.topDrop=d;
+      delete s.previousTopDrops;
+    }else if(d.price>currentTop.price){
+      // A new record must not hide the last public record while it is still delayed.
+      const previous=[...(s.previousTopDrops||[]),currentTop];
+      const latestPublished=previous.findLastIndex(drop=>isPublishedDrop(drop,now));
+      s.previousTopDrops=previous.slice(Math.max(0,latestPublished));
+      s.topDrop=d;
+    }
   };
   if(action==='case')for(const x of result.wins)record('case',x.w.rewardKind==='coins'?null:x.w.id,x.w.price,{rewardKind:x.w.rewardKind||'item',inventoryUid:x.uid,caseId:Number(b.id),caseName:s.config.cases.find(c=>c.id===Number(b.id))?.name||''});
   if(action==='fuse'){record('fuse',result.w.id,result.w.price,{inventoryUid:result.uid});if(result.extra)record('fuse',result.extra.w.id,result.extra.w.price,{inventoryUid:result.extra.uid});}
