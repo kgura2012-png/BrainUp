@@ -129,6 +129,9 @@ export default {
       });
     }
     if(standaloneCloudflare)enableBrainupSegments(env.DB);
+    if(caseCatalogRecovery&&url.pathname==='/internal/case-catalog-recovery'){
+      return handleCaseCatalogRecovery(request,env,caseCatalogRecovery,seed);
+    }
     if(url.pathname==='/internal/notifications/tick')return handleNotificationTick(request,env);
     if(url.pathname.startsWith('/assets/catalog/'))return handleCatalogArtwork(request,env,catalogArtwork);
     if(url.pathname==='/assets/brainup-wordmark.webp'){
