@@ -43,13 +43,23 @@ export async function verifyCloudflareBuild(worker, out) {
     const state=fresh(seed,'tg:1116312381');
     state.migrationCheck = 'Ж'.repeat(1_100_000) + '🚀';
     const user=account(state,'tg:123','Migration test');user.balance=321;
-    db.sqlite.prepare('INSERT INTO site_state(id,revision,data) VALUES(1,7,?)').run(JSON.stringify(state));
     const token='local-build-verification';
     const params=new URLSearchParams({auth_date:String(Math.floor(Date.now()/1000)),user:JSON.stringify({id:123,first_name:'Migration test'})});
     const secret=createHmac('sha256','WebAppData').update(token).digest();
     params.set('hash',createHmac('sha256',secret).update([...params.entries()].sort().map(([k,v])=>k+'='+v).join('\n')).digest('hex'));
     const env={DB:db,ASSETS,TELEGRAM_BOT_TOKEN:token,TELEGRAM_WEBHOOK_SECRET:'test-secret'};
-    const response=await worker.fetch(new Request('https://brainup.test/api/action',{headers:{...forged,'X-Telegram-Init-Data':params.toString()}}),env);
+    assert.equal((await worker.fetch(new Request('https://brainup.test/healthz'),env)).status,200);
+    const headers={...forged,'X-Telegram-Init-Data':params.toString()};
+    const initial=await worker.fetch(new Request('https://brainup.test/api/action',{headers}),env);
+    assert.equal(initial.status,200);
+    const initialData=await initial.json();
+    assert.equal(initialData.userId,'tg:123');
+    assert.equal(initialData.user.balance,0);
+    assert.deepEqual(initialData.user.inv, []);
+    assert.equal(db.sqlite.prepare('SELECT COUNT(*) AS count FROM site_state').get().count,1);
+
+    db.sqlite.prepare('UPDATE site_state SET revision = 7, data = ? WHERE id = 1').run(JSON.stringify(state));
+    const response=await worker.fetch(new Request('https://brainup.test/api/action',{headers}),env);
     assert.equal(response.status,200);
     const data=await response.json();
     assert.equal(data.userId,'tg:123');

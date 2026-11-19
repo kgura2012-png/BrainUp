@@ -144,7 +144,7 @@ export default {
       return new Response(request.method==='HEAD'?null:Uint8Array.from(atob(data),c=>c.charCodeAt(0)),{headers:{'Content-Type':'image/png','Cache-Control':'public, max-age=86400','X-Content-Type-Options':'nosniff'}});
     }
     if(standaloneCloudflare&&url.pathname==='/healthz'){
-      try{if(!env.DB||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_WEBHOOK_SECRET)throw Error('Not configured');const row=await env.DB.prepare('SELECT revision FROM site_state WHERE id = 1').first();if(!row)throw Error('State not imported');return Response.json({ok:true},{headers:{'Cache-Control':'no-store'}})}catch{return Response.json({ok:false},{status:503,headers:{'Cache-Control':'no-store'}})}
+      try{if(!env.DB||!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_WEBHOOK_SECRET)throw Error('Not configured');await env.DB.prepare('SELECT id FROM site_state LIMIT 1').first();return Response.json({ok:true},{headers:{'Cache-Control':'no-store'}})}catch{return Response.json({ok:false},{status:503,headers:{'Cache-Control':'no-store'}})}
     }
     if(standaloneCloudflare&&url.pathname==='/assets/telegram-welcome.jpg')return env.ASSETS.fetch(request);
     const welcomePath='/assets/telegram-welcome.jpg';
