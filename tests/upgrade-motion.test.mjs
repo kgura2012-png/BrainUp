@@ -108,33 +108,39 @@ test('flight cancels scheduled work and skips old impact effects after a dropped
  assert.deepEqual(positions.at(-1),path.at(-1));
 });
 
-test('landing zoom fills the board and centers the ball before it stops',()=>{
+test('camera magnifies the field contents and centers the ball at landing without moving the board',()=>{
  const skinStyle={transform:'none',setProperty(key,value){this[key]=value},removeProperty(key){delete this[key]}};
- const ballStyle={}, winLabel={}, lossLabel={}, classList={remove(){}};
+ const camera={style:{},append(){}}, ballStyle={}, classList={remove(){}};
  const context=vm.createContext({
   UPGRADE_LAUNCH_POINT:[50,50],root:{classList},roll_:{classList,style:ballStyle},
-  skins:{style:skinStyle},lw:{style:winLabel},ll:{style:lossLabel}
+  skins:{style:skinStyle,append(){}},lw:{},ll:{},E:()=>camera
  });
  const slice=(start,end)=>html.slice(html.indexOf(start),html.indexOf(end));
  vm.runInContext(slice('function upgradeBoardPosition(value)','function paintUpgradeChance(')+
    slice('var resEls=[],hitN=0;','function wallHit(){'),context);
  for(const [x,y] of [[0,0],[0,100],[50,50],[100,0],[100,100]]){
-  context.drawUpgradeLanding(x,y,0,25);
-  near(parseFloat(ballStyle.left),context.upgradeBoardPosition(x));
-  near(parseFloat(ballStyle.top),context.upgradeBoardPosition(y));
-  context.drawUpgradeLanding(x,y,.75,25);
-  assert.equal(ballStyle.left,'50%');
-  assert.equal(ballStyle.top,'50%');
-  assert.equal(ballStyle.width,'18%');
-  assert.equal(winLabel.opacity,'0');
-  assert.equal(skinStyle.transform,'none');
-  const divider=parseFloat(skinStyle['--loss-progress']);
-  assert.ok(divider>=0&&divider<=100);
-  const won=(x-y+100)/2>75;
-  assert.equal(50>divider,won);
+  for(const progress of [0,.25,.62,.85,1]){
+   context.drawUpgradeLanding(x,y,progress,25);
+   const [,dx,dy,scale]=/translate\(([^%]+)%, ([^%]+)%\) scale\(([^)]+)\)/.exec(camera.style.transform).map(Number);
+   const left=dx+scale*parseFloat(ballStyle.left);
+   const top=dy+scale*parseFloat(ballStyle.top);
+   assert.ok(left>=4*scale-1e-7 && left<=100-4*scale+1e-7);
+   assert.ok(top>=4*scale-1e-7 && top<=100-4*scale+1e-7);
+   if(progress===1){
+    near(left,50);
+    near(top,50);
+    near(scale,2.4);
+   }else if(x!==50 || y!==50){
+    assert.ok(Math.hypot(left-50,top-50)>1e-7);
+   }
+   assert.equal(skinStyle.transform,'none');
+   const divider=parseFloat(skinStyle['--loss-progress']);
+   assert.ok(divider>=0&&divider<=100);
+   const won=(x-y+100)/2>75;
+   assert.equal((left-top+100)/2>divider,won);
+  }
   context.fxClean();
-  assert.equal(ballStyle.width,'10%');
-  assert.equal(lossLabel.opacity,'');
+  assert.equal(camera.style.transform,'');
   assert.equal(skinStyle['--loss-progress'],undefined);
  }
 });

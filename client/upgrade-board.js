@@ -31,7 +31,7 @@ function ringUpdate(chance){
 
 /* upgrade-board-flight */
 var resEls=[],hitN=0;
-let wallFlash, ballImpact;
+let wallFlash, ballImpact, upgradeCameraLayer;
 
 function placeBallOnBoard(left, top){
   roll_.style.left = left + '%';
@@ -52,8 +52,7 @@ function fxClean(){
   stopUpgradeImpact();
   skins.style.transform = 'none';
   skins.style.removeProperty('--loss-progress');
-  roll_.style.width = '10%';
-  lw.style.opacity = ll.style.opacity = '';
+  if (upgradeCameraLayer) upgradeCameraLayer.style.transform = '';
   resEls.forEach(element => element.remove());
   resEls = [];
   root.classList.remove('upgrade-percent--aim-result', 'upgrade-percent--highlight-win',
@@ -63,22 +62,33 @@ function fxClean(){
   placeBall(...UPGRADE_LAUNCH_POINT);
 }
 
-function drawUpgradeLanding(x, y, progress, chance){
-  const approach = 1 - (1 - Math.min(1, progress / .75)) ** 3;
-  const scale = 1 + .8 * approach;
-  const left = upgradeBoardPosition(x), top = upgradeBoardPosition(y);
-  const focusX = left + (50 - left) * approach;
-  const focusY = top + (50 - top) * approach;
+function getUpgradeCameraLayer(){
+  if (!upgradeCameraLayer) {
+    upgradeCameraLayer = E('upgrade-percent__camera');
+    upgradeCameraLayer.style.cssText = 'position:absolute;inset:0;z-index:3;transform-origin:0 0;pointer-events:none';
+    upgradeCameraLayer.append(lw, ll, roll_);
+    skins.append(upgradeCameraLayer);
+  }
+  return upgradeCameraLayer;
+}
 
-  // Project the sector divider into the new view while the background still covers the whole square.
+function drawUpgradeLanding(x, y, progress, chance){
+  const zoomPhase = Math.min(1, progress / .62);
+  const scale = 1 + 1.4 * zoomPhase ** 2 * (3 - 2 * zoomPhase);
+  const pan = progress * progress * (3 - 2 * progress);
+  const left = upgradeBoardPosition(x), top = upgradeBoardPosition(y);
+  const focusX = left + (50 - left) * pan;
+  const focusY = top + (50 - top) * pan;
+  const offsetX = focusX - scale * left, offsetY = focusY - scale * top;
+
+  placeBallOnBoard(left, top);
+  getUpgradeCameraLayer().style.transform =
+    'translate(' + offsetX + '%, ' + offsetY + '%) scale(' + scale + ')';
+
+  // Project the same camera onto the background without moving the edges of the board.
   const loss = upgradeBoardPosition(100 - chance);
-  const ballDiagonal = (left - top + 100) / 2;
-  const focusDiagonal = (focusX - focusY + 100) / 2;
-  const divider = focusDiagonal + (loss - ballDiagonal) * scale;
+  const divider = 50 + (loss - 50) * scale + (offsetX - offsetY) / 2;
   skins.style.setProperty('--loss-progress', Math.min(100, Math.max(0, divider)) + '%');
-  roll_.style.width = 10 * scale + '%';
-  lw.style.opacity = ll.style.opacity = String(1 - approach);
-  placeBallOnBoard(focusX, focusY);
 }
 
 function wallHit(){
@@ -181,7 +191,6 @@ async function anim(d,win,roll,options){
   if (!win) root.classList.add('upgrade-percent--lost');
   const overlay = E('upgrade-percent__result-overlay');
   const resultText = E('upgrade-percent__result-text' + (win ? '' : ' upgrade-percent__result-text--lose'));
-  resultText.style.top = '62%';
   resultText.append(E('upgrade-percent__result-title', win ? 'WIN' : 'LOSS'),
     E('upgrade-percent__result-subtitle', win ? d.target.name : 'Upgrade failed'));
   root.append(overlay, resultText);
