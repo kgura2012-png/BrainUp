@@ -32,23 +32,70 @@ export function spinUpgradeAim({points,writeAngle,duration=1500,signal,random=Ma
  });
 }
 
+export const UPGRADE_LAUNCH_POINT = [50, 50];
+
 export function upgradePathBounds(roll){
- const value=Math.max(1e-9,Math.min(100-1e-9,roll)),edge=Math.min(7,value/2,(100-value)/2);
- return {roll:value,low:edge,high:100-edge};
+  return {roll:Math.max(1e-9,Math.min(100-1e-9,roll)), low:0, high:100};
 }
-export function buildUpgradeBouncePath(roll, random=Math.random){
-  var bounds=upgradePathBounds(roll);roll=bounds.roll;
-  var LO=bounds.low,HI=bounds.high,W=HI-LO,dd=2*roll-100,lo=Math.max(LO,LO+dd),hi=Math.min(HI,HI+dd),S0=[8,92],u0x=(S0[0]-LO)/W,u0y=(S0[1]-LO)/W,best=null,a,i;
-  var fold=function(u){var m=((u%2)+2)%2;return m<=1?m:2-m},nrm=function(v){return(v-LO)/W};
-  /* unfold the box: a straight line in the mirrored plane = a real bounce path; k = number of wall hits on that axis */
-  var uf=function(tu,k,dir,u0){for(var m=-8;m<=8;m++)for(var s=-1;s<=1;s+=2){var U=2*m+s*tu,c=dir>0?(U>u0?Math.floor(U):-1):(U<u0?(U>=0?0:-Math.floor(U)):-1);if(c===k&&Math.abs(fold(U)-tu)<1e-9)return U}return null};
-  for(a=0;a<120;a++){
-    var n=3+Math.floor(random()*2),kx=1+Math.floor(random()*(n-1)),ky=n-kx,x=lo<=hi?lo+random()*(hi-lo):Math.min(HI,Math.max(LO,(lo+hi)/2)),y=Math.min(HI,Math.max(LO,x-dd)),
-      Ux=uf(nrm(x),kx,1,u0x),Uy=uf(nrm(y),ky,-1,u0y);if(Ux==null||Uy==null)continue;
-    var ev=[];for(i=1;i<=kx;i++)ev.push((i-u0x)/(Ux-u0x));for(i=0;i<ky;i++)ev.push((-i-u0y)/(Uy-u0y));ev.sort(function(p,q){return p-q});
-    var pts=[S0].concat(ev.map(function(t){return[LO+fold(u0x+(Ux-u0x)*t)*W,LO+fold(u0y+(Uy-u0y)*t)*W]})).concat([[x,y]]),ok=true;
-    // A corner touches two walls at the same instant, with one visible impact.
-    pts=pts.filter(function(point,index){return !index||Math.hypot(point[0]-pts[index-1][0],point[1]-pts[index-1][1])>1e-7});
-    for(i=0;i<pts.length-1;i++)if(Math.hypot(pts[i+1][0]-pts[i][0],pts[i+1][1]-pts[i][1])<13)ok=false;
-    best=pts;if(ok)return pts}
-  return best||[S0,[Math.min(HI,Math.max(LO,roll)),Math.min(HI,Math.max(LO,100-roll))]]}
+
+function foldUpgradeCoordinate(value){
+  const wrapped = ((value % 200) + 200) % 200;
+  return wrapped <= 100 ? wrapped : 200 - wrapped;
+}
+
+// Unfolding the room into mirrored copies preserves the angle at each wall.
+function reflectedUpgradePath(end, hits, directions){
+  const target = end.map((value, axis) => hits[axis] * directions[axis] * 100 +
+    (hits[axis] % 2 ? 100 - value : value));
+  const impacts = [];
+  for (let axis = 0; axis < 2; axis++) {
+    const direction = directions[axis];
+    for (let i = 0; i < hits[axis]; i++) {
+      const wall = (direction > 0 ? i + 1 : -i) * 100;
+      impacts.push((wall - 50) / (target[axis] - 50));
+    }
+  }
+  impacts.sort((a, b) => a - b);
+  const path = [UPGRADE_LAUNCH_POINT.slice()];
+  let previous = 0;
+  for (const time of impacts) {
+    // A corner counts as one visible contact, and the end must stay on the rolled diagonal.
+    if (time - previous < 1e-9 || time >= 1 - 1e-9) continue;
+    path.push(target.map(value => foldUpgradeCoordinate(50 + (value - 50) * time)));
+    previous = time;
+  }
+  return path.concat([end]);
+}
+
+function shortestUpgradeSegment(points){
+  let shortest = Infinity;
+  for (let i = 1; i < points.length; i++) {
+    const [x, y] = points[i], [previousX, previousY] = points[i - 1];
+    shortest = Math.min(shortest, Math.hypot(x - previousX, y - previousY));
+  }
+  return shortest;
+}
+
+export function buildUpgradeBouncePath(roll, random = Math.random){
+  const diagonal = 2 * upgradePathBounds(roll).roll - 100;
+  const low = Math.max(0, diagonal), high = Math.min(100, 100 + diagonal);
+  const finishAt = fraction => {
+    const x = low + (high - low) * fraction;
+    return [x, x - diagonal];
+  };
+  const midpoint = finishAt(.5);
+  // These directions separate the final two contacts even when the roll lands in a corner.
+  let best = reflectedUpgradePath(midpoint, [2,1], [midpoint[0] >= 50 ? 1 : -1, midpoint[1] <= 50 ? 1 : -1]);
+  let bestLength = shortestUpgradeSegment(best);
+  for (let attempt = 0; attempt < 32; attempt++) {
+    const impacts = 3 + Math.floor(random() * 2);
+    const horizontal = 1 + Math.floor(random() * (impacts - 1));
+    const directions = [random() < .5 ? -1 : 1, random() < .5 ? -1 : 1];
+    const points = reflectedUpgradePath(finishAt(.1 + .8 * random()), [horizontal, impacts - horizontal], directions);
+    if (points.length < 5) continue;
+    const length = shortestUpgradeSegment(points);
+    if (length >= 13) return points;
+    if (length > bestLength) { best = points; bestLength = length; }
+  }
+  return best;
+}

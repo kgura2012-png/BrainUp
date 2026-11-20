@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {synchronizeMutations} from './sync-mutations.mjs';
 import {withUpgradeBoard} from './upgrade-board-markup.mjs';
+import {emitEmbeddedAssets} from './embedded-assets.mjs';
 const root=process.cwd();
 const catalogArtwork=JSON.parse(await fs.readFile(path.join(root,'assets/catalog-artwork/manifest.json'),'utf8'));
 for(const entry of Object.values(catalogArtwork)){if(entry.file){const bytes=await fs.readFile(path.join(root,'assets/catalog-artwork',entry.file));if(bytes.length!==entry.bytes||createHash('sha256').update(bytes).digest('hex')!==entry.digest)throw Error('Catalog image does not match manifest: '+entry.file);entry.data=bytes.toString('base64');delete entry.file}}
@@ -131,6 +132,15 @@ export default {
     }
     if(standaloneCloudflare)enableBrainupSegments(env.DB);
     if(url.pathname==='/internal/notifications/tick')return handleNotificationTick(request,env);
+    if(standaloneCloudflare&&url.pathname.startsWith('/assets/embedded/')){
+      if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405});
+      const asset=await env.ASSETS.fetch(request);
+      if(!asset.ok&&asset.status!==304)return asset;
+      const headers=new Headers(asset.headers);
+      headers.set('Cache-Control','public, max-age=31536000, immutable');
+      headers.set('X-Content-Type-Options','nosniff');
+      return new Response(asset.body,{status:asset.status,headers});
+    }
     if(url.pathname.startsWith('/assets/catalog/'))return handleCatalogArtwork(request,env,catalogArtwork);
     if(url.pathname==='/assets/brainup-wordmark.webp'){
       if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405});
@@ -186,6 +196,7 @@ await fs.mkdir(path.join(out,'server'),{recursive:true});
 await fs.writeFile(path.join(out,'server/index.js'),worker);
 if(cloudflare){
   await fs.mkdir(path.join(out,'public/assets'),{recursive:true});
+  html=await emitEmbeddedAssets(html,path.join(out,'public'));
   await fs.writeFile(path.join(out,'public/index.html'),html);
   await fs.copyFile(path.join(root,'assets/bot/welcome.jpg'),path.join(out,'public/assets/telegram-welcome.jpg'));
   await fs.copyFile(path.join(root,'assets/brand/brainup-wordmark.webp'),path.join(out,'public/assets/brainup-wordmark.webp'));

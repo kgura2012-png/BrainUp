@@ -33,6 +33,12 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
   assert.match((await expired.json()).error,/вход устарел/);
   const ASSETS = {async fetch(request) {
     const pathname = new URL(request.url).pathname;
+    const embedded = /^\/assets\/embedded\/[a-f0-9]{24}\.(webp|png|jpg|ttf|woff2?)$/.exec(pathname);
+    const mime = ext => ext === 'jpg' ? 'image/jpeg' : ['webp','png'].includes(ext) ? 'image/' + ext : 'font/' + ext;
+    if (embedded) {
+      const data = await readFile(path.join(out, 'public', pathname.slice(1)));
+      return new Response(request.method === 'HEAD' ? null : data,{headers:{'Content-Type':mime(embedded[1])}});
+    }
     const files = {'/index.html':['index.html','text/html'], '/assets/telegram-welcome.jpg':['assets/telegram-welcome.jpg','image/jpeg']};
     const file = files[pathname] || (/^\/assets\/restored-cases\/\d+\.webp$/.test(pathname) ? [pathname.slice(1),'image/webp'] : null);
     if (!file) return new Response(null, {status:404});
@@ -48,6 +54,17 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
   assert.match(html, /--brainup-glow-soft/);
   assert.match(html, /data-admin-case-odds/);
   assert.match(html, /data-admin-player-search/);
+  assert.match(html, /UPGRADE_LAUNCH_POINT = \[50, 50\]/);
+  assert.ok(Buffer.byteLength(html) < 2_500_000, 'The initial page should not embed large static assets');
+  const cachedArtwork = /\/assets\/embedded\/[a-f0-9]{24}\.(?:png|webp)/.exec(html)?.[0];
+  const cachedFont = /\/assets\/embedded\/[a-f0-9]{24}\.woff2?/.exec(html)?.[0];
+  assert.ok(cachedArtwork && cachedFont);
+  for (const pathname of [cachedArtwork,cachedFont]) {
+    const response = await worker.fetch(new Request('https://brainup.test'+pathname,{method:'HEAD'}), {ASSETS});
+    assert.equal(response.status,200);
+    assert.equal(response.headers.get('Cache-Control'),'public, max-age=31536000, immutable');
+    assert.equal(await response.text(),'');
+  }
   const audio = await worker.fetch(new Request('https://brainup.test/assets/last-christmas.mp3', {headers:{range:'bytes=0-99'}}), {ASSETS});
   assert.equal(audio.status, 404);
   const photo = await worker.fetch(new Request('https://brainup.test/assets/telegram-welcome.jpg'), {ASSETS});

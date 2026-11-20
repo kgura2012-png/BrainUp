@@ -1,12 +1,12 @@
 // The ball and sector boundary share the same inset coordinate system.
 function upgradeBoardPosition(value){
-  const inset = 8;
+  const inset = 4;
   return inset + Math.min(100, Math.max(0, value)) * (100 - 2 * inset) / 100;
 }
 
 function paintUpgradeChance(chance){
   const loss = 100 - chance;
-  roll_.style.width = 'min(2rem,10%)';
+  roll_.style.width = '10%';
   skins.style.transform = 'none';
   root.style.setProperty('--loss-progress', upgradeBoardPosition(loss) + '%');
   root.style.setProperty('--chance-progress', chance + '%');
@@ -26,7 +26,7 @@ function ringUpdate(chance){
   root.classList.toggle('upgrade-percent--empty', noTarget);
   if (noTarget) return;
   paintUpgradeChance(chance);
-  placeBall(8, 92);
+  placeBall(...UPGRADE_LAUNCH_POINT);
 }
 
 /* upgrade-board-flight */
@@ -52,7 +52,7 @@ function fxClean(){
     'upgrade-percent--highlight-loss', 'upgrade-percent--lost');
   roll_.classList.remove('upgrade-percent__roll--flying', 'upgrade-percent__roll--charging',
     'upgrade-percent__roll--arrow-hidden');
-  placeBall(8, 92);
+  placeBall(...UPGRADE_LAUNCH_POINT);
 }
 
 function wallHit(){
@@ -63,8 +63,8 @@ function wallHit(){
     {boxShadow:'inset 0 0 0 transparent', borderColor:'#1a3a31'}
   ],{duration:280, easing:'ease-out'});
   ballImpact = roll_.animate?.([
-    {transform:'translate(-50%,-66.7%) scale(1.3,.78)'},
-    {transform:'translate(-50%,-66.7%) scale(.92,1.08)', offset:.55},
+    {transform:'translate(-50%,-66.7%) scale(.92,.90)'},
+    {transform:'translate(-50%,-66.7%) scale(.98,.98)', offset:.55},
     {transform:'translate(-50%,-66.7%)'}
   ],{duration:240, easing:'ease-out'});
   sfx('hit', hitN++);
@@ -101,11 +101,15 @@ function fly(pts,total,signal){
         placeBall(...pts[segment]);
         return finish();
       }
-      if (previous !== segment) wallHit();
-      let progress = elapsed / durations[segment];
-      if (segment === last) progress = 1 - (1 - progress) ** 2;
-      const [fromX,fromY] = pts[segment], [toX,toY] = pts[segment + 1];
-      placeBall(fromX + (toX - fromX) * progress, fromY + (toY - fromY) * progress);
+      if (previous !== segment) {
+        placeBall(...pts[segment]);
+        wallHit();
+      } else {
+        let progress = elapsed / durations[segment];
+        if (segment === last) progress = 1 - (1 - progress) ** 2;
+        const [fromX,fromY] = pts[segment], [toX,toY] = pts[segment + 1];
+        placeBall(fromX + (toX - fromX) * progress, fromY + (toY - fromY) * progress);
+      }
       frame = requestAnimationFrame(step);
     }
 

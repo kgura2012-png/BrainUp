@@ -12,7 +12,8 @@ test('flight stays inside the box and reflects at each wall before reaching the 
  for(const roll of [.0001,.5,7,12,25,50,74,88,93,99.5,99.9999])for(let seed=1;seed<=30;seed++){
   const points=buildUpgradeBouncePath(roll,seededRandom(seed)),bounds=upgradePathBounds(roll);
   // A corner reflection can combine both axes into one contact.
-  assert.ok(points.length>=3);
+  assert.deepEqual(points[0],[50,50]);
+  assert.ok(points.length>=5);
   for(const point of points)for(const coordinate of point)assert.ok(coordinate>=bounds.low-1e-7&&coordinate<=bounds.high+1e-7);
   const end=points.at(-1);
   near((end[0]-end[1]+100)/2,roll);
@@ -60,8 +61,10 @@ test('edge rolls leave room for the visible ball and land on the correct side of
  const {upgradeBoardPosition}=context;
  for(const chance of [10,25,30,80])for(const roll of [0,100-chance-.0001,100-chance+.0001,100]){
   const [x,y]=buildUpgradeBouncePath(roll,seededRandom(5)).at(-1).map(upgradeBoardPosition);
-  // The largest impact has a ball radius of 5.2% of the board.
-  assert.ok(x>=8&&x<=92&&y>=8&&y<=92);
+  // Impacts use the ball's radius, so its outer edge reaches the wall.
+  assert.ok(x>=4&&x<=96&&y>=4&&y<=96);
+  assert.equal(upgradeBoardPosition(0),4);
+  assert.equal(upgradeBoardPosition(100),96);
   const diagonal=(x-y+100)/2;
   assert.equal(diagonal>upgradeBoardPosition(100-chance),roll>100-chance);
  }
@@ -75,13 +78,26 @@ test('flight cancels scheduled work and skips old impact effects after a dropped
   cancelAnimationFrame:id=>frames.delete(id),placeBall:(...point)=>positions.push(point),wallHit:()=>hits++
  });
  vm.runInContext(html.slice(html.indexOf('function fly(pts,total,signal)'),html.indexOf('async function anim(d,win,roll,options)')),context);
- const path=[[8,92],[70,0],[100,60],[90,10]];
+ const path=[[50,50],[100,50],[0,50],[60,50]];
  const controller=new AbortController();
  const interrupted=context.fly(path,2900,controller.signal);
  controller.abort();
  await interrupted;
  assert.equal(frames.size,0);
- assert.deepEqual(positions,[[8,92]]);
+ assert.deepEqual(positions,[[50,50]]);
+ const bounceController=new AbortController();
+ const bouncing=context.fly(path,2900,bounceController.signal);
+ const advance=()=>{
+  const callback=frames.get(nextId);
+  frames.delete(nextId);
+  return callback;
+ };
+ advance()(700);
+ assert.deepEqual(positions.at(-1),path[1]);
+ assert.equal(hits,1);
+ bounceController.abort();
+ await bouncing;
+ hits=0;
  const full=context.fly(path,2900);
  const callback=frames.get(nextId);
  frames.delete(nextId);
