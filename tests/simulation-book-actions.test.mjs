@@ -6,12 +6,12 @@ import {fresh,account,execute,simulationSlots,view} from '../server/model.mjs';
 import seed from '../server/seed.json' with {type:'json'};
 function fixture(){const s=fresh(seed,'owner');for(const id of ['owner','p','other'])account(s,id,id);const item=seed.items.find(x=>x.id===55);s.users.p.inv=[{uid:1,id:item.id}];s.users.p.uid=2;const now=Date.parse('2026-11-04T12:00:00Z'),at=simulationSlots(s,now).slots[0].at,record=execute(s,'p',seed,'simulation-book',{at,nick:'Player_42',createdAt:1,plan:[{uid:1,target:item.id,q:1}]},now).booking;return {s,now,at,record}}
 test('only the record owner or admin can cancel; cancelling frees its slot without changing inventory or balance',()=>{
- const {s,now,at,record}=fixture(),before=JSON.stringify(s.users.p);assert.equal(record.createdAt,now);assert.throws(()=>execute(s,'other',seed,'simulation-book-cancel',{id:record.id},now));
+ const {s,now,at,record}=fixture(),before=JSON.stringify({...s.users.p,inv:record.reserved});assert.equal(s.users.p.inv.length,0);assert.equal(record.createdAt,now);assert.throws(()=>execute(s,'other',seed,'simulation-book-cancel',{id:record.id},now));
  execute(s,'p',seed,'simulation-book-cancel',{id:record.id},now);assert.equal(record.status,'cancelled');assert.equal(record.createdAt,now);assert.equal(view(s,'owner',seed,now).config.simulationBookings[0].createdAt,now);assert.equal(JSON.stringify(s.users.p),before);assert(simulationSlots(s,now).slots.some(x=>x.at===at));assert.throws(()=>execute(s,'p',seed,'simulation-book-cancel',{id:record.id},now));
  assert.equal(view(s,'p',seed,now).user.simulationBookings[0].status,'cancelled');assert.equal(view(s,'other',seed,now).user.simulationBookings.length,0);
 });
 test('only admin can complete after the scheduled five minutes, once, without issuing any items or tokens',()=>{
- const {s,at,record}=fixture(),before=JSON.stringify(s.users.p);assert.throws(()=>execute(s,'p',seed,'simulation-book-complete',{id:record.id},at+300000));assert.throws(()=>execute(s,'owner',seed,'simulation-book-complete',{id:record.id},at+299999));
+ const {s,at,record}=fixture(),before=JSON.stringify({...s.users.p,inv:record.reserved});assert.equal(s.users.p.inv.length,0);assert.throws(()=>execute(s,'p',seed,'simulation-book-complete',{id:record.id},at+300000));assert.throws(()=>execute(s,'owner',seed,'simulation-book-complete',{id:record.id},at+299999));
  execute(s,'owner',seed,'simulation-book-complete',{id:record.id},at+300000);assert.equal(record.status,'completed');assert.equal(JSON.stringify(s.users.p),before);assert.equal(s.withdrawals.length,0);assert.throws(()=>execute(s,'owner',seed,'simulation-book-complete',{id:record.id},at+300001));assert.throws(()=>execute(s,'p',seed,'simulation-book-cancel',{id:record.id},at+300001));
 });
 test('profile has a withdrawals tab with its schedule, status and cancel action',async()=>{

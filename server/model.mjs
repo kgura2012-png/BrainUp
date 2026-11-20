@@ -273,8 +273,9 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
       assert(Number.isSafeInteger(q)&&q>=1&&q<=4&&q*target.price<=group,'Неверное количество');
       value=money(value+group);payout=money(payout+target.price*q);items.push({id:target.id,name:target.name,price:target.price,q});
     }
-    // Scheduling only: inventory and balances remain untouched, no operator fulfils it.
-    const booking={id:crypto.randomUUID(),simulation:true,userId:id,user:u.me,nick,createdAt:now,date:available.date,at:slot.at,time:slot.time,status:'booked',items,change:money(value-payout),total:value};
+    const reserved=u.inv.filter(item=>used.has(item.uid));
+    u.inv=u.inv.filter(item=>!used.has(item.uid));
+    const booking={id:crypto.randomUUID(),simulation:true,userId:id,user:u.me,nick,createdAt:now,date:available.date,at:slot.at,time:slot.time,status:'booked',items,reserved,change:money(value-payout),total:value};
     (s.simulationBookings||=[]).push(booking);return {booking};
   }
   if(action==='simulation-book-cancel'||action==='simulation-book-complete'){
@@ -284,7 +285,12 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
     if(action==='simulation-book-complete'){
       assert(now>=booking.at+300000,'Завершение доступно после времени записи');booking.status='completed';booking.completedAt=now;booking.completedBy=id;
     }else{booking.status='cancelled';booking.cancelledAt=now;booking.cancelledBy=id;}
-    // Internal schedule only. No balance, inventory or external transfer is changed.
+    if(booking.reserved?.length){
+      const player=s.users[booking.userId];
+      assert(player,'Игрок не найден');
+      player.inv.push(...booking.reserved);
+      delete booking.reserved;
+    }
     return {booking};
   }
   if(action==='rename'){const n=String(b.name||'').trim();assert(n.length>=3&&n.length<=32,'Ник: 3–32 символа');u.me=n;return {};}

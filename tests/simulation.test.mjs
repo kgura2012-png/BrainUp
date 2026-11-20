@@ -46,7 +46,7 @@ test('booking is internal only, requires a nickname, excludes taken slots, valid
  assert.throws(()=>execute(s,'p',seed,'simulation-book',{...data,nick:''},now));
  assert.throws(()=>execute(s,'p',seed,'simulation-book',{...data,plan:[{uid:1,target:g.id,q:5}]},now));
  if(hydra)assert.throws(()=>execute(s,'p',seed,'simulation-book',{...data,plan:[{uid:1,target:hydra.id}]},now));
- const booking=execute(s,'p',seed,'simulation-book',data,now).booking;assert.equal(booking.time,'12:55');assert.equal(booking.nick,'Player_42');assert.equal(booking.change,Math.round((dragon.price-4*g.price)*100)/100);assert.equal(JSON.stringify(s.users.p),before);assert.equal(s.withdrawals.length,0);
+ const booking=execute(s,'p',seed,'simulation-book',data,now).booking;assert.equal(booking.time,'12:55');assert.equal(booking.nick,'Player_42');assert.equal(booking.change,Math.round((dragon.price-4*g.price)*100)/100);assert.equal(s.users.p.inv.length,0);assert.equal(s.withdrawals.length,0);
  assert(!simulationSlots(s,now).slots.some(x=>x.at===at));assert.throws(()=>execute(s,'q',seed,'simulation-book',data,now));assert.throws(()=>execute(s,'p',seed,'simulation-book',{...data,at:at+300000},now));
  assert.equal(execute(s,'q',seed,'simulation-book',{...data,at:at+300000,plan:[{uid:1,target:dragon.id}]},now).booking.change,0);
 });
