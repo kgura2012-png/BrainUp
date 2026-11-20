@@ -75,7 +75,7 @@ test('flight cancels scheduled work and skips old impact effects after a dropped
  let nextId=0,hits=0;
  const context=vm.createContext({
   performance:{now:()=>0},requestAnimationFrame:callback=>{frames.set(++nextId,callback);return nextId},
-  cancelAnimationFrame:id=>frames.delete(id),placeBall:(...point)=>positions.push(point),wallHit:()=>hits++
+  cancelAnimationFrame:id=>frames.delete(id),placeBall:(x,y)=>positions.push([x,y]),wallHit:()=>hits++
  });
  vm.runInContext(html.slice(html.indexOf('function fly('),html.indexOf('async function anim(d,win,roll,options)')),context);
  const path=[[50,50],[100,50],[0,50],[60,50]];
@@ -134,6 +134,10 @@ test('camera magnifies the field contents and centers the ball at landing withou
     assert.ok(Math.hypot(left-50,top-50)>1e-7);
    }
    assert.equal(skinStyle.transform,'none');
+   assert.match(skinStyle.backgroundImage,/linear-gradient/);
+   const gradientStart=parseFloat(skinStyle['--upgrade-zoom-start']);
+   near(parseFloat(skinStyle['--upgrade-zoom-end'])-gradientStart,100*scale);
+   near(parseFloat(skinStyle['--upgrade-zoom-cut']),gradientStart+context.upgradeBoardPosition(75)*scale);
    const divider=parseFloat(skinStyle['--loss-progress']);
    assert.ok(divider>=0&&divider<=100);
    const won=(x-y+100)/2>75;
@@ -141,6 +145,8 @@ test('camera magnifies the field contents and centers the ball at landing withou
   }
   context.fxClean();
   assert.equal(camera.style.transform,'');
+  assert.equal(skinStyle.backgroundImage,'');
+  assert.equal(skinStyle['--upgrade-zoom-start'],undefined);
   assert.equal(skinStyle['--loss-progress'],undefined);
  }
 });

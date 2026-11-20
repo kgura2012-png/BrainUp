@@ -32,6 +32,15 @@ function ringUpdate(chance){
 /* upgrade-board-flight */
 var resEls=[],hitN=0;
 let wallFlash, ballImpact, upgradeCameraLayer;
+const upgradeCameraGradient = 'linear-gradient(45deg,' +
+  'var(--loss-c1) var(--upgrade-zoom-start),' +
+  'var(--loss-c2) calc(var(--upgrade-zoom-cut) - var(--upgrade-zoom-scale) * var(--zone-divider-width)),' +
+  'var(--loss-zone-border) calc(var(--upgrade-zoom-cut) - var(--upgrade-zoom-scale) * var(--zone-divider-width)),' +
+  'var(--loss-zone-border) var(--upgrade-zoom-cut),' +
+  'var(--win-zone-border) var(--upgrade-zoom-cut),' +
+  'var(--win-zone-border) calc(var(--upgrade-zoom-cut) + var(--upgrade-zoom-scale) * var(--zone-divider-width)),' +
+  'var(--win-c1) calc(var(--upgrade-zoom-cut) + var(--upgrade-zoom-scale) * var(--zone-divider-width)),' +
+  'var(--win-c2) var(--upgrade-zoom-end))';
 
 function placeBallOnBoard(left, top){
   roll_.style.left = left + '%';
@@ -51,7 +60,9 @@ function stopUpgradeImpact(){
 function fxClean(){
   stopUpgradeImpact();
   skins.style.transform = 'none';
-  skins.style.removeProperty('--loss-progress');
+  skins.style.backgroundImage = '';
+  for (const property of ['--loss-progress','--upgrade-zoom-start','--upgrade-zoom-cut',
+    '--upgrade-zoom-end','--upgrade-zoom-scale']) skins.style.removeProperty(property);
   if (upgradeCameraLayer) upgradeCameraLayer.style.transform = '';
   resEls.forEach(element => element.remove());
   resEls = [];
@@ -85,10 +96,16 @@ function drawUpgradeLanding(x, y, progress, chance){
   getUpgradeCameraLayer().style.transform =
     'translate(' + offsetX + '%, ' + offsetY + '%) scale(' + scale + ')';
 
-  // Project the same camera onto the background without moving the edges of the board.
-  const loss = upgradeBoardPosition(100 - chance);
-  const divider = 50 + (loss - 50) * scale + (offsetX - offsetY) / 2;
-  skins.style.setProperty('--loss-progress', Math.min(100, Math.max(0, divider)) + '%');
+  // Zoom the whole gradient in the fixed viewport. CSS extends the outer colors if the view reaches an edge.
+  const start = 50 * (1 - scale) + (offsetX - offsetY) / 2;
+  const divider = start + upgradeBoardPosition(100 - chance) * scale;
+  const style = skins.style;
+  style.setProperty('--upgrade-zoom-start', start + '%');
+  style.setProperty('--upgrade-zoom-cut', divider + '%');
+  style.setProperty('--upgrade-zoom-end', start + 100 * scale + '%');
+  style.setProperty('--upgrade-zoom-scale', String(scale));
+  style.setProperty('--loss-progress', Math.min(100, Math.max(0, divider)) + '%');
+  if (!style.backgroundImage) style.backgroundImage = upgradeCameraGradient;
 }
 
 function wallHit(){
@@ -195,6 +212,11 @@ async function anim(d,win,roll,options){
     E('upgrade-percent__result-subtitle', win ? d.target.name : 'Upgrade failed'));
   root.append(overlay, resultText);
   resEls.push(overlay, resultText);
+  if (!reducedMotion) {
+    const fade = [{opacity:0}, {opacity:1}];
+    overlay.animate?.(fade, {duration:210, easing:'ease-out'});
+    resultText.animate?.(fade, {duration:260, easing:'ease-out'});
+  }
   sfx(win ? 'win' : 'lose');
   toast(win ? 'You won ' + d.target.name + '!' : 'Upgrade failed');
   await sleep(1100);
