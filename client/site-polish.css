@@ -507,3 +507,78 @@ html body.bu-winter.bu-winter #bu-soon .profile-item.polished-profile-card.selec
 
 
 html body.bu-winter .bu-app .upgrade-percent .upgrade-percent__label--win{top:4%!important;right:5%!important;bottom:auto!important;left:auto!important;font-size:clamp(.4rem,calc(var(--loss-frac,.5) * 13cqw + 2cqw),2rem)!important;line-height:1!important;white-space:nowrap!important;color:var(--win-label)!important;transform:scale(var(--chance-label-scale,1))!important;transform-origin:top right!important;transition:none!important}
+
+/* Use the same card and header tracks across the two upgrade panels. */
+html body.bu-winter .bu-app .bu-lists {
+  --upgrade-list-card-height:210px;
+  --upgrade-list-grid-padding:16px;
+}
+
+html body.bu-winter .bu-app .bu-lists > .bu-panel > .bu-grid {
+  grid-auto-rows:var(--upgrade-list-card-height)!important;
+  padding:var(--upgrade-list-grid-padding)!important;
+}
+
+html body.bu-winter.bu-winter .bu-app :is(#bu-lgrid,#bu-tgrid) .bu-card.polished-brainrot-card {
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:10px 7px 8px!important;
+  gap:6px!important;
+}
+
+html body.bu-winter.bu-winter .bu-app :is(#bu-lgrid,#bu-tgrid) .bu-card.polished-brainrot-card > img {
+  width:100%!important;
+  height:auto!important;
+}
+
+html body.bu-winter.bu-winter .bu-app :is(#bu-lgrid,#bu-tgrid) .brainrot-card-details {
+  display:grid!important;
+  grid-template-rows:45px 20px!important;
+}
+
+html body.bu-winter.bu-winter .bu-app :is(#bu-lgrid,#bu-tgrid) .brainrot-name {
+  align-content:center!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+
+@media (max-width:600px) {
+  html body.bu-winter .bu-app .bu-lists {
+    --upgrade-list-card-height:196px;
+    --upgrade-list-grid-padding:10px;
+  }
+}
+
+@media (min-width:1201px) {
+  html body.bu-winter .bu-app .bu-lists > .bu-panel > .bu-ph {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-rows:minmax(40px,auto) auto;
+    min-height:116px!important;
+    align-content:start;
+  }
+  html body.bu-winter .bu-app .bu-lists .bu-ph > .bu-pr {
+    grid-column:1/-1;
+    grid-row:2;
+    justify-content:flex-start;
+  }
+
+  @supports (grid-template-rows:subgrid) {
+    html body.bu-winter .bu-app .bu-lists {
+      grid-template-rows:auto 1fr auto auto;
+      row-gap:0!important;
+    }
+    html body.bu-winter .bu-app .bu-lists > .bu-panel {
+      display:grid!important;
+      grid-template-rows:subgrid;
+      grid-row:span 4;
+      height:auto!important;
+    }
+    html body.bu-winter .bu-app .bu-lists > .bu-panel > .bu-ph {grid-row:1}
+    html body.bu-winter .bu-app .bu-lists > .bu-panel > .bu-grid {grid-row:2}
+    html body.bu-winter .bu-app .bu-lists > .bu-panel > #bu-shop-note {grid-row:3}
+    html body.bu-winter .bu-app .bu-lists > .bu-panel > .bu-pf {grid-row:4}
+  }
+}
