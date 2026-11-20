@@ -4,13 +4,14 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {synchronizeMutations} from './sync-mutations.mjs';
+import {withUpgradeBoard} from './upgrade-board-markup.mjs';
 const root=process.cwd();
 const catalogArtwork=JSON.parse(await fs.readFile(path.join(root,'assets/catalog-artwork/manifest.json'),'utf8'));
 for(const entry of Object.values(catalogArtwork)){if(entry.file){const bytes=await fs.readFile(path.join(root,'assets/catalog-artwork',entry.file));if(bytes.length!==entry.bytes||createHash('sha256').update(bytes).digest('hex')!==entry.digest)throw Error('Catalog image does not match manifest: '+entry.file);entry.data=bytes.toString('base64');delete entry.file}}
 const catalogArtworkSource=(await fs.readFile(path.join(root,'server/catalog-artwork.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'').replace(/^export /gm,'');
 const cloudflare=process.argv.includes('--target=cloudflare');
 await synchronizeMutations(root);
-let html=await fs.readFile(path.join(root,'site.html'),'utf8');
+let html=await withUpgradeBoard(await fs.readFile(path.join(root,'site.html'),'utf8'));
 const seed=await fs.readFile(path.join(root,'server/seed.json'),'utf8');
 const caseCatalogRecovery=cloudflare?JSON.parse(await fs.readFile(path.join(root,'server/restored-cases.json'),'utf8')):null;
 const catalogSeed=JSON.parse(seed);

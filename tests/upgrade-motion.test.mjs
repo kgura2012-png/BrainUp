@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import vm from 'node:vm';
 import {buildUpgradeBouncePath,upgradeLaunchAngle,spinUpgradeAim,upgradePathBounds} from '../client/upgrade-motion.mjs';
+import {withUpgradeBoard} from '../scripts/upgrade-board-markup.mjs';
 
 function seededRandom(seed){return()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}}
 const near=(actual,expected)=>assert.ok(Math.abs(actual-expected)<1e-7,`${actual} differs from ${expected}`);
@@ -47,4 +50,44 @@ test('background cancellation stops the spinning frame and prevents launch',asyn
   requestFrame:callback=>{queued=callback;return 1},cancelFrame:()=>{cancelled++;queued=null}});
  controller.abort();
  assert.equal(await result,false);assert.equal(cancelled,1);assert.equal(queued,null);
+});
+
+const html=await withUpgradeBoard(await readFile(new URL('../site.html',import.meta.url),'utf8'));
+
+test('edge rolls leave room for the visible ball and land on the correct side of the displayed threshold',()=>{
+ const context=vm.createContext({});
+ vm.runInContext(html.slice(html.indexOf('function upgradeBoardPosition(value)'),html.indexOf('function paintUpgradeChance(')),context);
+ const {upgradeBoardPosition}=context;
+ for(const chance of [10,25,30,80])for(const roll of [0,100-chance-.0001,100-chance+.0001,100]){
+  const [x,y]=buildUpgradeBouncePath(roll,seededRandom(5)).at(-1).map(upgradeBoardPosition);
+  // The largest impact has a ball radius of 5.2% of the board.
+  assert.ok(x>=8&&x<=92&&y>=8&&y<=92);
+  const diagonal=(x-y+100)/2;
+  assert.equal(diagonal>upgradeBoardPosition(100-chance),roll>100-chance);
+ }
+});
+
+test('flight cancels scheduled work and skips old impact effects after a dropped frame',async()=>{
+ const frames=new Map(),positions=[];
+ let nextId=0,hits=0;
+ const context=vm.createContext({
+  performance:{now:()=>0},requestAnimationFrame:callback=>{frames.set(++nextId,callback);return nextId},
+  cancelAnimationFrame:id=>frames.delete(id),placeBall:(...point)=>positions.push(point),wallHit:()=>hits++
+ });
+ vm.runInContext(html.slice(html.indexOf('function fly(pts,total,signal)'),html.indexOf('async function anim(d,win,roll,options)')),context);
+ const path=[[8,92],[70,0],[100,60],[90,10]];
+ const controller=new AbortController();
+ const interrupted=context.fly(path,2900,controller.signal);
+ controller.abort();
+ await interrupted;
+ assert.equal(frames.size,0);
+ assert.deepEqual(positions,[[8,92]]);
+ const full=context.fly(path,2900);
+ const callback=frames.get(nextId);
+ frames.delete(nextId);
+ callback(5000);
+ await full;
+ assert.equal(frames.size,0);
+ assert.equal(hits,0);
+ assert.deepEqual(positions.at(-1),path.at(-1));
 });

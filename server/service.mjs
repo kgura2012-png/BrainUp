@@ -1,7 +1,7 @@
 import {applyCaseCatalogRecovery} from './case-catalog-recovery.mjs';
 import {readBrainupState, saveBrainupState} from './state-storage.mjs';
 import {uahTopupView} from './uah-topups.mjs';
-import { account, execute, fresh, view, publicFeed, topupStatus, simulationTopupView, minePatchView } from './model.mjs';
+import { account, execute, fresh, random, view, publicFeed, topupStatus, simulationTopupView, minePatchView } from './model.mjs';
 import {isFiftyFiftyCase} from '../shared/case-odds.mjs';
 import seed from './seed.json' with { type: 'json' };
 import {migrationBackup} from './migration-backup.mjs';
@@ -102,6 +102,9 @@ export async function handle(request, db, identity, options={}) {
     try{preparedShare=await options.prepareBonusShare(Number(identity.id.slice(3)));body.data={...preparedShare,nonce:crypto.randomUUID()}}catch{return json({ok:false,error:'Не удалось подготовить приглашение. Повторите позже.'},400)}
   }
   const compact=['mines-start','mines-open','mines-cash','dice','upgrade','fuse','fuse-hit','rocket-place','rocket-cancel','rocket-status','rocket-cash'].includes(body.action);
+  // A write conflict can retry settlement, but it must not reroll this upgrade.
+  let upgradeDraw;
+  const draw=body.action==='upgrade'?()=>upgradeDraw??=random():random;
   for(let attempt=0;attempt<12;attempt++){
     let row=await readBrainupState(db);
     if(!row){
@@ -155,7 +158,7 @@ export async function handle(request, db, identity, options={}) {
         return json({ok:false,error:'Инвентарь изменился. Проверьте список перед повторным списанием.'},409);
       }
     }
-    try { result=execute(state,identity.id,seed,body.action,body.data||{},body.action==='rocket-cash'?receivedAt:Date.now()); }
+    try { result=execute(state,identity.id,seed,body.action,body.data||{},body.action==='rocket-cash'?receivedAt:Date.now(),draw); }
     catch(e){return json({ok:false,error:e.message},400);}
     state.receipts[key]=result;
     const keys=Object.keys(state.receipts);if(keys.length>5000)for(const k of keys.slice(0,keys.length-5000))delete state.receipts[k];
