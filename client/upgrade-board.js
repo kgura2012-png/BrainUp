@@ -31,7 +31,7 @@ function ringUpdate(chance){
 
 /* upgrade-board-flight */
 var resEls=[],hitN=0;
-let wallFlash, ballImpact;
+let wallFlash, ballImpact, resultZoom;
 
 function placeBall(x, y){
   roll_.style.left = upgradeBoardPosition(x) + '%';
@@ -46,6 +46,10 @@ function stopUpgradeImpact(){
 
 function fxClean(){
   stopUpgradeImpact();
+  resultZoom?.cancel();
+  resultZoom = null;
+  skins.style.transform = 'none';
+  skins.style.transformOrigin = '';
   resEls.forEach(element => element.remove());
   resEls = [];
   root.classList.remove('upgrade-percent--aim-result', 'upgrade-percent--highlight-win',
@@ -53,6 +57,22 @@ function fxClean(){
   roll_.classList.remove('upgrade-percent__roll--flying', 'upgrade-percent__roll--charging',
     'upgrade-percent__roll--arrow-hidden');
   placeBall(...UPGRADE_LAUNCH_POINT);
+}
+
+function focusUpgradeResult([x, y]){
+  const scale = 1.8;
+  const panX = 50 - upgradeBoardPosition(x) * scale;
+  const panY = 50 - upgradeBoardPosition(y) * scale;
+  const transform = 'translate(' + panX + '%, ' + panY + '%) scale(' + scale + ')';
+  skins.style.transformOrigin = '0 0';
+  if (skins.animate) {
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    resultZoom = skins.animate([{transform:'none'}, {transform}], {
+      duration:reducedMotion ? 0 : 420, easing:'cubic-bezier(.22,.78,.18,1)', fill:'forwards'
+    });
+  } else {
+    skins.style.transform = transform;
+  }
 }
 
 function wallHit(){
@@ -146,10 +166,12 @@ async function anim(d,win,roll,options){
   await fly(path, 2900, signal);
   if (signal?.aborted) return;
 
+  focusUpgradeResult(path.at(-1));
   root.classList.add('upgrade-percent--aim-result', 'upgrade-percent--highlight-' + (win ? 'win' : 'loss'));
   if (!win) root.classList.add('upgrade-percent--lost');
   const overlay = E('upgrade-percent__result-overlay');
   const resultText = E('upgrade-percent__result-text' + (win ? '' : ' upgrade-percent__result-text--lose'));
+  resultText.style.top = '62%';
   resultText.append(E('upgrade-percent__result-title', win ? 'WIN' : 'LOSS'),
     E('upgrade-percent__result-subtitle', win ? d.target.name : 'Upgrade failed'));
   root.append(overlay, resultText);

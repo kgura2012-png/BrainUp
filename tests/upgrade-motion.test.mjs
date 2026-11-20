@@ -107,3 +107,32 @@ test('flight cancels scheduled work and skips old impact effects after a dropped
  assert.equal(hits,0);
  assert.deepEqual(positions.at(-1),path.at(-1));
 });
+
+test('result zoom centers stops at the edges and resets before the next launch',()=>{
+ const calls=[],styles={},classList={remove(){}};
+ let canceled=0;
+ const context=vm.createContext({
+  UPGRADE_LAUNCH_POINT:[50,50],root:{classList},roll_:{classList,style:{}},
+  skins:{style:styles,animate:(frames,options)=>{
+   calls.push({frames,options});
+   return {cancel(){canceled++}};
+  }},
+  window:{matchMedia:()=>({matches:false})}
+ });
+ const slice=(start,end)=>html.slice(html.indexOf(start),html.indexOf(end));
+ vm.runInContext(slice('function upgradeBoardPosition(value)','function paintUpgradeChance(')+
+   slice('var resEls=[],hitN=0;','function wallHit(){'),context);
+ for(const point of [[0,0],[0,100],[50,50],[100,0],[100,100]]){
+  context.focusUpgradeResult(point);
+  const {frames,options}=calls.at(-1);
+  const [,dx,dy,scale]=/translate\(([^%]+)%, ([^%]+)%\) scale\(([^)]+)\)/.exec(frames[1].transform);
+  near(Number(dx)+Number(scale)*context.upgradeBoardPosition(point[0]),50);
+  near(Number(dy)+Number(scale)*context.upgradeBoardPosition(point[1]),50);
+  assert.equal(options.duration,420);
+  assert.equal(styles.transformOrigin,'0 0');
+  context.fxClean();
+  assert.equal(styles.transform,'none');
+  assert.equal(styles.transformOrigin,'');
+ }
+ assert.equal(canceled,5);
+});
