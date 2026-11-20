@@ -43,7 +43,7 @@ export async function readBrainupState(db) {
   throw Error('Не удалось прочитать все части данных BrainUp');
 }
 
-export async function saveBrainupState(db, revision, state, relatedWrites) {
+export async function saveBrainupState(db, revision, state) {
   const data = JSON.stringify(state);
   const update = 'UPDATE site_state SET revision = revision + 1, data = ? WHERE id = 1 AND revision = ?';
   if (!segmentedSiteDatabases.has(db)) return db.prepare(update).bind(data, revision).run();
@@ -60,7 +60,6 @@ export async function saveBrainupState(db, revision, state, relatedWrites) {
   commands.push(db.prepare(
     'DELETE FROM site_state_parts WHERE state_key <> ? AND EXISTS (SELECT 1 FROM site_state WHERE id = 1 AND data = ?)'
   ).bind(key, manifest));
-  if (relatedWrites) commands.push(...relatedWrites(manifest));
   const [saved] = await db.batch(commands);
   return saved;
 }

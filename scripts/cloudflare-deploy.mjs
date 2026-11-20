@@ -1,7 +1,3 @@
-import {generateKeyPairSync} from 'node:crypto';
-import {mkdtempSync,writeFileSync,rmSync} from 'node:fs';
-import {tmpdir} from 'node:os';
-import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {withCloudflareConfig, wranglerCli} from './cloudflare-config.mjs';
 
@@ -20,20 +16,27 @@ await withCloudflareConfig(async (config, file) => {
   const [check] = JSON.parse(run(['d1', 'execute', 'DB', '--remote', '--json', '--command',
     'SELECT id FROM site_state LIMIT 1'], true));
   if (!check?.success) throw Error('Новая база BrainUp не готова.');
-  const deployment=['deploy','--var','BRAINUP_MIGRATION_PENDING:false','--var','MIGRATION_READ_ONLY:false'];
-  if(process.env.WORKERS_CI==='1'){
-    const {publicKey,privateKey}=generateKeyPairSync('rsa',{modulusLength:2048});
-    const keyFolder=mkdtempSync(join(tmpdir(),'brainup-transfer-'));
-    try{
-      const keyFile=join(keyFolder,'secret.json');
-      writeFileSync(keyFile,JSON.stringify({
-        BRAINUP_TRANSFER_PRIVATE:privateKey.export({type:'pkcs8',format:'der'}).toString('base64')
-      }),{mode:0o600});
-      deployment.push('--var','BRAINUP_TRANSFER_PUBLIC:'+publicKey.export({type:'spki',format:'der'}).toString('base64'),
-        '--secrets-file',keyFile);
-      run(deployment);
-    }finally{rmSync(keyFolder,{recursive:true,force:true});}
-  }else run(deployment);
+  // The old backup format predated the per-invoice exchange rate. Site version 134
+  // switched stars top-ups to 125 cents per star before the first invoice in this window.
+  const historicalInvoices="substr(id,1,6) = 'topup:' AND created_at BETWEEN 1794843946768 AND 1795095260217 AND bu_rate = 135";
+  const [pendingRates]=JSON.parse(run(['d1','execute','DB','--remote','--json','--command',
+    'SELECT COUNT(*) AS count FROM support_payments WHERE '+historicalInvoices],true));
+  if(!pendingRates?.success||pendingRates.results[0].count>9)throw Error('Unexpected legacy invoice rate count');
+  if(pendingRates.results[0].count>0){
+    const [fixedRates]=JSON.parse(run(['d1','execute','DB','--remote','--json','--command',
+      'UPDATE support_payments SET bu_rate = 125 WHERE '+historicalInvoices],true));
+    if(!fixedRates?.success)throw Error('Legacy invoice rates were not restored');
+    console.log('Restored legacy invoice rates:',fixedRates.meta.changes);
+  }
+  run(['deploy', '--var', 'BRAINUP_MIGRATION_PENDING:false', '--var', 'MIGRATION_READ_ONLY:false',
+    '--var','BRAINUP_TRANSFER_PUBLIC:retired']);
+
+  if(process.env.WORKERS_CI==='1'&&process.env.CLOUDFLARE_API_TOKEN){
+    const endpoint='https://api.cloudflare.com/client/v4/accounts/'+config.account_id+
+      '/workers/scripts/'+config.name+'/secrets/BRAINUP_TRANSFER_PRIVATE';
+    const removed=await fetch(endpoint,{method:'DELETE',headers:{Authorization:'Bearer '+process.env.CLOUDFLARE_API_TOKEN}});
+    if(!removed.ok&&removed.status!==404)console.warn('Temporary secret cleanup returned HTTP',removed.status);
+  }
 
   const publicSite = new URL('/', config.vars.APP_ORIGIN);
   for (let attempt = 0; attempt < 6; attempt++) {

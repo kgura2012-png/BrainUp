@@ -12,7 +12,6 @@ const cloudflare=process.argv.includes('--target=cloudflare');
 await synchronizeMutations(root);
 let html=await fs.readFile(path.join(root,'site.html'),'utf8');
 const seed=await fs.readFile(path.join(root,'server/seed.json'),'utf8');
-const browserTransferPage="<!doctype html><html lang=\"ru\"><meta charset=\"utf-8\"><title>Перенос BrainUp</title><button>Завершить защищённый перенос</button><p role=\"status\"></p><script>\nconst button=document.querySelector('button'),message=document.querySelector('p');\nbutton.onclick=async()=>{button.disabled=true;try{\n  const source=await fetch('https://brainup-mobile-nov26.regalpeach22.chatgpt.site/internal/database-transfer/sealed',{credentials:'omit',cache:'no-store'});\n  if(!source.ok)throw Error('Источник пока недоступен.');\n  const response=await fetch('/internal/database-transfer/sealed',{method:'POST',body:await source.text()});\n  message.textContent=response.ok?'Перенос завершён.':'Перенос не подтверждён: '+await response.text();\n}catch(error){message.textContent=error.message;}finally{button.disabled=false;}};\n</script>";
 const caseCatalogRecovery=cloudflare?JSON.parse(await fs.readFile(path.join(root,'server/restored-cases.json'),'utf8')):null;
 const catalogSeed=JSON.parse(seed);
 // One catalog supplies both the browser and the authoritative server prices.
@@ -110,12 +109,9 @@ const mutationAssetsSource=(await fs.readFile(path.join(root,'server/mutation-as
 const welcomePhoto=(await fs.readFile(path.join(root,'assets/bot/welcome.jpg'))).toString('base64');
 const htmlGzip=cloudflare?null:gzipSync(Buffer.from(html),{level:9});
 if(htmlGzip&&gunzipSync(htmlGzip).toString()!==html)throw Error('HTML compression round trip failed');
-const sealedRestoreSource=cloudflare?(await fs.readFile(path.join(root,'server/sealed-legacy-restore.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,''):'';
-const sealedMergeSource=cloudflare?'const mergeRestoredBrainupState=(()=>{'+(await fs.readFile(path.join(root,'server/merge-restored-state.mjs'),'utf8')).replace(/^export /gm,'')+'\nreturn mergeRestoredBrainupState;})();':'';
-
 const cloudflareMigrationPage = "<!doctype html><html lang=\"ru\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>BrainUp — перенос сайта</title><style>\n*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:#10131c;color:#f4f6fc;font:16px/1.55 system-ui,sans-serif}main{width:min(100%,440px);padding:32px;background:#181d29;border:1px solid #303747;border-radius:24px}img{width:150px;max-width:100%;height:auto;display:block}h1{font-size:28px;line-height:1.2;margin:24px 0 12px}p{color:#bdc7da;margin:0 0 24px}a{display:inline-block;background:#c9dbff;color:#121a2b;border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none}a:focus-visible{outline:3px solid #fff;outline-offset:4px}\n</style><main><img src=\"/assets/brainup-wordmark.webp\" alt=\"BrainUp\"><h1>BrainUp переезжает</h1><p>Новый сервер доступен. Вход, баланс и инвентарь появятся после переноса базы. Пока можно открыть действующий BrainUp.</p><a href=\"https://brainup-mobile-nov26.regalpeach22.chatgpt.site/\">Открыть действующий BrainUp</a></main></html>";
 const caseCatalogRecoverySource=(await fs.readFile(path.join(root,'server/case-catalog-recovery.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'');
-const worker=`${stateStorageSource}\n${caseCatalogRecoverySource}\nconst caseCatalogRecovery=${JSON.stringify(caseCatalogRecovery)};\n${notificationJobsSource.replace(/^import .*?;\r?\n/gm,'')}\n${partnerAccountingSource}\n${uahTopupsSource}\n${support}\n${telegram}\n${browserAuthSource}\n${identitySource}\n${migrationSource}\n${sealedMergeSource}\n${sealedRestoreSource}\n${mutationAssetsSource}\n${mutationMaterialSource}\n${catalogArtworkSource}\nconst catalogArtwork=${JSON.stringify(catalogArtwork)};\nconst mutationMaterialManifest=${JSON.stringify(mutationMaterialManifest)};\nconst mutationModels=${JSON.stringify(mutationModels)};\nconst mutationOriginalAssets=${JSON.stringify(mutationOriginalAssets)};\nconst mutationAssetManifest=${JSON.stringify(mutationAssetManifest)};\nconst mutationIcons=${JSON.stringify(mutationIcons)};\nconst standaloneCloudflare=${cloudflare};\nconst brandWordmark=${JSON.stringify(cloudflare?null:wordmarkBytes.toString('base64'))};\nconst htmlGzip=${JSON.stringify(htmlGzip?.toString('base64')||null)};\nfunction htmlResponseBody(){return new Blob([Uint8Array.from(atob(htmlGzip),ch=>ch.charCodeAt(0))]).stream().pipeThrough(new DecompressionStream('gzip'))}\nconst welcomePhoto=${JSON.stringify(cloudflare?null:welcomePhoto)};\nconst seed=${seed};\n${playerProfiles}\n${caseSectionsSource}\n${caseOddsSource}\n${buffsSource}\n${upgradeChanceShared}\n${model}\n${service}\n`+`
+const worker=`${stateStorageSource}\n${caseCatalogRecoverySource}\nconst caseCatalogRecovery=${JSON.stringify(caseCatalogRecovery)};\n${notificationJobsSource.replace(/^import .*?;\r?\n/gm,'')}\n${partnerAccountingSource}\n${uahTopupsSource}\n${support}\n${telegram}\n${browserAuthSource}\n${identitySource}\n${migrationSource}\n${mutationAssetsSource}\n${mutationMaterialSource}\n${catalogArtworkSource}\nconst catalogArtwork=${JSON.stringify(catalogArtwork)};\nconst mutationMaterialManifest=${JSON.stringify(mutationMaterialManifest)};\nconst mutationModels=${JSON.stringify(mutationModels)};\nconst mutationOriginalAssets=${JSON.stringify(mutationOriginalAssets)};\nconst mutationAssetManifest=${JSON.stringify(mutationAssetManifest)};\nconst mutationIcons=${JSON.stringify(mutationIcons)};\nconst standaloneCloudflare=${cloudflare};\nconst brandWordmark=${JSON.stringify(cloudflare?null:wordmarkBytes.toString('base64'))};\nconst htmlGzip=${JSON.stringify(htmlGzip?.toString('base64')||null)};\nfunction htmlResponseBody(){return new Blob([Uint8Array.from(atob(htmlGzip),ch=>ch.charCodeAt(0))]).stream().pipeThrough(new DecompressionStream('gzip'))}\nconst welcomePhoto=${JSON.stringify(cloudflare?null:welcomePhoto)};\nconst seed=${seed};\n${playerProfiles}\n${caseSectionsSource}\n${caseOddsSource}\n${buffsSource}\n${upgradeChanceShared}\n${model}\n${service}\n`+`
 export default {
   async fetch(request,env,ctx) {
     const url=new URL(request.url);
@@ -133,21 +129,6 @@ export default {
       });
     }
     if(standaloneCloudflare)enableBrainupSegments(env.DB);
-    if(standaloneCloudflare&&url.pathname==='/internal/database-transfer/ui'){
-      if(request.method!=='GET')return new Response('Method not allowed',{status:405});
-      return new Response(${JSON.stringify(browserTransferPage)},{headers:{
-        'Content-Type':'text/html;charset=UTF-8','Cache-Control':'no-store','X-Robots-Tag':'noindex',
-        'Content-Security-Policy':"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://brainup-mobile-nov26.regalpeach22.chatgpt.site; frame-ancestors 'none'",'X-Content-Type-Options':'nosniff'
-      }});
-    }
-    if(standaloneCloudflare&&url.pathname==='/internal/database-transfer/status'&&request.method==='GET')return brainupSealedTransferStatus(env);
-    if(standaloneCloudflare&&url.pathname==='/internal/database-transfer/sealed'&&request.method==='POST'){
-      if(request.headers.get('Origin')!==url.origin)return new Response('Forbidden',{status:403});
-      try{
-        const imported=await importBrainupSealedBackup(env,new Response(request.body));
-        return new Response(imported?'OK':'Retry',{status:imported?200:409});
-      }catch(error){console.error(error.message);return new Response('Transfer unavailable',{status:422});}
-    }
     if(url.pathname==='/internal/notifications/tick')return handleNotificationTick(request,env);
     if(url.pathname.startsWith('/assets/catalog/'))return handleCatalogArtwork(request,env,catalogArtwork);
     if(url.pathname==='/assets/brainup-wordmark.webp'){
@@ -193,9 +174,6 @@ export default {
     ctx.waitUntil((async()=>{
       if(caseCatalogRecovery&&env.MIGRATION_READ_ONLY!=='true'){
         try{await restoreBrainupCaseCatalog(env.DB,caseCatalogRecovery,seed)}catch{console.error('Case catalog restoration will retry')}
-      }
-      if(standaloneCloudflare){
-        try{await importBrainupSealedBackup(env)}catch(error){console.error('BrainUp transfer:',error.message)}
       }
       await processNotificationJobs(env,env.APP_ORIGIN||'https://brainup-mobile-nov26.regalpeach22.chatgpt.site');
     })());
