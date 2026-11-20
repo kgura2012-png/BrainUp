@@ -158,7 +158,8 @@ export function view(s,id,seed,now=Date.now(),options={}) {
   const u=s.users[id],admin=s.owner===id,us=structuredClone(u);
   delete us.rocket;delete us.mine;
   us.online=s.config.online??us.online??0;
-  us.simulationBookings=(s.simulationBookings||[]).filter(x=>x.userId===id);
+  const bookings=s.simulationBookings||[];
+  us.simulationBookings=bookings.filter(x=>x.userId===id);
   us.collaborationApplications=(s.collaborationApplications||[]).filter(x=>x.userId===id);
   us.rb=u.bound?{[id]:u.bound}:{};us.players={};us.promos={};us.wd=s.withdrawals.filter(x=>x.userId===id);
   if(u.mine)us.mg={n:u.mine.n,stake:u.mine.stake,open:u.mine.open,imgs:u.mine.imgs,mines:[]};else us.mg=null;
@@ -169,7 +170,9 @@ export function view(s,id,seed,now=Date.now(),options={}) {
   const refs={};if(!options.compact)for(const [code,p] of Object.entries(s.partners)){refs[code]=admin||p.userId===id?structuredClone(p):{code,owner:p.owner,pct:p.pct,bonus:p.bonus,disabled:p.disabled,list:[]};}
   for(const [code,p] of Object.entries(s.promos))if(admin||p.userId===id)us.promos[code]=structuredClone(p);
   const active=u.rocket?{start:u.rocket.start,auto:u.rocket.auto,value:u.rocket.value}:null;
-  return {ok:true,admin,userId:id,user:us,...publicFeed(s,now),...(!options.compact?{config:{...publicConfig,collaborationApplications:admin?(s.collaborationApplications||[]):[],winterMusicUrl:s.config.winterMusicUrl||'/assets/last-christmas.mp3',winterPromotion:winterPromotion(now,s.config.autoPromoSeed),simulationTopups:(s.simulationTopups||[]).filter(x=>admin||x.userId===id).map(x=>simulationTopupView(s,x,now)),simulationBookings:(s.simulationBookings||[]).filter(x=>admin||x.userId===id),refs,wds:admin?s.withdrawals:us.wd,tops:(s.simulationTopups||[]).filter(x=>admin||x.userId===id).map(x=>simulationTopupView(s,x,now))}}:{}),queue:{date:sundayKey(now),count:s.withdrawals.filter(x=>x.date===sundayKey(now)).length},activeRocket:active,rules:RULES};
+  return {ok:true,admin,userId:id,user:us,...publicFeed(s,now),...(!options.compact?{config:{...publicConfig,collaborationApplications:admin?(s.collaborationApplications||[]):[],winterMusicUrl:s.config.winterMusicUrl||'/assets/last-christmas.mp3',winterPromotion:winterPromotion(now,s.config.autoPromoSeed),simulationTopups:(s.simulationTopups||[]).filter(x=>admin||x.userId===id).map(x=>simulationTopupView(s,x,now)),simulationBookings:admin?bookings.map(booking=>({
+    ...booking,username:s.users[booking.userId]?.telegramUsername??booking.username??''
+  })):us.simulationBookings,refs,wds:admin?s.withdrawals:us.wd,tops:(s.simulationTopups||[]).filter(x=>admin||x.userId===id).map(x=>simulationTopupView(s,x,now))}}:{}),queue:{date:sundayKey(now),count:s.withdrawals.filter(x=>x.date===sundayKey(now)).length},activeRocket:active,rules:RULES};
 }
 function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
   const u=s.users[id];assert(u,'Сначала войдите');

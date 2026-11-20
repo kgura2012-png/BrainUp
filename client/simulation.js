@@ -109,7 +109,13 @@ function simulationBookingStatus(record){return record.status==='cancelled'?'О�
 function simulationBookingCard(record,owner){
  var booked=record.status==='booked',buttons=booked?'<button class="bu-btn secondary" data-simulation-book-cancel="'+esc(record.id)+'">Отменить запись</button>':'';
  if(owner&&booked){buttons+='<button class="bu-btn" data-simulation-book-complete="'+esc(record.id)+'"'+(Date.now()<record.at+300000?' disabled':'')+'>Завершить запись</button>';}
- return '<article class="profile-booking"><h3>Запись на вывод</h3>'+simulationBookingDates(record)+'<p>'+simulationBookingStatus(record)+'</p><p>Ник: '+esc(record.nick)+'</p><p>'+record.items.map(function(item){return esc(item.name)+' ×'+item.q}).join(', ')+'</p><p>Расчётная сдача: '+fmt(record.change)+'</p><div class="profile-booking-actions">'+buttons+'</div></article>';
+ var identity='<p>Ник: '+esc(record.nick||record.user||'Не указан')+'</p>';
+ if(owner){
+  var username=String(record.username||'').replace(/^@+/,'');
+  var telegramId=/^tg:([1-9]\d*)$/.exec(record.userId||'');
+  identity+='<p>Telegram: '+(/^[a-zA-Z0-9_]{1,32}$/.test(username)?'@'+esc(username):telegramId?'ID '+esc(telegramId[1])+' (без @username)':'@username не указан')+'</p>';
+ }
+ return '<article class="profile-booking"><h3>Запись на вывод</h3>'+simulationBookingDates(record)+'<p>'+simulationBookingStatus(record)+'</p>'+identity+'<p>'+record.items.map(function(item){return esc(item.name)+' ×'+item.q}).join(', ')+'</p><p>Расчётная сдача: '+fmt(record.change)+'</p><div class="profile-booking-actions">'+buttons+'</div></article>';
 }
 profilePage=function(){
  if(U.ptab==='ref')return profileBeforeBookingTabs();
