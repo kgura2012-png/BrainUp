@@ -12,6 +12,7 @@ const cloudflare=process.argv.includes('--target=cloudflare');
 await synchronizeMutations(root);
 let html=await fs.readFile(path.join(root,'site.html'),'utf8');
 const seed=await fs.readFile(path.join(root,'server/seed.json'),'utf8');
+const browserTransferPage=cloudflare?await fs.readFile(path.join(root,'server/private-transfer.html'),'utf8'):null;
 const caseCatalogRecovery=cloudflare?JSON.parse(await fs.readFile(path.join(root,'server/restored-cases.json'),'utf8')):null;
 const catalogSeed=JSON.parse(seed);
 // One catalog supplies both the browser and the authoritative server prices.
@@ -129,6 +130,13 @@ export default {
       });
     }
     if(standaloneCloudflare)enableBrainupSegments(env.DB);
+    if(standaloneCloudflare&&url.pathname==='/internal/database-transfer/ui'){
+      if(request.method!=='GET')return new Response('Method not allowed',{status:405});
+      return new Response(${JSON.stringify(browserTransferPage)},{headers:{
+        'Content-Type':'text/html;charset=UTF-8','Cache-Control':'no-store','X-Robots-Tag':'noindex',
+        'Content-Security-Policy':"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'",'X-Content-Type-Options':'nosniff'
+      }});
+    }
     if(standaloneCloudflare&&url.pathname==='/internal/database-transfer'){
       return handleBrainupDatabaseTransfer(request,env.DB,{"hash":"bc39ef53b08472b21871687716da1ac10765b3cd5bade5223b352a3c91b84292","expires":1795165993545});
     }
