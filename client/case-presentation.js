@@ -72,7 +72,7 @@ cwDone=function(c,wins,total){
  var rows=Array.from(reels.querySelectorAll('.cw-reel'));
  wins.forEach(function(prize,index){
   var reel=rows[index];if(!reel)return;
-  var strip=reel.querySelector('.cw-strip'),winner=strip&&(strip.querySelector('.win')||strip.children[44]);
+  var strip=reel.querySelector('.cw-strip'),winner=strip&&(strip.querySelector('.win,[data-case-winner]')||strip.children[44]);
   if(winner){Array.from(strip.children).forEach(function(card){card.style.setProperty('--case-focus',card===winner?'1':'0')});winner.classList.add('win');strip.style.transform='translate3d('+(reel.clientWidth/2-winner.offsetLeft-winner.offsetWidth/2)+'px,0,0)'}
   reel.classList.add('done');
   var row=reel.closest('.case-reel-result');if(!row){row=document.createElement('div');row.className='case-reel-result';reel.before(row);row.appendChild(reel)}

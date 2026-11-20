@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {synchronizeMutations} from './sync-mutations.mjs';
 import {withUpgradeBoard} from './upgrade-board-markup.mjs';
+import {withCaseReel} from './case-reel-markup.mjs';
 import {emitEmbeddedAssets} from './embedded-assets.mjs';
 const root=process.cwd();
 const catalogArtwork=JSON.parse(await fs.readFile(path.join(root,'assets/catalog-artwork/manifest.json'),'utf8'));
@@ -12,7 +13,7 @@ for(const entry of Object.values(catalogArtwork)){if(entry.file){const bytes=awa
 const catalogArtworkSource=(await fs.readFile(path.join(root,'server/catalog-artwork.mjs'),'utf8')).replace(/^import .*?;\r?\n/gm,'').replace(/^export /gm,'');
 const cloudflare=process.argv.includes('--target=cloudflare');
 await synchronizeMutations(root);
-let html=await withUpgradeBoard(await fs.readFile(path.join(root,'site.html'),'utf8'));
+let html=await withCaseReel(await withUpgradeBoard(await fs.readFile(path.join(root,'site.html'),'utf8')));
 const seed=await fs.readFile(path.join(root,'server/seed.json'),'utf8');
 const caseCatalogRecovery=cloudflare?JSON.parse(await fs.readFile(path.join(root,'server/restored-cases.json'),'utf8')):null;
 const catalogSeed=JSON.parse(seed);
