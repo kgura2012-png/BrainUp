@@ -1,4 +1,3 @@
-import {MAX_UPGRADE_CHANCE,UPGRADE_PERCENT_SCALE} from '../shared/upgrade-chance.mjs';
 export function playerIdentityLabel(player) {
   if (player.name) return player.name;
   if (player.username) return '@' + String(player.username).replace(/^@/, '');
@@ -22,23 +21,4 @@ export function nextDiceSelection(previous, result, inventory, balance, value) {
   return balance >= value ? {type:'coin',amt:value} : null;
 }
 
-export const DEFAULT_UPGRADE_PERCENTAGES = [15,25,35];
-export const UPGRADE_PERCENTAGES_KEY = 'bu-upgrade-win-percentages-v2';
-
-export function validateQuickPercentages(values){
-  if (!Array.isArray(values) || values.length !== 3) throw Error('Укажите три процента');
-  const result = values.map(Number);
-  if (result.some(x => !Number.isFinite(x) || x < .01 || x > MAX_UPGRADE_CHANCE ||
-      Math.abs(x * 100 - Math.round(x * 100)) > 1e-7)) {
-    throw Error('Проценты: от 0,01 до ' + MAX_UPGRADE_CHANCE + ', до двух знаков после запятой');
-  }
-  return result;
-}
-
-export function loadQuickPercentages(storage){
-  const saved = storage.getItem(UPGRADE_PERCENTAGES_KEY);
-  if (saved !== null) return validateQuickPercentages(JSON.parse(saved));
-  const previous = JSON.parse(storage.getItem('bu-upgrade-percentages') || 'null');
-  if (!Array.isArray(previous)) return DEFAULT_UPGRADE_PERCENTAGES.slice();
-  return validateQuickPercentages(previous.map(value => Math.max(.01, Math.round(Number(value) * UPGRADE_PERCENT_SCALE) / 100)));
-}
+export function validateQuickPercentages(values){if(!Array.isArray(values)||values.length!==3)throw Error('Укажите три процента');const result=values.map(Number);if(result.some(x=>!Number.isFinite(x)||x<.01||x>80||Math.abs(x*100-Math.round(x*100))>1e-7))throw Error('Проценты: от 0,01 до 80, до двух знаков после запятой');return result;}

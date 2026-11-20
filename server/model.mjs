@@ -1,4 +1,4 @@
-import {upgradeSuccessChance,MAX_UPGRADE_CHANCE} from '../shared/upgrade-chance.mjs';
+import {upgradeSuccessChance} from '../shared/upgrade-chance.mjs';
 import {shopPurchasePrice} from '../shared/shop-price.mjs';
 import {withCatalogPrice} from '../shared/catalog-prices.mjs';
 import {buffTopupQuote} from '../shared/buffs.mjs';
@@ -347,7 +347,7 @@ function executeCommand(s,id,seed,action,b={},now=Date.now(),rng=random) {
   if(action==='upgrade'){
     const target=itemBy(s,seed,b.target),items=take(u,b.ids),value=items.reduce((n,x)=>n+itemBy(s,seed,x.id,true).price,0),coins=money(Number(b.coins)||0);
     assert(coins>=0,'Неверная сумма');if(coins)debit(u,coins);assert(target.price>value+coins,'Цель должна быть дороже ставки');
-    const chance=upgradeSuccessChance(value+coins,target.price);assert(chance!==null,'Максимальный шанс апгрейда — '+MAX_UPGRADE_CHANCE+'%');const draw=rng()*100,win=draw<chance;u.upg++;if(win){u.win++;add(u,target.id);}else u.lose++;return {win,chance,target,roll:100-draw};
+    const chance=upgradeSuccessChance(value+coins,target.price);assert(chance!==null,'Максимальный шанс апгрейда — 80%');const draw=rng()*100,win=draw<chance;u.upg++;if(win){u.win++;add(u,target.id);}else u.lose++;return {win,chance,target,roll:100-draw};
   }
   if(action==='virtual-withdraw'){
     assert(Array.isArray(b.plan)&&b.plan.length>0&&b.plan.length<=100,'Выберите предметы');
