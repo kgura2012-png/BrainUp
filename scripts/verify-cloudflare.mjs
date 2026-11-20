@@ -59,7 +59,7 @@ export async function verifyCloudflareBuild(worker, out, verifyTelegramIdentity,
     assert.equal(bytes.toString('ascii',8,12),'WEBP');
   }
   assert.equal((await worker.fetch(new Request('https://brainup.test/.env'), {ASSETS})).status,404);
-  assert.equal((await worker.fetch(new Request('https://brainup.test/internal/database-transfer'), {})).status,403);
+  assert.equal((await worker.fetch(new Request('https://brainup.test/internal/database-transfer/sealed',{method:'POST'}), {})).status,403);
   const forged = {'oai-authenticated-user-id':'tg:1116312381','oai-authenticated-user-full-name':'Owner'};
   for (const endpoint of ['action','feed','topups','support']) {
     const response = await worker.fetch(new Request('https://brainup.test/api/'+endpoint, {headers:forged}), {});

@@ -1,4 +1,4 @@
-import {readBrainupState, saveBrainupState} from './state-storage.mjs';
+import {readBrainupState, saveBrainupState, splitBrainupState} from './state-storage.mjs';
 import {supportSchema} from './support.mjs';
 const BACKUP_TABLES={
   support_payments:['id','user_id','stars','status','invoice_url','checkout_query','created_at','expires_at'],
@@ -22,38 +22,11 @@ export async function migrationBackup(db, identity, row) {
     {headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
 }
 
-async function mayAccessBrainupTransfer(request, transfer) {
-  const auth = /^Bearer ([a-f0-9]{64})$/.exec(request.headers.get('Authorization') || '');
-  if (!auth || Date.now() > transfer.expires) return false;
-  const actual = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(auth[1])));
-  let difference = 0;
-  for (let index = 0; index < actual.length; index++) {
-    difference |= actual[index] ^ parseInt(transfer.hash.slice(index * 2, index * 2 + 2),16);
-  }
-  return difference === 0;
-}
-
 function brainupTransferReply(body, status = 200) {
-  return Response.json(body,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
+  return { ...body, status };
 }
 
-export async function handleBrainupDatabaseTransfer(request, db, transfer) {
-  if (!['GET','POST'].includes(request.method)) return new Response('Method not allowed',{status:405});
-  if (!await mayAccessBrainupTransfer(request, transfer)) return new Response('Forbidden',{status:403});
-  if (!db) return new Response('Unavailable',{status:503});
-  const row = await readBrainupState(db);
-  if (!row) return brainupTransferReply({ok:true,empty:true},request.method==='GET'?200:409);
-  const current = JSON.parse(row.data);
-  if (request.method === 'GET') return migrationBackup(db, {id:current.owner}, row);
-
-  let payload;
-  try {
-    const body = await request.text();
-    if (body.length > 8_000_000) return brainupTransferReply({ok:false,error:'payload_too_large'},413);
-    payload = JSON.parse(body);
-  } catch {
-    return brainupTransferReply({ok:false,error:'invalid_payload'},400);
-  }
+export async function applyRestoredBrainupTransfer(db,row,current,payload,checkpoint) {
   const {expectedRevision, sourceHash, state, support} = payload || {};
   if (!Number.isSafeInteger(expectedRevision) || !/^[a-f0-9]{64}$/.test(sourceHash || '')
       || !state?.users || Array.isArray(state.users) || !Array.isArray(state?.config?.cases)
@@ -78,14 +51,23 @@ export async function handleBrainupDatabaseTransfer(request, db, transfer) {
   }
 
   await supportSchema(db);
-  state.legacyImport = {hash:sourceHash, at:Date.now()};
-  const saved = await saveBrainupState(db,row.revision,state,manifest =>
-    Object.entries(BACKUP_TABLES).map(([table,columns]) => {
+  state.legacyImport = {
+    hash:sourceHash, at:Date.now(), transferId:checkpoint.id, sourceRevision:checkpoint.sourceRevision,
+    players:Object.keys(state.users).length
+  };
+  const checkpointParts=splitBrainupState(checkpoint.snapshot);
+  const saved = await saveBrainupState(db,row.revision,state,manifest => [
+    ...Object.entries(BACKUP_TABLES).map(([table,columns]) => {
       const values = columns.map(column => "json_extract(value, '$." + column + "')").join(', ');
       const sql = 'INSERT OR IGNORE INTO ' + table + ' (' + columns.join(', ') + ') SELECT ' + values +
         ' FROM json_each(?) WHERE EXISTS (SELECT 1 FROM site_state WHERE id = 1 AND data = ?)';
       return db.prepare(sql).bind(JSON.stringify(support[table]),manifest);
-    }));
+    }),
+    ...checkpointParts.map((part,ordinal)=>db.prepare(
+      'INSERT INTO brainup_transfer_checkpoint (transfer_id, ordinal, data) SELECT ?, ?, ? ' +
+      'WHERE EXISTS (SELECT 1 FROM site_state WHERE id = 1 AND data = ?)'
+    ).bind(checkpoint.id,ordinal,part,manifest))
+  ]);
   if (!saved.meta.changes) return brainupTransferReply({ok:false,error:'revision_conflict'},409);
   return brainupTransferReply({ok:true,players:Object.keys(state.users).length,revision:row.revision+1});
 }

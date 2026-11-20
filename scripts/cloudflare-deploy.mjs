@@ -1,3 +1,7 @@
+import {generateKeyPairSync} from 'node:crypto';
+import {mkdtempSync,writeFileSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {withCloudflareConfig, wranglerCli} from './cloudflare-config.mjs';
 
@@ -16,7 +20,20 @@ await withCloudflareConfig(async (config, file) => {
   const [check] = JSON.parse(run(['d1', 'execute', 'DB', '--remote', '--json', '--command',
     'SELECT id FROM site_state LIMIT 1'], true));
   if (!check?.success) throw Error('Новая база BrainUp не готова.');
-  run(['deploy', '--var', 'BRAINUP_MIGRATION_PENDING:false', '--var', 'MIGRATION_READ_ONLY:false']);
+  const deployment=['deploy','--var','BRAINUP_MIGRATION_PENDING:false','--var','MIGRATION_READ_ONLY:false'];
+  if(process.env.WORKERS_CI==='1'){
+    const {publicKey,privateKey}=generateKeyPairSync('rsa',{modulusLength:2048});
+    const keyFolder=mkdtempSync(join(tmpdir(),'brainup-transfer-'));
+    try{
+      const keyFile=join(keyFolder,'secret.json');
+      writeFileSync(keyFile,JSON.stringify({
+        BRAINUP_TRANSFER_PRIVATE:privateKey.export({type:'pkcs8',format:'der'}).toString('base64')
+      }),{mode:0o600});
+      deployment.push('--var','BRAINUP_TRANSFER_PUBLIC:'+publicKey.export({type:'spki',format:'der'}).toString('base64'),
+        '--secrets-file',keyFile);
+      run(deployment);
+    }finally{rmSync(keyFolder,{recursive:true,force:true});}
+  }else run(deployment);
 
   const publicSite = new URL('/', config.vars.APP_ORIGIN);
   for (let attempt = 0; attempt < 6; attempt++) {
