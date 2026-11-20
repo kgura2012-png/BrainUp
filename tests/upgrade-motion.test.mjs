@@ -77,7 +77,7 @@ test('flight cancels scheduled work and skips old impact effects after a dropped
   performance:{now:()=>0},requestAnimationFrame:callback=>{frames.set(++nextId,callback);return nextId},
   cancelAnimationFrame:id=>frames.delete(id),placeBall:(...point)=>positions.push(point),wallHit:()=>hits++
  });
- vm.runInContext(html.slice(html.indexOf('function fly(pts,total,signal)'),html.indexOf('async function anim(d,win,roll,options)')),context);
+ vm.runInContext(html.slice(html.indexOf('function fly('),html.indexOf('async function anim(d,win,roll,options)')),context);
  const path=[[50,50],[100,50],[0,50],[60,50]];
  const controller=new AbortController();
  const interrupted=context.fly(path,2900,controller.signal);
@@ -108,31 +108,53 @@ test('flight cancels scheduled work and skips old impact effects after a dropped
  assert.deepEqual(positions.at(-1),path.at(-1));
 });
 
-test('result zoom centers stops at the edges and resets before the next launch',()=>{
- const calls=[],styles={},classList={remove(){}};
- let canceled=0;
+test('landing zoom fills the board and centers the ball before it stops',()=>{
+ const skinStyle={transform:'none',setProperty(key,value){this[key]=value},removeProperty(key){delete this[key]}};
+ const ballStyle={}, winLabel={}, lossLabel={}, classList={remove(){}};
  const context=vm.createContext({
-  UPGRADE_LAUNCH_POINT:[50,50],root:{classList},roll_:{classList,style:{}},
-  skins:{style:styles,animate:(frames,options)=>{
-   calls.push({frames,options});
-   return {cancel(){canceled++}};
-  }},
-  window:{matchMedia:()=>({matches:false})}
+  UPGRADE_LAUNCH_POINT:[50,50],root:{classList},roll_:{classList,style:ballStyle},
+  skins:{style:skinStyle},lw:{style:winLabel},ll:{style:lossLabel}
  });
  const slice=(start,end)=>html.slice(html.indexOf(start),html.indexOf(end));
  vm.runInContext(slice('function upgradeBoardPosition(value)','function paintUpgradeChance(')+
    slice('var resEls=[],hitN=0;','function wallHit(){'),context);
- for(const point of [[0,0],[0,100],[50,50],[100,0],[100,100]]){
-  context.focusUpgradeResult(point);
-  const {frames,options}=calls.at(-1);
-  const [,dx,dy,scale]=/translate\(([^%]+)%, ([^%]+)%\) scale\(([^)]+)\)/.exec(frames[1].transform);
-  near(Number(dx)+Number(scale)*context.upgradeBoardPosition(point[0]),50);
-  near(Number(dy)+Number(scale)*context.upgradeBoardPosition(point[1]),50);
-  assert.equal(options.duration,420);
-  assert.equal(styles.transformOrigin,'0 0');
+ for(const [x,y] of [[0,0],[0,100],[50,50],[100,0],[100,100]]){
+  context.drawUpgradeLanding(x,y,0,25);
+  near(parseFloat(ballStyle.left),context.upgradeBoardPosition(x));
+  near(parseFloat(ballStyle.top),context.upgradeBoardPosition(y));
+  context.drawUpgradeLanding(x,y,.75,25);
+  assert.equal(ballStyle.left,'50%');
+  assert.equal(ballStyle.top,'50%');
+  assert.equal(ballStyle.width,'18%');
+  assert.equal(winLabel.opacity,'0');
+  assert.equal(skinStyle.transform,'none');
+  const divider=parseFloat(skinStyle['--loss-progress']);
+  assert.ok(divider>=0&&divider<=100);
+  const won=(x-y+100)/2>75;
+  assert.equal(50>divider,won);
   context.fxClean();
-  assert.equal(styles.transform,'none');
-  assert.equal(styles.transformOrigin,'');
+  assert.equal(ballStyle.width,'10%');
+  assert.equal(lossLabel.opacity,'');
+  assert.equal(skinStyle['--loss-progress'],undefined);
  }
- assert.equal(canceled,5);
+});
+
+test('camera starts only on the decelerating segment and tracks through the last frame',async()=>{
+ let nextFrame;
+ const frames=[];
+ const context=vm.createContext({
+  performance:{now:()=>0},requestAnimationFrame:callback=>{nextFrame=callback;return 1},
+  cancelAnimationFrame:()=>{nextFrame=null},placeBall:()=>{},wallHit:()=>{}
+ });
+ vm.runInContext(html.slice(html.indexOf('function fly('),html.indexOf('async function anim(')),context);
+ const run=context.fly([[50,50],[100,50],[0,50],[60,50]],2900,null,(...point)=>frames.push(point));
+ nextFrame(700);
+ nextFrame(1450);
+ assert.equal(frames.length,0);
+ nextFrame(2000);
+ assert.equal(frames.length,1);
+ assert.ok(frames[0][2]>0&&frames[0][2]<1);
+ nextFrame(3000);
+ await run;
+ assert.deepEqual(frames.at(-1),[60,50,1]);
 });

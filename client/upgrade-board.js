@@ -31,11 +31,15 @@ function ringUpdate(chance){
 
 /* upgrade-board-flight */
 var resEls=[],hitN=0;
-let wallFlash, ballImpact, resultZoom;
+let wallFlash, ballImpact;
+
+function placeBallOnBoard(left, top){
+  roll_.style.left = left + '%';
+  roll_.style.top = top + '%';
+}
 
 function placeBall(x, y){
-  roll_.style.left = upgradeBoardPosition(x) + '%';
-  roll_.style.top = upgradeBoardPosition(y) + '%';
+  placeBallOnBoard(upgradeBoardPosition(x), upgradeBoardPosition(y));
 }
 
 function stopUpgradeImpact(){
@@ -46,10 +50,10 @@ function stopUpgradeImpact(){
 
 function fxClean(){
   stopUpgradeImpact();
-  resultZoom?.cancel();
-  resultZoom = null;
   skins.style.transform = 'none';
-  skins.style.transformOrigin = '';
+  skins.style.removeProperty('--loss-progress');
+  roll_.style.width = '10%';
+  lw.style.opacity = ll.style.opacity = '';
   resEls.forEach(element => element.remove());
   resEls = [];
   root.classList.remove('upgrade-percent--aim-result', 'upgrade-percent--highlight-win',
@@ -59,20 +63,22 @@ function fxClean(){
   placeBall(...UPGRADE_LAUNCH_POINT);
 }
 
-function focusUpgradeResult([x, y]){
-  const scale = 1.8;
-  const panX = 50 - upgradeBoardPosition(x) * scale;
-  const panY = 50 - upgradeBoardPosition(y) * scale;
-  const transform = 'translate(' + panX + '%, ' + panY + '%) scale(' + scale + ')';
-  skins.style.transformOrigin = '0 0';
-  if (skins.animate) {
-    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
-    resultZoom = skins.animate([{transform:'none'}, {transform}], {
-      duration:reducedMotion ? 0 : 420, easing:'cubic-bezier(.22,.78,.18,1)', fill:'forwards'
-    });
-  } else {
-    skins.style.transform = transform;
-  }
+function drawUpgradeLanding(x, y, progress, chance){
+  const approach = 1 - (1 - Math.min(1, progress / .75)) ** 3;
+  const scale = 1 + .8 * approach;
+  const left = upgradeBoardPosition(x), top = upgradeBoardPosition(y);
+  const focusX = left + (50 - left) * approach;
+  const focusY = top + (50 - top) * approach;
+
+  // Project the sector divider into the new view while the background still covers the whole square.
+  const loss = upgradeBoardPosition(100 - chance);
+  const ballDiagonal = (left - top + 100) / 2;
+  const focusDiagonal = (focusX - focusY + 100) / 2;
+  const divider = focusDiagonal + (loss - ballDiagonal) * scale;
+  skins.style.setProperty('--loss-progress', Math.min(100, Math.max(0, divider)) + '%');
+  roll_.style.width = 10 * scale + '%';
+  lw.style.opacity = ll.style.opacity = String(1 - approach);
+  placeBallOnBoard(focusX, focusY);
 }
 
 function wallHit(){
@@ -90,7 +96,7 @@ function wallHit(){
   sfx('hit', hitN++);
 }
 
-function fly(pts,total,signal){
+function fly(pts,total,signal,drawLanding = placeBall){
   return new Promise(resolve => {
     if (signal?.aborted) return resolve();
     const last = pts.length - 2;
@@ -118,17 +124,20 @@ function fly(pts,total,signal){
         segment++;
       }
       if (segment >= durations.length) {
-        placeBall(...pts[segment]);
+        drawLanding(...pts[segment], 1);
         return finish();
       }
       if (previous !== segment) {
         placeBall(...pts[segment]);
         wallHit();
       } else {
-        let progress = elapsed / durations[segment];
-        if (segment === last) progress = 1 - (1 - progress) ** 2;
+        const progress = elapsed / durations[segment];
+        const distance = segment === last ? 1 - (1 - progress) ** 2 : progress;
         const [fromX,fromY] = pts[segment], [toX,toY] = pts[segment + 1];
-        placeBall(fromX + (toX - fromX) * progress, fromY + (toY - fromY) * progress);
+        const x = fromX + (toX - fromX) * distance;
+        const y = fromY + (toY - fromY) * distance;
+        if (segment === last) drawLanding(x, y, progress);
+        else placeBall(x, y);
       }
       frame = requestAnimationFrame(step);
     }
@@ -163,10 +172,11 @@ async function anim(d,win,roll,options){
   roll_.classList.add('upgrade-percent__roll--arrow-hidden', 'upgrade-percent__roll--flying');
   hitN = 0;
   sfx('whoosh');
-  await fly(path, 2900, signal);
+  const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+  await fly(path, 2900, signal, (x, y, progress) =>
+    drawUpgradeLanding(x, y, reducedMotion ? Math.floor(progress) : progress, d.chance));
   if (signal?.aborted) return;
 
-  focusUpgradeResult(path.at(-1));
   root.classList.add('upgrade-percent--aim-result', 'upgrade-percent--highlight-' + (win ? 'win' : 'loss'));
   if (!win) root.classList.add('upgrade-percent--lost');
   const overlay = E('upgrade-percent__result-overlay');
